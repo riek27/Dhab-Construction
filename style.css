@@ -112,6 +112,37 @@ nav a:hover::after {
     color: var(--charcoal);
 }
 
+/* Logo Styling */
+.logo {
+    display: flex;          /* Align image and text if needed */
+    align-items: center;    /* Vertical center alignment */
+    text-decoration: none;  /* Remove underline */
+}
+
+.logo-img {
+    height: 50px;           /* Adjust logo height as needed */
+    width: auto;            /* Maintain aspect ratio */
+    display: block;
+    margin-right: 10px;     /* Space between logo and text, optional */
+}
+
+.logo span {
+    font-family: 'Playfair Display', serif; /* Optional: match your site font */
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;             /* Adjust color if needed */
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 768px) {
+    .logo-img {
+        height: 40px;       /* Slightly smaller on mobile */
+    }
+
+    .logo span {
+        font-size: 1.2rem;  /* Optional: smaller text on mobile */
+    }
+
 /* Page Hero */
 .page-hero {
     background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
