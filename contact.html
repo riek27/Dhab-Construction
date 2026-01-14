@@ -12,7 +12,10 @@
     <!-- Header -->
     <header>
         <div class="container header-container">
-            <a href="index.html" class="logo">Dhab<span>Construction</span></a>
+            <!-- Logo as an image -->
+            <a href="index.html" class="logo">
+                <img src="images/logod.jpg" alt="Dhab Construction Logo" class="logo-img">
+            </a>
             <button class="mobile-menu-btn">
                 <i class="fas fa-bars"></i>
             </button>
@@ -20,7 +23,17 @@
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About Us</a></li>
-                    <li><a href="services.html">Services</a></li>
+                    <li class="dropdown">
+                        <a href="services.html" class="dropdown-toggle">Services <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="services.html#residential">Residential Construction</a>
+                            <a href="services.html#commercial">Commercial Construction</a>
+                            <a href="services.html#infrastructure">Infrastructure Development</a>
+                            <a href="services.html#community">Community Institutions</a>
+                            <a href="services.html#materials">Building Materials Supply</a>
+                            <a href="services.html#management">Construction Management & Supervision</a>
+                        </div>
+                    </li>
                     <li><a href="portfolio.html">Portfolio</a></li>
                     <li><a href="blog.html">Blog</a></li>
                     <li><a href="invest.html">Invest</a></li>
@@ -33,17 +46,23 @@
     <!-- Page Hero -->
     <section class="page-hero">
         <div class="container">
-            <h1>Contact Us</h1>
-            <div class="breadcrumb">
-                <a href="index.html">Home</a>
-                <span>/</span>
-                <span>Contact Us</span>
+            <div class="page-hero-content">
+                <div class="hero-logo">
+                    <img src="images/logod.jpg" alt="Dhab Construction Logo">
+                </div>
+                <h1>Contact Us</h1>
+                <p class="hero-subtitle">Get in Touch for Your Construction Needs and Project Inquiries</p>
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <span>/</span>
+                    <span>Contact Us</span>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Content -->
-    <section class="contact">
+    <section class="contact-page">
         <div class="container">
             <div class="section-title">
                 <h2>Get in Touch</h2>
@@ -54,11 +73,13 @@
                 <div class="contact-info">
                     <div class="contact-details">
                         <h3>Contact Information</h3>
+                        <p class="contact-description">Feel free to reach out to us through any of the following channels. Our team is ready to assist you with your construction needs.</p>
+                        
                         <div class="contact-item">
                             <div class="contact-icon">
                                 <i class="fas fa-map-marker-alt"></i>
                             </div>
-                            <div>
+                            <div class="contact-content">
                                 <h4>Our Location</h4>
                                 <p>Dynasty House, 1st Floor, Bilpam Road, Juba, South Sudan</p>
                             </div>
@@ -67,25 +88,25 @@
                             <div class="contact-icon">
                                 <i class="fas fa-phone"></i>
                             </div>
-                            <div>
+                            <div class="contact-content">
                                 <h4>Phone Number</h4>
-                                <p>+211 917 119 426</p>
+                                <p><a href="tel:+211917119426">+211 917 119 426</a></p>
                             </div>
                         </div>
                         <div class="contact-item">
                             <div class="contact-icon">
                                 <i class="fas fa-envelope"></i>
                             </div>
-                            <div>
+                            <div class="contact-content">
                                 <h4>Email Address</h4>
-                                <p>info@dhabconstruction.com</p>
+                                <p><a href="mailto:info@dhabconstruction.com">info@dhabconstruction.com</a></p>
                             </div>
                         </div>
                         <div class="contact-item">
                             <div class="contact-icon">
                                 <i class="fas fa-clock"></i>
                             </div>
-                            <div>
+                            <div class="contact-content">
                                 <h4>Business Hours</h4>
                                 <p>Monday - Friday: 8:00 AM - 5:00 PM</p>
                                 <p>Saturday: 9:00 AM - 2:00 PM</p>
@@ -94,35 +115,62 @@
                         </div>
                     </div>
 
-                    <div class="social-links" style="margin-top: 2rem;">
+                    <div class="contact-social">
                         <h3>Follow Us</h3>
-                        <div style="display: flex; gap: 1rem; margin-top: 1rem;">
-                            <a href="#" class="social-links"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" class="social-links"><i class="fab fa-twitter"></i></a>
-                            <a href="#" class="social-links"><i class="fab fa-instagram"></i></a>
-                            <a href="#" class="social-links"><i class="fab fa-linkedin-in"></i></a>
+                        <div class="social-icons">
+                            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="contact-cta">
+                        <h3>Quick Support</h3>
+                        <p>Need immediate assistance? Use our direct contact options:</p>
+                        <div class="quick-contact-buttons">
+                            <a href="tel:+211917119426" class="btn btn-call">
+                                <i class="fas fa-phone-alt"></i>
+                                Call Now
+                            </a>
+                            <a href="mailto:info@dhabconstruction.com" class="btn btn-email">
+                                <i class="fas fa-envelope"></i>
+                                Email Us
+                            </a>
                         </div>
                     </div>
                 </div>
 
                 <div class="contact-form">
-                    <h3>Send Us a Message</h3>
+                    <div class="form-header">
+                        <h3>Send Us a Message</h3>
+                        <p>Fill out the form below and our team will get back to you within 24 hours.</p>
+                    </div>
                     <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Full Name *</label>
-                            <input type="text" id="name" class="form-control" required>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Full Name *</label>
+                                <input type="text" id="name" class="form-control" required placeholder="Enter your full name">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" class="form-control" required placeholder="Enter your email address">
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="email">Email Address *</label>
-                            <input type="email" id="email" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" class="form-control">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" class="form-control" placeholder="Enter your phone number">
+                            </div>
+                            <div class="form-group">
+                                <label for="company">Company/Organization</label>
+                                <input type="text" id="company" class="form-control" placeholder="Enter your company name">
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="subject">Subject *</label>
-                            <input type="text" id="subject" class="form-control" required>
+                            <input type="text" id="subject" class="form-control" required placeholder="Enter message subject">
                         </div>
                         <div class="form-group">
                             <label for="projectType">Project Type</label>
@@ -130,22 +178,85 @@
                                 <option value="">Select Project Type</option>
                                 <option value="residential">Residential Construction</option>
                                 <option value="commercial">Commercial Construction</option>
-                                <option value="infrastructure">Infrastructure</option>
-                                <option value="institutional">Community Institutions</option>
+                                <option value="infrastructure">Infrastructure Development</option>
+                                <option value="community">Community Institutions</option>
+                                <option value="materials">Building Materials Supply</option>
+                                <option value="management">Construction Management</option>
+                                <option value="investment">Investment Inquiry</option>
                                 <option value="other">Other</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="message">Message *</label>
-                            <textarea id="message" class="form-control" required></textarea>
+                            <label for="budget">Estimated Budget</label>
+                            <select id="budget" class="form-control">
+                                <option value="">Select Budget Range</option>
+                                <option value="under-50k">Under $50,000</option>
+                                <option value="50k-100k">$50,000 - $100,000</option>
+                                <option value="100k-500k">$100,000 - $500,000</option>
+                                <option value="500k-1m">$500,000 - $1 Million</option>
+                                <option value="over-1m">Over $1 Million</option>
+                                <option value="not-sure">Not Sure</option>
+                            </select>
                         </div>
-                        <button type="submit" class="btn">Send Message</button>
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" class="form-control" required placeholder="Please describe your project or inquiry in detail" rows="6"></textarea>
+                        </div>
+                        <div class="form-footer">
+                            <button type="submit" class="btn btn-submit">
+                                <i class="fas fa-paper-plane"></i>
+                                Send Message
+                            </button>
+                            <p class="form-note">Fields marked with * are required</p>
+                        </div>
                     </form>
                 </div>
             </div>
 
+            <!-- Contact Methods Grid -->
+            <div class="contact-methods">
+                <div class="method-card">
+                    <div class="method-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <h3>Call Us</h3>
+                    <p>Speak directly with our team</p>
+                    <a href="tel:+211917119426" class="method-link">+211 917 119 426</a>
+                </div>
+                <div class="method-card">
+                    <div class="method-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email Us</h3>
+                    <p>Send us your project details</p>
+                    <a href="mailto:info@dhabconstruction.com" class="method-link">info@dhabconstruction.com</a>
+                </div>
+                <div class="method-card">
+                    <div class="method-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Visit Us</h3>
+                    <p>Schedule a meeting at our office</p>
+                    <span class="method-link">Dynasty House, Juba</span>
+                </div>
+                <div class="method-card">
+                    <div class="method-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>Live Chat</h3>
+                    <p>Chat with us online</p>
+                    <button class="method-link" onclick="openChat()">Start Chat Now</button>
+                </div>
+            </div>
+
             <div class="map-container">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.753686562456!2d31.58521407477376!3d4.851395095089364!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x171f9dd5c93d3459%3A0x1c557a1c8d94d4c2!2sJuba%2C%20South%20Sudan!5e0!3m2!1sen!2s!4v1690000000000!5m2!1sen!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <h3 class="map-title">Our Location</h3>
+                <div class="map-wrapper">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.753686562456!2d31.58521407477376!3d4.851395095089364!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x171f9dd5c93d3459%3A0x1c557a1c8d94d4c2!2sJuba%2C%20South%20Sudan!5e0!3m2!1sen!2s!4v1690000000000!5m2!1sen!2s" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <div class="map-address">
+                    <p><i class="fas fa-map-marker-alt"></i> <strong>Address:</strong> Dynasty House, 1st Floor, Bilpam Road, Juba, South Sudan</p>
+                </div>
             </div>
         </div>
     </section>
@@ -155,40 +266,92 @@
         <div class="container">
             <div class="footer-container">
                 <div class="footer-about">
-                    <div class="footer-logo">Dhab<span>Construction</span></div>
+                    <div class="footer-logo">
+                        <img src="images/logod.jpg" alt="Dhab Construction Logo" class="footer-logo-img">
+                        <span>Dhab<span>Construction</span></span>
+                    </div>
                     <p>Your trusted partner in infrastructural development across South Sudan and Eastern Africa. We build lasting structures that empower communities and drive progress.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
                 <div class="footer-links">
                     <h3 class="footer-heading">Quick Links</h3>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="portfolio.html">Portfolio</a></li>
-                        <li><a href="blog.html">Blog</a></li>
-                        <li><a href="invest.html">Invest</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                        <li><a href="services.html"><i class="fas fa-chevron-right"></i> Services</a></li>
+                        <li><a href="portfolio.html"><i class="fas fa-chevron-right"></i> Portfolio</a></li>
+                        <li><a href="blog.html"><i class="fas fa-chevron-right"></i> Blog</a></li>
+                        <li><a href="invest.html"><i class="fas fa-chevron-right"></i> Invest</a></li>
+                        <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-services">
+                    <h3 class="footer-heading">Our Services</h3>
+                    <ul>
+                        <li><a href="services.html#residential"><i class="fas fa-chevron-right"></i> Residential Construction</a></li>
+                        <li><a href="services.html#commercial"><i class="fas fa-chevron-right"></i> Commercial Construction</a></li>
+                        <li><a href="services.html#infrastructure"><i class="fas fa-chevron-right"></i> Infrastructure Development</a></li>
+                        <li><a href="services.html#community"><i class="fas fa-chevron-right"></i> Community Institutions</a></li>
+                        <li><a href="services.html#materials"><i class="fas fa-chevron-right"></i> Building Materials Supply</a></li>
+                        <li><a href="services.html#management"><i class="fas fa-chevron-right"></i> Construction Management</a></li>
                     </ul>
                 </div>
                 <div class="footer-contact">
                     <h3 class="footer-heading">Contact Info</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> Dynasty House, 1st Floor, Bilpam Road, Juba, South Sudan</p>
-                    <p><i class="fas fa-phone"></i> +211 917 119 426</p>
-                    <p><i class="fas fa-envelope"></i> info@dhabconstruction.com</p>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <strong>Address</strong>
+                            <p>Dynasty House, 1st Floor, Bilpam Road, Juba, South Sudan</p>
+                        </div>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <strong>Phone</strong>
+                            <p><a href="tel:+211917119426">+211 917 119 426</a></p>
+                        </div>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <strong>Email</strong>
+                            <p><a href="mailto:info@dhabconstruction.com">info@dhabconstruction.com</a></p>
+                        </div>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <strong>Working Hours</strong>
+                            <p>Mon - Fri: 8:00 AM - 6:00 PM</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="copyright">
-                <p>&copy; 2025 Dhab Construction. All Rights Reserved.</p>
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p>&copy; 2026 Dhab Construction. All Rights Reserved.</p>
+                </div>
+                <div class="footer-links-bottom">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Sitemap</a>
+                </div>
             </div>
         </div>
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        function openChat() {
+            alert("Live chat feature coming soon! For now, please call or email us.");
+        }
+    </script>
 </body>
 </html>
