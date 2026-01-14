@@ -12,7 +12,10 @@
     <!-- Header -->
     <header>
         <div class="container header-container">
-            <a href="index.html" class="logo">Dhab<span>Construction</span></a>
+            <!-- Logo as an image -->
+            <a href="index.html" class="logo">
+                <img src="images/logod.jpg" alt="Dhab Construction Logo" class="logo-img">
+            </a>
             <button class="mobile-menu-btn">
                 <i class="fas fa-bars"></i>
             </button>
@@ -20,7 +23,17 @@
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About Us</a></li>
-                    <li><a href="services.html">Services</a></li>
+                    <li class="dropdown">
+                        <a href="services.html" class="dropdown-toggle">Services <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="services.html#residential">Residential Construction</a>
+                            <a href="services.html#commercial">Commercial Construction</a>
+                            <a href="services.html#infrastructure">Infrastructure Development</a>
+                            <a href="services.html#community">Community Institutions</a>
+                            <a href="services.html#materials">Building Materials Supply</a>
+                            <a href="services.html#management">Construction Management & Supervision</a>
+                        </div>
+                    </li>
                     <li><a href="portfolio.html">Portfolio</a></li>
                     <li><a href="blog.html">Blog</a></li>
                     <li><a href="invest.html" class="active">Invest</a></li>
@@ -33,25 +46,86 @@
     <!-- Page Hero -->
     <section class="page-hero">
         <div class="container">
-            <h1>Invest With Us</h1>
-            <div class="breadcrumb">
-                <a href="index.html">Home</a>
-                <span>/</span>
-                <span>Invest</span>
+            <div class="page-hero-content">
+                <div class="hero-logo">
+                    <img src="images/logod.jpg" alt="Dhab Construction Logo">
+                </div>
+                <h1>Invest With Us</h1>
+                <p class="hero-subtitle">Build Your Future While Building South Sudan's Infrastructure</p>
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <span>/</span>
+                    <span>Invest</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Invest Stats -->
+    <section class="invest-stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">120+</div>
+                    <div class="stat-label">Years Combined Experience</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">150+</div>
+                    <div class="stat-label">Projects Completed</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">Years in Operation</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">On-Time Delivery</div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Invest Content -->
-    <section class="invest-content-section">
+    <section class="invest-page">
         <div class="container">
             <div class="section-title">
                 <h2>Invest in Dhab Construction: Build Your Future with Us</h2>
+                <p>Join us in shaping South Sudan's infrastructure while securing your financial future</p>
             </div>
 
             <div class="invest-content">
                 <div class="invest-section">
                     <p>We are inviting forward-thinking investors to join us in shaping the future of South Sudan's booming construction and real estate market. By purchasing shares in our company, you're not only investing in a trusted name with 120+ years of combined industry experience but also in a future filled with growth, innovation, and unparalleled opportunities.</p>
+                    
+                    <div class="investment-highlights">
+                        <div class="highlight-card">
+                            <div class="highlight-icon">
+                                <i class="fas fa-chart-pie"></i>
+                            </div>
+                            <div class="highlight-content">
+                                <h3>Investment Opportunities</h3>
+                                <p>We offer various investment options tailored to meet your financial goals and risk appetite.</p>
+                            </div>
+                        </div>
+                        <div class="highlight-card">
+                            <div class="highlight-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div class="highlight-content">
+                                <h3>Secure Investment</h3>
+                                <p>Your investment is protected by our proven track record and transparent business practices.</p>
+                            </div>
+                        </div>
+                        <div class="highlight-card">
+                            <div class="highlight-icon">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <div class="highlight-content">
+                                <h3>Partnership Model</h3>
+                                <p>Become a partner in our growth and share in the success of South Sudan's development.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="invest-section">
@@ -83,8 +157,15 @@
 
                 <div class="invest-section">
                     <h3>Real Estate Opportunities in South Sudan</h3>
-                    <p>South Sudan is a land of immense opportunity. With a rapidly growing urban population and an increasing demand for modern infrastructure, the real estate market is on the rise. From residential housing to commercial spaces and public facilities, the demand for quality construction is higher than ever.</p>
-                    <p>As the country's development accelerates, early investors in real estate and infrastructure stand to reap significant rewards. The government's focus on rebuilding the nation's infrastructure creates a favorable environment for construction companies and their investors.</p>
+                    <div class="opportunity-content">
+                        <div class="opportunity-text">
+                            <p>South Sudan is a land of immense opportunity. With a rapidly growing urban population and an increasing demand for modern infrastructure, the real estate market is on the rise. From residential housing to commercial spaces and public facilities, the demand for quality construction is higher than ever.</p>
+                            <p>As the country's development accelerates, early investors in real estate and infrastructure stand to reap significant rewards. The government's focus on rebuilding the nation's infrastructure creates a favorable environment for construction companies and their investors.</p>
+                        </div>
+                        <div class="opportunity-image">
+                            <img src="image/qconss.jpg" alt="Construction Opportunity">
+                        </div>
+                    </div>
                 </div>
 
                 <div class="invest-section">
@@ -116,10 +197,104 @@
                     </div>
                 </div>
 
-                <div class="invest-section" style="text-align: center; margin-top: 3rem;">
-                    <h3>Let's Build Together</h3>
-                    <p>Dhab Construction is more than a company; it's a movement driving progress and prosperity in South Sudan. Join us as a partner, and let's build a future that's bright, profitable, and impactful.</p>
-                    <a href="contact.html" class="btn" style="margin-top: 2rem;">Invest Your Future</a>
+                <div class="invest-section">
+                    <h3>Investment Packages</h3>
+                    <div class="investment-packages">
+                        <div class="package-card">
+                            <div class="package-header">
+                                <h4>Basic Investor</h4>
+                                <div class="package-price">$5,000+</div>
+                            </div>
+                            <div class="package-features">
+                                <ul>
+                                    <li><i class="fas fa-check"></i> Quarterly Reports</li>
+                                    <li><i class="fas fa-check"></i> Annual Dividend</li>
+                                    <li><i class="fas fa-check"></i> Investor Updates</li>
+                                    <li><i class="fas fa-check"></i> Company Newsletters</li>
+                                </ul>
+                            </div>
+                            <a href="contact.html?package=basic" class="btn btn-package">Invest Now</a>
+                        </div>
+                        <div class="package-card featured">
+                            <div class="package-header">
+                                <h4>Premium Partner</h4>
+                                <div class="package-price">$25,000+</div>
+                            </div>
+                            <div class="package-features">
+                                <ul>
+                                    <li><i class="fas fa-check"></i> All Basic Features</li>
+                                    <li><i class="fas fa-check"></i> Monthly Reports</li>
+                                    <li><i class="fas fa-check"></i> Bi-Annual Dividend</li>
+                                    <li><i class="fas fa-check"></i> Site Visits</li>
+                                    <li><i class="fas fa-check"></i> VIP Events</li>
+                                </ul>
+                            </div>
+                            <a href="contact.html?package=premium" class="btn btn-package">Invest Now</a>
+                        </div>
+                        <div class="package-card">
+                            <div class="package-header">
+                                <h4>Strategic Investor</h4>
+                                <div class="package-price">$100,000+</div>
+                            </div>
+                            <div class="package-features">
+                                <ul>
+                                    <li><i class="fas fa-check"></i> All Premium Features</li>
+                                    <li><i class="fas fa-check"></i> Board Representation</li>
+                                    <li><i class="fas fa-check"></i> Quarterly Dividend</li>
+                                    <li><i class="fas fa-check"></i> Strategic Input</li>
+                                    <li><i class="fas fa-check"></i> Custom Terms</li>
+                                </ul>
+                            </div>
+                            <a href="contact.html?package=strategic" class="btn btn-package">Invest Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="invest-section text-center">
+                    <div class="cta-invest">
+                        <h3>Ready to Invest?</h3>
+                        <p>Join us as we build South Sudan's future. Contact our investment team today to discuss how you can become part of our success story.</p>
+                        <div class="invest-buttons">
+                            <a href="contact.html?inquiry=investment" class="btn btn-primary btn-large">
+                                <i class="fas fa-file-contract"></i>
+                                Request Investment Package
+                            </a>
+                            <a href="tel:+211917119426" class="btn btn-secondary btn-large">
+                                <i class="fas fa-phone-alt"></i>
+                                Call Investment Team
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial Section -->
+    <section class="invest-testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Investors Say</h2>
+                <p>Hear from satisfied investors who partnered with us</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"Investing in Dhab Construction was one of the best decisions I've made. The returns have been excellent and seeing the impact of our investment on South Sudan's infrastructure is truly rewarding."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <h4>James K. Makuach</h4>
+                        <p>Investor since 2020</p>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"The team's transparency and professionalism gave me confidence in my investment. Watching the company grow while contributing to nation-building is truly fulfilling."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <h4>Sarah A. Deng</h4>
+                        <p>Premium Partner since 2019</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -130,14 +305,90 @@
         <div class="container">
             <div class="footer-container">
                 <div class="footer-about">
-                    <div class="footer-logo">Dhab<span>Construction</span></div>
+                    <div class="footer-logo">
+                        <img src="images/logod.jpg" alt="Dhab Construction Logo" class="footer-logo-img">
+                        <span>Dhab<span>Construction</span></span>
+                    </div>
                     <p>Your trusted partner in infrastructural development across South Sudan and Eastern Africa. We build lasting structures that empower communities and drive progress.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
                     </div>
+                </div>
+                <div class="footer-links">
+                    <h3 class="footer-heading">Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                        <li><a href="services.html"><i class="fas fa-chevron-right"></i> Services</a></li>
+                        <li><a href="portfolio.html"><i class="fas fa-chevron-right"></i> Portfolio</a></li>
+                        <li><a href="blog.html"><i class="fas fa-chevron-right"></i> Blog</a></li>
+                        <li><a href="invest.html"><i class="fas fa-chevron-right"></i> Invest</a></li>
+                        <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-services">
+                    <h3 class="footer-heading">Our Services</h3>
+                    <ul>
+                        <li><a href="services.html#residential"><i class="fas fa-chevron-right"></i> Residential Construction</a></li>
+                        <li><a href="services.html#commercial"><i class="fas fa-chevron-right"></i> Commercial Construction</a></li>
+                        <li><a href="services.html#infrastructure"><i class="fas fa-chevron-right"></i> Infrastructure Development</a></li>
+                        <li><a href="services.html#community"><i class="fas fa-chevron-right"></i> Community Institutions</a></li>
+                        <li><a href="services.html#materials"><i class="fas fa-chevron-right"></i> Building Materials Supply</a></li>
+                        <li><a href="services.html#management"><i class="fas fa-chevron-right"></i> Construction Management</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3 class="footer-heading">Contact Info</h3>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <strong>Address</strong>
+                            <p>Dynasty House, 1st Floor, Bilpam Road, Juba, South Sudan</p>
+                        </div>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <strong>Phone</strong>
+                            <p><a href="tel:+211917119426">+211 917 119 426</a></p>
+                        </div>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <strong>Email</strong>
+                            <p><a href="mailto:info@dhabconstruction.com">info@dhabconstruction.com</a></p>
+                        </div>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <strong>Working Hours</strong>
+                            <p>Mon - Fri: 8:00 AM - 6:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p>&copy; 2026 Dhab Construction. All Rights Reserved.</p>
+                </div>
+                <div class="footer-links-bottom">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>                    </div>
                 </div>
                 <div class="footer-links">
                     <h3 class="footer-heading">Quick Links</h3>
