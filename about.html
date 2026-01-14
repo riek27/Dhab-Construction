@@ -12,7 +12,10 @@
     <!-- Header -->
     <header>
         <div class="container header-container">
-            <a href="index.html" class="logo">Dhab<span>Construction</span></a>
+            <!-- Logo as an image -->
+            <a href="index.html" class="logo">
+                <img src="images/logod.jpg" alt="Dhab Construction Logo" class="logo-img">
+            </a>
             <button class="mobile-menu-btn">
                 <i class="fas fa-bars"></i>
             </button>
@@ -20,7 +23,17 @@
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html" class="active">About Us</a></li>
-                    <li><a href="services.html">Services</a></li>
+                    <li class="dropdown">
+                        <a href="services.html" class="dropdown-toggle">Services <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="services.html#residential">Residential Construction</a>
+                            <a href="services.html#commercial">Commercial Construction</a>
+                            <a href="services.html#infrastructure">Infrastructure Development</a>
+                            <a href="services.html#community">Community Institutions</a>
+                            <a href="services.html#materials">Building Materials Supply</a>
+                            <a href="services.html#management">Construction Management & Supervision</a>
+                        </div>
+                    </li>
                     <li><a href="portfolio.html">Portfolio</a></li>
                     <li><a href="blog.html">Blog</a></li>
                     <li><a href="invest.html">Invest</a></li>
@@ -33,27 +46,51 @@
     <!-- Page Hero -->
     <section class="page-hero">
         <div class="container">
-            <h1>About Us</h1>
-            <div class="breadcrumb">
-                <a href="index.html">Home</a>
-                <span>/</span>
-                <span>About Us</span>
+            <div class="page-hero-content">
+                <div class="hero-logo">
+                    <img src="images/logod.jpg" alt="Dhab Construction Logo">
+                </div>
+                <h1>About Dhab Construction</h1>
+                <p class="hero-subtitle">Building South Sudan's Future Since 2015</p>
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <span>/</span>
+                    <span>About Us</span>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- About Content -->
-    <section class="about">
+    <section class="about-section">
         <div class="container">
             <div class="about-content">
                 <div class="about-image">
                     <img src="image/qwe.jpg" alt="Dhab Construction Team">
+                    <div class="image-overlay">
+                        <span>120+ Years Combined Experience</span>
+                    </div>
                 </div>
                 <div class="about-text">
                     <h2>Dedicated to Delivering Value and Excellence</h2>
                     <p>Welcome to Dhab Construction, a leading construction firm based in Juba, South Sudan. With a strong presence in the industry, we specialize in delivering world-class residential, commercial, and infrastructural projects that redefine quality and innovation.</p>
                     <p>At Dhab Construction, we pride ourselves on being more than just builders. We are creators of opportunities, delivering excellence with a customer-centric approach that ensures every project is completed with creativity, precision, and timeliness.</p>
                     <p>Over the years, we have successfully undertaken prestigious projects, including residential buildings, office complexes, schools, and prefabricated structures. Our expertise extends to building shopping malls, bridges, stadiums, roads, and dams through strategic partnerships and capacity building.</p>
+                    
+                    <div class="quick-stats">
+                        <div class="stat">
+                            <div class="stat-number">150+</div>
+                            <div class="stat-label">Projects Completed</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">50+</div>
+                            <div class="stat-label">Team Members</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">100%</div>
+                            <div class="stat-label">Client Satisfaction</div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -64,14 +101,34 @@
                     
                     <h3>Our Vision</h3>
                     <p>To become the leading construction company in South Sudan and a trusted partner across Africa. We strive to be known for our expertise, commitment to excellence, and ability to undertake and deliver complex projects on time and within budget. Our vision is to shape the future of construction through innovative practices and relentless focus on client satisfaction.</p>
+                    
+                    <!-- Call to Action Buttons -->
+                    <div class="cta-buttons">
+                        <a href="tel:+211917119426" class="btn btn-call">
+                            <i class="fas fa-phone-alt"></i>
+                            Call Us Now
+                        </a>
+                        <a href="mailto:info@dhabconstruction.com" class="btn btn-email">
+                            <i class="fas fa-envelope"></i>
+                            Send Email
+                        </a>
+                    </div>
                 </div>
                 <div class="about-image">
                     <img src="image/qqq.jpg" alt="Construction Site">
+                    <div class="google-review">
+                        <a href="https://g.page/dhab-construction?share" target="_blank" class="btn btn-google">
+                            <i class="fab fa-google"></i>
+                            See Us on Google
+                        </a>
+                    </div>
                 </div>
             </div>
 
+            <!-- Core Values Section -->
             <div class="section-title">
                 <h2>Our Core Values</h2>
+                <p>The Principles That Guide Our Work</p>
             </div>
 
             <div class="values-grid">
@@ -96,6 +153,135 @@
                     <h3>Innovation</h3>
                     <p>We continuously seek new ways to improve the quality of our work and exceed expectations through modern technologies and creative solutions.</p>
                 </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Safety First</h3>
+                    <p>The safety of our team, clients, and the public is our top priority. We maintain strict safety protocols on all our construction sites.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Meet Our Leadership Team</h2>
+                <p>Experienced Professionals Driving Our Success</p>
+            </div>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="image/logoma.jpg" alt="Majuoy Tuak Dhab Bithuok - CEO">
+                        <div class="member-overlay">
+                            <div class="social-links">
+                                <a href="mailto:majuoy@dhabconstruction.com"><i class="fas fa-envelope"></i></a>
+                                <a href="tel:+211917119426"><i class="fas fa-phone"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h3>Majuoy Tuak Dhab Bithuok</h3>
+                        <p class="member-position">Chief Executive Officer</p>
+                        <p class="member-bio">Visionary leader with 15+ years of construction industry experience, driving innovation and strategic growth.</p>
+                        <div class="member-contact">
+                            <p><a href="mailto:majuoy@dhabconstruction.com"><i class="fas fa-envelope"></i> majuoy@dhabconstruction.com</a></p>
+                            <p><a href="tel:+211917119426"><i class="fas fa-phone"></i> +211 917 119 426</a></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="image/team-placeholder1.jpg" alt="Sarah K. James - Project Director">
+                        <div class="member-overlay">
+                            <div class="social-links">
+                                <a href="mailto:sarah@dhabconstruction.com"><i class="fas fa-envelope"></i></a>
+                                <a href="tel:+211922334455"><i class="fas fa-phone"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h3>Sarah K. James</h3>
+                        <p class="member-position">Project Director</p>
+                        <p class="member-bio">Expert in project management with 12 years experience overseeing major construction projects across South Sudan.</p>
+                        <div class="member-contact">
+                            <p><a href="mailto:sarah@dhabconstruction.com"><i class="fas fa-envelope"></i> sarah@dhabconstruction.com</a></p>
+                            <p><a href="tel:+211922334455"><i class="fas fa-phone"></i> +211 922 334 455</a></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="image/team-placeholder2.jpg" alt="Michael Deng - Operations Manager">
+                        <div class="member-overlay">
+                            <div class="social-links">
+                                <a href="mailto:michael@dhabconstruction.com"><i class="fas fa-envelope"></i></a>
+                                <a href="tel:+211933445566"><i class="fas fa-phone"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h3>Michael Deng</h3>
+                        <p class="member-position">Operations Manager</h3>
+                        <p class="member-bio">Ensuring smooth operations and quality control across all construction sites with 10+ years of field experience.</p>
+                        <div class="member-contact">
+                            <p><a href="mailto:michael@dhabconstruction.com"><i class="fas fa-envelope"></i> michael@dhabconstruction.com</a></p>
+                            <p><a href="tel:+211933445566"><i class="fas fa-phone"></i> +211 933 445 566</a></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="image/team-placeholder3.jpg" alt="Rebecca A. Malek - Finance Director">
+                        <div class="member-overlay">
+                            <div class="social-links">
+                                <a href="mailto:rebecca@dhabconstruction.com"><i class="fas fa-envelope"></i></a>
+                                <a href="tel:+211944556677"><i class="fas fa-phone"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h3>Rebecca A. Malek</h3>
+                        <p class="member-position">Finance Director</p>
+                        <p class="member-bio">Financial strategist with 14 years experience in construction financing and investment management.</p>
+                        <div class="member-contact">
+                            <p><a href="mailto:rebecca@dhabconstruction.com"><i class="fas fa-envelope"></i> rebecca@dhabconstruction.com</a></p>
+                            <p><a href="tel:+211944556677"><i class="fas fa-phone"></i> +211 944 556 677</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <div class="cta-text">
+                    <h2>Ready to Start Your Construction Project?</h2>
+                    <p>Contact our team of experts for a free consultation and quote. We're here to bring your vision to life.</p>
+                </div>
+                <div class="cta-buttons">
+                    <a href="tel:+211917119426" class="btn btn-primary btn-large">
+                        <i class="fas fa-phone-alt"></i>
+                        Call Us: +211 917 119 426
+                    </a>
+                    <a href="mailto:info@dhabconstruction.com" class="btn btn-secondary btn-large">
+                        <i class="fas fa-envelope"></i>
+                        Email: info@dhabconstruction.com
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -105,36 +291,83 @@
         <div class="container">
             <div class="footer-container">
                 <div class="footer-about">
-                    <div class="footer-logo">Dhab<span>Construction</span></div>
+                    <div class="footer-logo">
+                        <img src="images/logod.jpg" alt="Dhab Construction Logo" class="footer-logo-img">
+                        <span>Dhab<span>Construction</span></span>
+                    </div>
                     <p>Your trusted partner in infrastructural development across South Sudan and Eastern Africa. We build lasting structures that empower communities and drive progress.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
                 <div class="footer-links">
                     <h3 class="footer-heading">Quick Links</h3>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="portfolio.html">Portfolio</a></li>
-                        <li><a href="blog.html">Blog</a></li>
-                        <li><a href="invest.html">Invest</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                        <li><a href="services.html"><i class="fas fa-chevron-right"></i> Services</a></li>
+                        <li><a href="portfolio.html"><i class="fas fa-chevron-right"></i> Portfolio</a></li>
+                        <li><a href="blog.html"><i class="fas fa-chevron-right"></i> Blog</a></li>
+                        <li><a href="invest.html"><i class="fas fa-chevron-right"></i> Invest</a></li>
+                        <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-services">
+                    <h3 class="footer-heading">Our Services</h3>
+                    <ul>
+                        <li><a href="services.html#residential"><i class="fas fa-chevron-right"></i> Residential Construction</a></li>
+                        <li><a href="services.html#commercial"><i class="fas fa-chevron-right"></i> Commercial Construction</a></li>
+                        <li><a href="services.html#infrastructure"><i class="fas fa-chevron-right"></i> Infrastructure Development</a></li>
+                        <li><a href="services.html#community"><i class="fas fa-chevron-right"></i> Community Institutions</a></li>
+                        <li><a href="services.html#materials"><i class="fas fa-chevron-right"></i> Building Materials Supply</a></li>
+                        <li><a href="services.html#management"><i class="fas fa-chevron-right"></i> Construction Management</a></li>
                     </ul>
                 </div>
                 <div class="footer-contact">
                     <h3 class="footer-heading">Contact Info</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> Dynasty House, 1st Floor, Bilpam Road, Juba, South Sudan</p>
-                    <p><i class="fas fa-phone"></i> +211 917 119 426</p>
-                    <p><i class="fas fa-envelope"></i> info@dhabconstruction.com</p>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <strong>Address</strong>
+                            <p>Dynasty House, 1st Floor, Bilpam Road, Juba, South Sudan</p>
+                        </div>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <strong>Phone</strong>
+                            <p><a href="tel:+211917119426">+211 917 119 426</a></p>
+                        </div>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <strong>Email</strong>
+                            <p><a href="mailto:info@dhabconstruction.com">info@dhabconstruction.com</a></p>
+                        </div>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <strong>Working Hours</strong>
+                            <p>Mon - Fri: 8:00 AM - 6:00 PM</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="copyright">
-                <p>&copy; 2025 Dhab Construction. All Rights Reserved.</p>
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p>&copy; 2026 Dhab Construction. All Rights Reserved.</p>
+                </div>
+                <div class="footer-links-bottom">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Sitemap</a>
+                </div>
             </div>
         </div>
     </footer>
