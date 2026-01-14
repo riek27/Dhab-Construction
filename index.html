@@ -10,21 +10,31 @@
 </head>
 <body>
     <!-- Header -->
-<header>
-    <div class="container header-container">
-        <!-- Logo as an image -->
-        <a href="index.html" class="logo">
-            <img src="images/logod.jpg" alt="Dhab Construction Logo" class="logo-img">
-        </a>
+    <header>
+        <div class="container header-container">
+            <!-- Logo as an image -->
+            <a href="index.html" class="logo">
+                <img src="images/logod.jpg" alt="Dhab Construction Logo" class="logo-img">
+            </a>
 
-        <button class="mobile-menu-btn">
-            <i class="fas fa-bars"></i>
-        </button>
-        <nav>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
                 <ul>
                     <li><a href="index.html" class="active">Home</a></li>
                     <li><a href="about.html">About Us</a></li>
-                    <li><a href="services.html">Services</a></li>
+                    <li class="dropdown">
+                        <a href="services.html" class="dropdown-toggle">Services <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="services.html#residential">Residential Construction</a>
+                            <a href="services.html#commercial">Commercial Construction</a>
+                            <a href="services.html#infrastructure">Infrastructure Development</a>
+                            <a href="services.html#community">Community Institutions</a>
+                            <a href="services.html#materials">Building Materials Supply</a>
+                            <a href="services.html#management">Construction Management & Supervision</a>
+                        </div>
+                    </li>
                     <li><a href="portfolio.html">Portfolio</a></li>
                     <li><a href="blog.html">Blog</a></li>
                     <li><a href="invest.html">Invest</a></li>
@@ -34,56 +44,21 @@
         </div>
     </header>
 
-    <!-- Hero Section with Slider -->
+    <!-- Hero Section with Static Background and Typing Text -->
     <section class="hero">
-        <div class="slider">
-            <div class="slide active" style="background-image: url('image/qqq.jpg')">
-                <div class="slide-content">
-                    <h1>Your Partner in Infrastructural Development</h1>
-                    <p>Delivering lasting value through quality construction and design</p>
-                    <a href="portfolio.html" class="btn">Explore Our Projects</a>
-                </div>
-            </div>
-            <div class="slide" style="background-image: url('image/vaa.jpg')">
-                <div class="slide-content">
-                    <h1>Building the Future of South Sudan</h1>
-                    <p>From homes to highways, we turn visions into landmarks</p>
-                    <a href="about.html" class="btn">Learn About Us</a>
-                </div>
-            </div>
-            <div class="slide" style="background-image: url('image/qbackk.jpg')">
-                <div class="slide-content">
-                    <h1>Innovative Construction Solutions</h1>
-                    <p>Engineering excellence through modern technology and expertise</p>
-                    <a href="services.html" class="btn">See Our Services</a>
-                </div>
-            </div>
-            <div class="slide" style="background-image: url('image/qq.jpg')">
-                <div class="slide-content">
-                    <h1>Timely Delivery, Every Time</h1>
-                    <p>Reliability that defines our reputation</p>
-                    <a href="contact.html" class="btn">Contact Our Team</a>
-                </div>
-            </div>
-            <div class="slide" style="background-image: url('image/qconss.jpg')">
-                <div class="slide-content">
-                    <h1>Residential & Commercial Projects</h1>
-                    <p>Building spaces where communities thrive</p>
-                    <a href="portfolio.html" class="btn">View Portfolio</a>
-                </div>
-            </div>
-            <div class="slide" style="background-image: url('image/qback.jpg')">
-                <div class="slide-content">
-                    <h1>Shaping Tomorrow's Infrastructure</h1>
-                    <p>Bridges, roads, and facilities that connect and empower</p>
-                    <a href="portfolio.html" class="btn">See Our Work</a>
-                </div>
-            </div>
-            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80')">
-                <div class="slide-content">
-                    <h1>Invest. Build. Grow.</h1>
-                    <p>Partner with us to shape South Sudan's skyline</p>
-                    <a href="invest.html" class="btn">Invest With Us</a>
+        <div class="hero-background" style="background-image: url('image/qqq.jpg')">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">Your Partner in Infrastructural Development</h1>
+                    <div class="typing-container">
+                        <span class="typed-text">Building the Future of South Sudan</span>
+                        <span class="cursor">|</span>
+                    </div>
+                    <p class="hero-description">Delivering lasting value through quality construction and innovative design solutions</p>
+                    <div class="hero-buttons">
+                        <a href="portfolio.html" class="btn btn-primary">Explore Our Projects</a>
+                        <a href="contact.html" class="btn btn-secondary">Get a Free Quote</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -94,6 +69,7 @@
         <div class="container">
             <div class="section-title">
                 <h2>About Our Company</h2>
+                <p>Building Excellence Since 2015</p>
             </div>
             <div class="about-content">
                 <div class="about-image">
@@ -103,6 +79,20 @@
                     <h3>Advanced Solutions for Essential Construction Projects</h3>
                     <p>We are a leading construction company based in South Sudan, specializing in delivering end-to-end solutions for residential, commercial, and infrastructural projects. With a commitment to innovation, quality, and timely delivery, we build lasting structures that empower communities and drive progress.</p>
                     <p>With over 120 years of combined professional experience among our team members, Dhab Construction has become a trusted partner in building essential infrastructure that empowers communities and drives sustainable development across South Sudan and Eastern Africa.</p>
+                    <div class="about-features">
+                        <div class="feature">
+                            <i class="fas fa-award"></i>
+                            <span>Quality Certified</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-clock"></i>
+                            <span>On-Time Delivery</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-users"></i>
+                            <span>Expert Team</span>
+                        </div>
+                    </div>
                     <a href="about.html" class="btn">Learn More About Us</a>
                 </div>
             </div>
@@ -114,16 +104,20 @@
         <div class="container">
             <div class="stats-grid">
                 <div class="stat-item">
-                    <div class="stat-number">150+</div>
+                    <div class="stat-number" data-count="150">0</div>
                     <div class="stat-label">Complete Projects</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number">100%</div>
+                    <div class="stat-number" data-count="100">0</div>
                     <div class="stat-label">On-Time Delivery Rate</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number">50+</div>
+                    <div class="stat-number" data-count="50">0</div>
                     <div class="stat-label">Team Members</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="25">0</div>
+                    <div class="stat-label">Awards & Recognitions</div>
                 </div>
             </div>
         </div>
@@ -134,48 +128,52 @@
         <div class="container">
             <div class="section-title">
                 <h2>Our Core Services</h2>
+                <p>Comprehensive Construction Solutions</p>
             </div>
             <div class="services-grid">
                 <div class="service-card">
-                    <div class="service-image">
-                        <img src="image/vaa.jpg" alt="Residential Construction">
+                    <div class="service-icon">
+                        <i class="fas fa-home"></i>
                     </div>
                     <div class="service-content">
                         <h3>Residential Construction</h3>
                         <p>Building modern homes with precision and care, creating comfortable living spaces for families across South Sudan.</p>
-                        <a href="services.html" class="btn">Explore Design</a>
+                        <a href="services.html#residential" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
                 <div class="service-card">
-                    <div class="service-image">
-                        <img src="image/dima.jpg" alt="Commercial Construction">
+                    <div class="service-icon">
+                        <i class="fas fa-building"></i>
                     </div>
                     <div class="service-content">
                         <h3>Commercial Construction</h3>
                         <p>End-to-end real estate solutions for businesses, from office complexes to shopping malls and commercial towers.</p>
-                        <a href="services.html" class="btn">Explore Design</a>
+                        <a href="services.html#commercial" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
                 <div class="service-card">
-                    <div class="service-image">
-                        <img src="image/qaws.jpg" alt="Infrastructure Development">
+                    <div class="service-icon">
+                        <i class="fas fa-road"></i>
                     </div>
                     <div class="service-content">
                         <h3>Infrastructure Development</h3>
                         <p>Building the backbone of cities with roads, bridges, and essential public works that connect communities.</p>
-                        <a href="services.html" class="btn">Explore Design</a>
+                        <a href="services.html#infrastructure" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
                 <div class="service-card">
-                    <div class="service-image">
-                        <img src="image/nation.jpg" alt="Community Institutions">
+                    <div class="service-icon">
+                        <i class="fas fa-hospital"></i>
                     </div>
                     <div class="service-content">
                         <h3>Community Institutions</h3>
                         <p>Creating schools, hospitals, and civic facilities that empower education, healthcare, and community well-being.</p>
-                        <a href="services.html" class="btn">Explore Design</a>
+                        <a href="services.html#community" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="services.html" class="btn btn-outline">View All Services</a>
             </div>
         </div>
     </section>
@@ -185,37 +183,41 @@
         <div class="container">
             <div class="section-title">
                 <h2>Our Featured Projects</h2>
+                <p>Showcasing Excellence in Construction</p>
             </div>
             <div class="portfolio-grid">
                 <div class="portfolio-item">
                     <div class="portfolio-image">
                         <img src="image/qbackk.jpg" alt="Residential Complex">
-                    </div>
-                    <div class="portfolio-overlay">
-                        <h3>Juba Residential Complex</h3>
-                        <p>Modern housing development with 50 units</p>
+                        <div class="portfolio-overlay">
+                            <h3>Juba Residential Complex</h3>
+                            <p>Modern housing development with 50 units</p>
+                            <a href="portfolio.html" class="portfolio-link">View Project</a>
+                        </div>
                     </div>
                 </div>
                 <div class="portfolio-item">
                     <div class="portfolio-image">
                         <img src="image/qaq.jpg" alt="Commercial Tower">
-                    </div>
-                    <div class="portfolio-overlay">
-                        <h3>City Center Office Tower</h3>
-                        <p>12-story commercial building in central Juba</p>
+                        <div class="portfolio-overlay">
+                            <h3>City Center Office Tower</h3>
+                            <p>12-story commercial building in central Juba</p>
+                            <a href="portfolio.html" class="portfolio-link">View Project</a>
+                        </div>
                     </div>
                 </div>
                 <div class="portfolio-item">
                     <div class="portfolio-image">
                         <img src="image/qback.jpg" alt="Bridge Project">
-                    </div>
-                    <div class="portfolio-overlay">
-                        <h3>Nile River Bridge</h3>
-                        <p>250m bridge connecting communities</p>
+                        <div class="portfolio-overlay">
+                            <h3>Nile River Bridge</h3>
+                            <p>250m bridge connecting communities</p>
+                            <a href="portfolio.html" class="portfolio-link">View Project</a>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div style="text-align: center; margin-top: 3rem;">
+            <div class="text-center mt-4">
                 <a href="portfolio.html" class="btn">View All Portfolio</a>
             </div>
         </div>
@@ -226,11 +228,13 @@
         <div class="container">
             <div class="section-title">
                 <h2>Latest Insights</h2>
+                <p>News & Updates from Our Industry</p>
             </div>
             <div class="blog-grid">
                 <div class="blog-card">
                     <div class="blog-image">
                         <img src="image/logoma.jpg" alt="Meet the CEO">
+                        <div class="blog-category">Leadership</div>
                     </div>
                     <div class="blog-content">
                         <div class="blog-meta">
@@ -239,16 +243,13 @@
                         </div>
                         <h3>Meet the CEO</h3>
                         <p>Meet Majuoy Tuak Dhab Bithuok: The Visionary Leader Behind Dhab Construction. At Dhab Construction, we believe that building is more than just erecting structures...</p>
-                        <button class="read-more">Read More <i class="fas fa-chevron-down"></i></button>
-                        <div class="blog-full-content">
-                            <p>At Dhab Construction, we believe that building is more than just erecting structures—it's about creating opportunities, shaping communities, and leaving a lasting legacy. At the helm of our mission is our CEO, Majuoy Tuak Dhab Bithuok, a passionate and accomplished leader whose journey reflects dedication to excellence and innovation in the construction industry.</p>
-                            <p>Under his leadership, Dhab Construction has grown from a small local contractor to a leading construction company in South Sudan, undertaking prestigious projects that are transforming the nation's infrastructure.</p>
-                        </div>
+                        <a href="blog.html" class="blog-link">Read Full Article <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
                 <div class="blog-card">
                     <div class="blog-image">
                         <img src="image/abi.jpg" alt="Urban Development">
+                        <div class="blog-category">Industry Insights</div>
                     </div>
                     <div class="blog-content">
                         <div class="blog-meta">
@@ -257,16 +258,12 @@
                         </div>
                         <h3>Learning from Addis Ababa</h3>
                         <p>The transformation of Addis Ababa through strategic infrastructure development has captured the attention of leaders across Africa...</p>
-                        <button class="read-more">Read More <i class="fas fa-chevron-down"></i></button>
-                        <div class="blog-full-content">
-                            <p>The transformation of Addis Ababa through strategic infrastructure development has captured the attention of leaders across Africa, including South Sudan's Minister of Land, Housing, and Urban Development, Michael Chanjiek. Speaking during the inaugural Africa Urban Forum held in Addis Ababa from September 4-6, 2024, Minister Chanjiek emphasized the importance of learning from Ethiopia's capital to inform South Sudan's own urban development strategies.</p>
-                            <p>Addis Ababa's rapid transformation offers valuable lessons in urban planning, infrastructure development, and sustainable growth that can be adapted to South Sudan's unique context as the nation works to rebuild and develop its cities.</p>
-                        </div>
+                        <a href="blog.html" class="blog-link">Read Full Article <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
-            <div style="text-align: center; margin-top: 3rem;">
-                <a href="blog.html" class="btn">See Our Blog</a>
+            <div class="text-center mt-4">
+                <a href="blog.html" class="btn btn-outline">Visit Our Blog</a>
             </div>
         </div>
     </section>
@@ -277,9 +274,24 @@
             <div class="invest-content">
                 <div class="section-title">
                     <h2>Invest in Dhab Construction</h2>
+                    <p>Shape South Sudan's Future With Us</p>
                 </div>
-                <p>We are inviting forward-thinking investors to join us in shaping the future of South Sudan's booming construction and real estate market. By purchasing shares in our company, you're not only investing in a trusted name with 120+ years of combined industry experience but also in a future filled with growth, innovation, and unparalleled opportunities.</p>
-                <a href="invest.html" class="btn">Invest Your Future</a>
+                <p class="invest-description">We are inviting forward-thinking investors to join us in shaping the future of South Sudan's booming construction and real estate market. By purchasing shares in our company, you're not only investing in a trusted name with 120+ years of combined industry experience but also in a future filled with growth, innovation, and unparalleled opportunities.</p>
+                <div class="invest-features">
+                    <div class="invest-feature">
+                        <i class="fas fa-chart-line"></i>
+                        <span>High Growth Potential</span>
+                    </div>
+                    <div class="invest-feature">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Secure Investment</span>
+                    </div>
+                    <div class="invest-feature">
+                        <i class="fas fa-handshake"></i>
+                        <span>Partnership Opportunities</span>
+                    </div>
+                </div>
+                <a href="invest.html" class="btn btn-invest">Invest Your Future</a>
             </div>
         </div>
     </section>
@@ -289,6 +301,7 @@
         <div class="container">
             <div class="section-title">
                 <h2>Contact Us</h2>
+                <p>Get in Touch for Your Construction Needs</p>
             </div>
             <div class="contact-container">
                 <div class="contact-info">
@@ -308,7 +321,7 @@
                             </div>
                             <div>
                                 <h3>Phone Number</h3>
-                                <p>+211 917 119 426</p>
+                                <p><a href="tel:+211917119426">+211 917 119 426</a></p>
                             </div>
                         </div>
                         <div class="contact-item">
@@ -317,30 +330,60 @@
                             </div>
                             <div>
                                 <h3>Email Address</h3>
-                                <p>info@dhabconstruction.com</p>
+                                <p><a href="mailto:info@dhabconstruction.com">info@dhabconstruction.com</a></p>
                             </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div>
+                                <h3>Working Hours</h3>
+                                <p>Monday - Friday: 8:00 AM - 6:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-social">
+                        <h3>Follow Us</h3>
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
                 </div>
                 <div class="contact-form">
                     <form id="contactForm">
                         <div class="form-group">
-                            <label for="name">Full Name</label>
-                            <input type="text" id="name" class="form-control" required>
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" class="form-control" required placeholder="Enter your full name">
                         </div>
                         <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" class="form-control" required>
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" class="form-control" required placeholder="Enter your email address">
                         </div>
                         <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <input type="text" id="subject" class="form-control" required>
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" class="form-control" placeholder="Enter your phone number">
                         </div>
                         <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" class="form-control" required></textarea>
+                            <label for="service">Service Interested In</label>
+                            <select id="service" class="form-control">
+                                <option value="">Select a service</option>
+                                <option value="residential">Residential Construction</option>
+                                <option value="commercial">Commercial Construction</option>
+                                <option value="infrastructure">Infrastructure Development</option>
+                                <option value="community">Community Institutions</option>
+                                <option value="materials">Building Materials Supply</option>
+                                <option value="management">Construction Management</option>
+                            </select>
                         </div>
-                        <button type="submit" class="btn">Send Message</button>
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" class="form-control" required placeholder="Tell us about your project or inquiry"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-block">Send Message</button>
                     </form>
                 </div>
             </div>
@@ -352,36 +395,83 @@
         <div class="container">
             <div class="footer-container">
                 <div class="footer-about">
-                    <div class="footer-logo">Dhab<span>Construction</span></div>
+                    <div class="footer-logo">
+                        <img src="images/logod.jpg" alt="Dhab Construction Logo" class="footer-logo-img">
+                        <span>Dhab<span>Construction</span></span>
+                    </div>
                     <p>Your trusted partner in infrastructural development across South Sudan and Eastern Africa. We build lasting structures that empower communities and drive progress.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
                 <div class="footer-links">
                     <h3 class="footer-heading">Quick Links</h3>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="portfolio.html">Portfolio</a></li>
-                        <li><a href="blog.html">Blog</a></li>
-                        <li><a href="invest.html">Invest</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                        <li><a href="services.html"><i class="fas fa-chevron-right"></i> Services</a></li>
+                        <li><a href="portfolio.html"><i class="fas fa-chevron-right"></i> Portfolio</a></li>
+                        <li><a href="blog.html"><i class="fas fa-chevron-right"></i> Blog</a></li>
+                        <li><a href="invest.html"><i class="fas fa-chevron-right"></i> Invest</a></li>
+                        <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-services">
+                    <h3 class="footer-heading">Our Services</h3>
+                    <ul>
+                        <li><a href="services.html#residential"><i class="fas fa-chevron-right"></i> Residential Construction</a></li>
+                        <li><a href="services.html#commercial"><i class="fas fa-chevron-right"></i> Commercial Construction</a></li>
+                        <li><a href="services.html#infrastructure"><i class="fas fa-chevron-right"></i> Infrastructure Development</a></li>
+                        <li><a href="services.html#community"><i class="fas fa-chevron-right"></i> Community Institutions</a></li>
+                        <li><a href="services.html#materials"><i class="fas fa-chevron-right"></i> Building Materials Supply</a></li>
+                        <li><a href="services.html#management"><i class="fas fa-chevron-right"></i> Construction Management</a></li>
                     </ul>
                 </div>
                 <div class="footer-contact">
                     <h3 class="footer-heading">Contact Info</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> Dynasty House, 1st Floor, Bilpam Road, Juba, South Sudan</p>
-                    <p><i class="fas fa-phone"></i> +211 917 119 426</p>
-                    <p><i class="fas fa-envelope"></i> info@dhabconstruction.com</p>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <strong>Address</strong>
+                            <p>Dynasty House, 1st Floor, Bilpam Road, Juba, South Sudan</p>
+                        </div>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <strong>Phone</strong>
+                            <p><a href="tel:+211917119426">+211 917 119 426</a></p>
+                        </div>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <strong>Email</strong>
+                            <p><a href="mailto:info@dhabconstruction.com">info@dhabconstruction.com</a></p>
+                        </div>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <strong>Working Hours</strong>
+                            <p>Mon - Fri: 8:00 AM - 6:00 PM</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="copyright">
-                <p>&copy; 2025 Dhab Construction. All Rights Reserved.</p>
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p>&copy; 2026 Dhab Construction. All Rights Reserved.</p>
+                </div>
+                <div class="footer-links-bottom">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Sitemap</a>
+                </div>
             </div>
         </div>
     </footer>
