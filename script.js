@@ -12,44 +12,197 @@ document.addEventListener('DOMContentLoaded', function() {
     initFormValidation();
     initAnimations();
     initSmoothScroll();
+    initDropdownMobile();
 });
 
 // ============================================
-// MOBILE MENU TOGGLE
+// MOBILE MENU TOGGLE WITH FIXED HEADER COMPENSATION
 // ============================================
 function initMobileMenu() {
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const nav = document.querySelector('nav');
-    const navLinks = document.querySelectorAll('nav a');
+    const navLinks = document.querySelectorAll('nav a:not(.dropdown-toggle)');
+    const body = document.body;
+    const header = document.querySelector('header');
     
     if (mobileMenuBtn) {
-        mobileMenuBtn.addEventListener('click', function() {
+        mobileMenuBtn.addEventListener('click', function(e) {
+            e.stopPropagation(); // Prevent event bubbling
+            
+            // Toggle mobile menu
             nav.classList.toggle('active');
-            this.innerHTML = nav.classList.contains('active') 
-                ? '<i class="fas fa-times"></i>' 
-                : '<i class="fas fa-bars"></i>';
+            this.classList.toggle('active');
+            
+            // Update icon
+            const icon = this.querySelector('i');
+            if (nav.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+                
+                // Add class to body to prevent scrolling
+                body.classList.add('menu-open');
+                
+                // Ensure header stays in place
+                if (!header.classList.contains('scrolled')) {
+                    body.classList.add('header-scrolled');
+                }
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+                
+                // Remove class from body
+                body.classList.remove('menu-open');
+                
+                // Remove header-scrolled class if header is not scrolled
+                if (!header.classList.contains('scrolled')) {
+                    body.classList.remove('header-scrolled');
+                }
+                
+                // Close all dropdowns when closing mobile menu
+                document.querySelectorAll('.dropdown-menu').forEach(dropdown => {
+                    dropdown.classList.remove('active');
+                });
+                document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+                    toggle.classList.remove('active');
+                });
+            }
         });
     }
     
-    // Close mobile menu when clicking on a link
+    // Close mobile menu when clicking on a link (excluding dropdown toggles)
     navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            nav.classList.remove('active');
-            if (mobileMenuBtn) {
-                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+        link.addEventListener('click', (e) => {
+            if (window.innerWidth <= 992) {
+                nav.classList.remove('active');
+                mobileMenuBtn.classList.remove('active');
+                const icon = mobileMenuBtn.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+                body.classList.remove('menu-open');
+                
+                if (!header.classList.contains('scrolled')) {
+                    body.classList.remove('header-scrolled');
+                }
             }
         });
     });
     
     // Close mobile menu when clicking outside
     document.addEventListener('click', (e) => {
-        if (!e.target.closest('nav') && !e.target.closest('.mobile-menu-btn')) {
-            nav.classList.remove('active');
-            if (mobileMenuBtn) {
-                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+        if (window.innerWidth <= 992) {
+            if (!e.target.closest('nav') && !e.target.closest('.mobile-menu-btn')) {
+                nav.classList.remove('active');
+                if (mobileMenuBtn) {
+                    mobileMenuBtn.classList.remove('active');
+                    const icon = mobileMenuBtn.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+                body.classList.remove('menu-open');
+                
+                if (!header.classList.contains('scrolled')) {
+                    body.classList.remove('header-scrolled');
+                }
             }
         }
     });
+    
+    // Handle window resize
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 992) {
+            // Reset mobile menu state on desktop
+            nav.classList.remove('active');
+            if (mobileMenuBtn) {
+                mobileMenuBtn.classList.remove('active');
+                const icon = mobileMenuBtn.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+            body.classList.remove('menu-open');
+            body.classList.remove('header-scrolled');
+        }
+    });
+}
+
+// ============================================
+// DROPDOWN MOBILE FUNCTIONALITY
+// ============================================
+function initDropdownMobile() {
+    const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+    
+    dropdownToggles.forEach(toggle => {
+        toggle.addEventListener('click', function(e) {
+            if (window.innerWidth <= 992) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const dropdownMenu = this.nextElementSibling;
+                const isActive = dropdownMenu.classList.contains('active');
+                
+                // Close all other dropdowns
+                document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                    if (menu !== dropdownMenu) {
+                        menu.classList.remove('active');
+                    }
+                });
+                
+                document.querySelectorAll('.dropdown-toggle').forEach(toggleBtn => {
+                    if (toggleBtn !== this) {
+                        toggleBtn.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current dropdown
+                dropdownMenu.classList.toggle('active');
+                this.classList.toggle('active');
+                
+                // Rotate icon
+                const icon = this.querySelector('i');
+                if (dropdownMenu.classList.contains('active')) {
+                    icon.style.transform = 'rotate(180deg)';
+                } else {
+                    icon.style.transform = 'rotate(0deg)';
+                }
+            }
+        });
+    });
+    
+    // Close dropdowns when clicking outside
+    document.addEventListener('click', (e) => {
+        if (window.innerWidth <= 992) {
+            if (!e.target.closest('.dropdown')) {
+                document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                    menu.classList.remove('active');
+                });
+                document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+                    toggle.classList.remove('active');
+                    const icon = toggle.querySelector('i');
+                    icon.style.transform = 'rotate(0deg)';
+                });
+            }
+        }
+    });
+    
+    // Handle dropdown on desktop (hover)
+    if (window.innerWidth > 992) {
+        const dropdowns = document.querySelectorAll('.dropdown');
+        
+        dropdowns.forEach(dropdown => {
+            dropdown.addEventListener('mouseenter', () => {
+                const dropdownMenu = dropdown.querySelector('.dropdown-menu');
+                dropdownMenu.style.opacity = '1';
+                dropdownMenu.style.visibility = 'visible';
+                dropdownMenu.style.transform = 'translateY(0)';
+            });
+            
+            dropdown.addEventListener('mouseleave', () => {
+                const dropdownMenu = dropdown.querySelector('.dropdown-menu');
+                dropdownMenu.style.opacity = '0';
+                dropdownMenu.style.visibility = 'hidden';
+                dropdownMenu.style.transform = 'translateY(20px)';
+            });
+        });
+    }
 }
 
 // ============================================
@@ -57,13 +210,14 @@ function initMobileMenu() {
 // ============================================
 function initHeaderScroll() {
     const header = document.querySelector('header');
-    let lastScroll = 0;
+    const body = document.body;
     
     window.addEventListener('scroll', () => {
         const currentScroll = window.pageYOffset;
         
         if (currentScroll > 100) {
             header.classList.add('scrolled');
+            body.classList.add('header-scrolled');
             
             if (currentScroll > lastScroll && currentScroll > 200) {
                 header.style.transform = 'translateY(-100%)';
@@ -72,7 +226,9 @@ function initHeaderScroll() {
             }
         } else {
             header.classList.remove('scrolled');
-            header.style.transform = 'translateY(0)';
+            if (!document.querySelector('nav').classList.contains('active')) {
+                body.classList.remove('header-scrolled');
+            }
         }
         
         lastScroll = currentScroll;
@@ -84,7 +240,9 @@ function initHeaderScroll() {
 // ============================================
 function initTypingText() {
     const typingElement = document.querySelector('.typed-text');
-    if (!typingElement) return;
+    const cursorElement = document.querySelector('.cursor');
+    
+    if (!typingElement || !cursorElement) return;
     
     const texts = [
         "Building the Future of South Sudan",
@@ -133,6 +291,11 @@ function initTypingText() {
     
     // Start typing effect
     setTimeout(type, 1000);
+    
+    // Add cursor blink animation
+    setInterval(() => {
+        cursorElement.style.opacity = cursorElement.style.opacity === '0' ? '1' : '0';
+    }, 500);
 }
 
 // ============================================
@@ -386,10 +549,34 @@ function updateCurrentYear() {
     const yearElement = document.querySelector('.copyright');
     if (yearElement) {
         const currentYear = new Date().getFullYear();
-        yearElement.innerHTML = yearElement.innerHTML.replace('2026', currentYear);
+        yearElement.innerHTML = yearElement.innerHTML.replace('2025', currentYear);
     }
 }
 
 // Initialize on load
 updateCurrentYear();
 initLoadMore();
+
+// Global variable for header scroll
+let lastScroll = 0;
+
+// Prevent body scroll when mobile menu is open
+document.addEventListener('DOMContentLoaded', function() {
+    const body = document.body;
+    const originalOverflow = body.style.overflow;
+    
+    // Watch for menu-open class changes
+    const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            if (mutation.attributeName === 'class') {
+                if (body.classList.contains('menu-open')) {
+                    body.style.overflow = 'hidden';
+                } else {
+                    body.style.overflow = originalOverflow || '';
+                }
+            }
+        });
+    });
+    
+    observer.observe(body, { attributes: true });
+});
