@@ -12,7 +12,10 @@
     <!-- Header -->
     <header>
         <div class="container header-container">
-            <a href="index.html" class="logo">Dhab<span>Construction</span></a>
+            <!-- Logo as an image -->
+            <a href="index.html" class="logo">
+                <img src="images/logod.jpg" alt="Dhab Construction Logo" class="logo-img">
+            </a>
             <button class="mobile-menu-btn">
                 <i class="fas fa-bars"></i>
             </button>
@@ -20,7 +23,17 @@
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About Us</a></li>
-                    <li><a href="services.html">Services</a></li>
+                    <li class="dropdown">
+                        <a href="services.html" class="dropdown-toggle">Services <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="services.html#residential">Residential Construction</a>
+                            <a href="services.html#commercial">Commercial Construction</a>
+                            <a href="services.html#infrastructure">Infrastructure Development</a>
+                            <a href="services.html#community">Community Institutions</a>
+                            <a href="services.html#materials">Building Materials Supply</a>
+                            <a href="services.html#management">Construction Management & Supervision</a>
+                        </div>
+                    </li>
                     <li><a href="portfolio.html" class="active">Portfolio</a></li>
                     <li><a href="blog.html">Blog</a></li>
                     <li><a href="invest.html">Invest</a></li>
@@ -33,17 +46,51 @@
     <!-- Page Hero -->
     <section class="page-hero">
         <div class="container">
-            <h1>Our Portfolio</h1>
-            <div class="breadcrumb">
-                <a href="index.html">Home</a>
-                <span>/</span>
-                <span>Portfolio</span>
+            <div class="page-hero-content">
+                <div class="hero-logo">
+                    <img src="images/logod.jpg" alt="Dhab Construction Logo">
+                </div>
+                <h1>Our Portfolio</h1>
+                <p class="hero-subtitle">Showcasing 150+ Successful Construction Projects Across South Sudan</p>
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <span>/</span>
+                    <span>Portfolio</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Stats -->
+    <section class="portfolio-stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">150+</div>
+                    <div class="stat-label">Projects Completed</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">35+</div>
+                    <div class="stat-label">Residential Projects</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">40+</div>
+                    <div class="stat-label">Commercial Projects</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Infrastructure Projects</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">25+</div>
+                    <div class="stat-label">Institutional Projects</div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Portfolio Content -->
-    <section class="portfolio">
+    <section class="portfolio-page">
         <div class="container">
             <div class="section-title">
                 <h2>Our Completed Projects</h2>
@@ -59,398 +106,298 @@
             </div>
 
             <div class="portfolio-grid">
-                <!-- Residential Projects (10) -->
+                <!-- Residential Projects -->
                 <div class="portfolio-item" data-category="residential">
                     <div class="portfolio-image">
                         <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Juba Residential Complex">
+                        <div class="portfolio-category">Residential</div>
                     </div>
-                    <div class="portfolio-overlay">
+                    <div class="portfolio-content">
                         <h3>Juba Residential Complex</h3>
                         <p>Modern housing development with 50 luxury apartments in central Juba</p>
-                        <span class="project-date">Completed: 2023</span>
+                        <div class="portfolio-meta">
+                            <span><i class="fas fa-calendar"></i> 2023</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Juba, South Sudan</span>
+                        </div>
+                        <a href="#" class="portfolio-link">View Project Details <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
 
                 <div class="portfolio-item" data-category="residential">
                     <div class="portfolio-image">
                         <img src="image/qaq.jpg" alt="Gudele Housing Estate">
+                        <div class="portfolio-category">Residential</div>
                     </div>
-                    <div class="portfolio-overlay">
+                    <div class="portfolio-content">
                         <h3>Gudele Housing Estate</h3>
                         <p>Affordable housing project with 100 units for middle-income families</p>
-                        <span class="project-date">Completed: 2019</span>
+                        <div class="portfolio-meta">
+                            <span><i class="fas fa-calendar"></i> 2019</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Gudele, Juba</span>
+                        </div>
+                        <a href="#" class="portfolio-link">View Project Details <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
 
                 <div class="portfolio-item" data-category="residential">
                     <div class="portfolio-image">
                         <img src="image/qa.jpg" alt="Custom Luxury Villa">
+                        <div class="portfolio-category">Residential</div>
                     </div>
-                    <div class="portfolio-overlay">
+                    <div class="portfolio-content">
                         <h3>Custom Luxury Villa</h3>
                         <p>Bespoke residential property with premium finishes and amenities</p>
-                        <span class="project-date">Completed: 2015</span>
+                        <div class="portfolio-meta">
+                            <span><i class="fas fa-calendar"></i> 2015</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Juba, South Sudan</span>
+                        </div>
+                        <a href="#" class="portfolio-link">View Project Details <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
 
                 <div class="portfolio-item" data-category="residential">
                     <div class="portfolio-image">
                         <img src="image/q.jpg" alt="Munuki Apartments">
+                        <div class="portfolio-category">Residential</div>
                     </div>
-                    <div class="portfolio-overlay">
+                    <div class="portfolio-content">
                         <h3>Munuki Apartments</h3>
                         <p>Modern apartment complex with 30 units and parking facilities</p>
-                        <span class="project-date">Completed: 2022</span>
+                        <div class="portfolio-meta">
+                            <span><i class="fas fa-calendar"></i> 2022</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Munuki, Juba</span>
+                        </div>
+                        <a href="#" class="portfolio-link">View Project Details <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
 
-                <div class="portfolio-item" data-category="residential">
-                    <div class="portfolio-image">
-                        <img src="image/qae.jpg" alt="Thongpiny Housing">
-                    </div>
-                    <div class="portfolio-overlay">
-                        <h3>Thongpiny Housing</h3>
-                        <p>Suburban housing development with community amenities</p>
-                        <span class="project-date">Completed: 2021</span>
-                    </div>
-                </div>
-
-                <div class="portfolio-item" data-category="residential">
-                    <div class="portfolio-image">
-                        <img src="image/qko.jpg" alt="Konyo Konyo Homes">
-                    </div>
-                    <div class="portfolio-overlay">
-                        <h3>Konyo Konyo Homes</h3>
-                        <p>Urban residential project with mixed housing types</p>
-                        <span class="project-date">Completed: 2020</span>
-                    </div>
-                </div>
-
-                <div class="portfolio-item" data-category="residential">
-                    <div class="portfolio-image">
-                        <img src="image/qkonyo.jpg" alt="Mango Residential">
-                    </div>
-                    <div class="portfolio-overlay">
-                        <h3>Mango Residential</h3>
-                        <p>Luxury homes with garden spaces and modern amenities</p>
-                        <span class="project-date">Completed: 2018</span>
-                    </div>
-                </div>
-
-                <div class="portfolio-item" data-category="residential">
-                    <div class="portfolio-image">
-                        <img src="image/lyr.jpg" alt="Hai Jerusalem Villas">
-                    </div>
-                    <div class="portfolio-overlay">
-                        <h3>Hai Jerusalem Villas</h3>
-                        <p>Exclusive villa community with premium facilities</p>
-                        <span class="project-date">Completed: 2017</span>
-                    </div>
-                </div>
-
-                <div class="portfolio-item" data-category="residential">
-                    <div class="portfolio-image">
-                        <img src="image/nao.jpg" alt="Rock City Apartments">
-                    </div>
-                    <div class="portfolio-overlay">
-                        <h3>Rock City Apartments</h3>
-                        <p>Modern apartment building with commercial spaces</p>
-                        <span class="project-date">Completed: 2016</span>
-                    </div>
-                </div>
-
-                <div class="portfolio-item" data-category="residential">
-                    <div class="portfolio-image">
-                        <img src="image/qqq.jpg" alt="New Site Bungalows">
-                    </div>
-                    <div class="portfolio-overlay">
-                        <h3>New Site Bungalows</h3>
-                        <p>Single-family homes with private gardens</p>
-                        <span class="project-date">Completed: 2014</span>
-                    </div>
-                </div>
-
-                <!-- Commercial Projects (10) -->
+                <!-- Commercial Projects -->
                 <div class="portfolio-item" data-category="commercial">
                     <div class="portfolio-image">
                         <img src="image/qq.jpg" alt="City Center Office Tower">
+                        <div class="portfolio-category">Commercial</div>
                     </div>
-                    <div class="portfolio-overlay">
+                    <div class="portfolio-content">
                         <h3>City Center Office Tower</h3>
                         <p>12-story commercial building with retail spaces and offices</p>
-                        <span class="project-date">Completed: 2022</span>
+                        <div class="portfolio-meta">
+                            <span><i class="fas fa-calendar"></i> 2022</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Juba City Center</span>
+                        </div>
+                        <a href="#" class="portfolio-link">View Project Details <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
 
                 <div class="portfolio-item" data-category="commercial">
                     <div class="portfolio-image">
                         <img src="image/qhomes.jpg" alt="Juba Shopping Mall">
+                        <div class="portfolio-category">Commercial</div>
                     </div>
-                    <div class="portfolio-overlay">
+                    <div class="portfolio-content">
                         <h3>Juba Shopping Mall</h3>
                         <p>Modern retail center with 50 stores and entertainment facilities</p>
-                        <span class="project-date">Completed: 2018</span>
+                        <div class="portfolio-meta">
+                            <span><i class="fas fa-calendar"></i> 2018</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Juba, South Sudan</span>
+                        </div>
+                        <a href="#" class="portfolio-link">View Project Details <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
 
                 <div class="portfolio-item" data-category="commercial">
                     <div class="portfolio-image">
                         <img src="image/qhom.jpg" alt="Juba Business Park">
+                        <div class="portfolio-category">Commercial</div>
                     </div>
-                    <div class="portfolio-overlay">
+                    <div class="portfolio-content">
                         <h3>Juba Business Park</h3>
                         <p>Mixed-use development with offices and commercial spaces</p>
-                        <span class="project-date">Completed: 2021</span>
+                        <div class="portfolio-meta">
+                            <span><i class="fas fa-calendar"></i> 2021</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Juba, South Sudan</span>
+                        </div>
+                        <a href="#" class="portfolio-link">View Project Details <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
 
                 <div class="portfolio-item" data-category="commercial">
                     <div class="portfolio-image">
                         <img src="image/qee.jpg" alt="Customs Market">
+                        <div class="portfolio-category">Commercial</div>
                     </div>
-                    <div class="portfolio-overlay">
+                    <div class="portfolio-content">
                         <h3>Customs Market</h3>
                         <p>Modern market facility with 200 vendor stalls</p>
-                        <span class="project-date">Completed: 2020</span>
+                        <div class="portfolio-meta">
+                            <span><i class="fas fa-calendar"></i> 2020</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Juba, South Sudan</span>
+                        </div>
+                        <a href="#" class="portfolio-link">View Project Details <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
 
-                <div class="portfolio-item" data-category="commercial">
-                    <div class="portfolio-image">
-                        <img src="image/val.jpg" alt="Juba Hotel Complex">
-                    </div>
-                    <div class="portfolio-overlay">
-                        <h3>Juba Hotel Complex</h3>
-                        <p>5-star hotel with conference facilities and restaurants</p>
-                        <span class="project-date">Completed: 2019</span>
-                    </div>
-                </div>
-
-                <div class="portfolio-item" data-category="commercial">
-                    <div class="portfolio-image">
-                        <img src="image/qe.jpg" alt="Commercial Plaza">
-                    </div>
-                    <div class="portfolio-overlay">
-                        <h3>Commercial Plaza</h3>
-                        <p>Mixed-use development with retail and office spaces</p>
-                        <span class="project-date">Completed: 2017</span>
-                    </div>
-                </div>
-
-                <div class="portfolio-item" data-category="commercial">
-                    <div class="portfolio-image">
-                        <img src="image/qcon.jpg" alt="Corporate Headquarters">
-                    </div>
-                    <div class="portfolio-overlay">
-                        <h3>Corporate Headquarters</h3>
-                        <p>Modern office building for international corporation</p>
-                        <span class="project-date">Completed: 2016</span>
-                    </div>
-                </div>
-
-                <div class="portfolio-item" data-category="commercial">
-                    <div class="portfolio-image">
-                        <img src="image/qasew.jpg" alt="Retail Center">
-                    </div>
-                    <div class="portfolio-overlay">
-                        <h3>Retail Center</h3>
-                        <p>Shopping center with supermarket and specialty stores</p>
-                        <span class="project-date">Completed: 2015</span>
-                    </div>
-                </div>
-
-                <div class="portfolio-item" data-category="commercial">
-                    <div class="portfolio-image">
-                        <img src="image/dec.jpg" alt="Business Complex">
-                    </div>
-                    <div class="portfolio-overlay">
-                        <h3>Business Complex</h3>
-                        <p>Multi-tenant office building with conference facilities</p>
-                        <span class="project-date">Completed: 2014</span>
-                    </div>
-                </div>
-
-                <div class="portfolio-item" data-category="commercial">
-                    <div class="portfolio-image">
-                        <img src="image/qw.jpg" alt="Trade Center">
-                    </div>
-                    <div class="portfolio-overlay">
-                        <h3>Trade Center</h3>
-                        <p>Commercial building for import/export businesses</p>
-                        <span class="project-date">Completed: 2013</span>
-                    </div>
-                </div>
-
-                <!-- Infrastructure Projects (10) -->
+                <!-- Infrastructure Projects -->
                 <div class="portfolio-item" data-category="infrastructure">
                     <div class="portfolio-image">
                         <img src="image/qqq.jpg" alt="Nile River Bridge">
+                        <div class="portfolio-category">Infrastructure</div>
                     </div>
-                    <div class="portfolio-overlay">
+                    <div class="portfolio-content">
                         <h3>Nile River Bridge</h3>
                         <p>250m bridge connecting communities across the Nile River</p>
-                        <span class="project-date">Completed: 2021</span>
-                    </div>
-                </div>
-
-                <div class="portfolio-item" data-category="infrastructure">
-                    <div class="portfolio-image">
-                        <img src="image/qfor" alt="Juba Road Network">
-                    </div>
-                    <div class="portfolio-overlay">
-                        <h3>Juba Road Network</h3>
-                        <p>15km of paved roads with drainage systems in Juba city</p>
-                        <span class="project-date">Completed: 2017</span>
+                        <div class="portfolio-meta">
+                            <span><i class="fas fa-calendar"></i> 2021</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Nile River, Juba</span>
+                        </div>
+                        <a href="#" class="portfolio-link">View Project Details <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
 
                 <div class="portfolio-item" data-category="infrastructure">
                     <div class="portfolio-image">
                         <img src="image/qconss.jpg" alt="Highway Expansion">
+                        <div class="portfolio-category">Infrastructure</div>
                     </div>
-                    <div class="portfolio-overlay">
+                    <div class="portfolio-content">
                         <h3>Highway Expansion</h3>
                         <p>30km highway expansion with modern traffic systems</p>
-                        <span class="project-date">Completed: 2020</span>
+                        <div class="portfolio-meta">
+                            <span><i class="fas fa-calendar"></i> 2020</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Juba-Bor Highway</span>
+                        </div>
+                        <a href="#" class="portfolio-link">View Project Details <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
 
                 <div class="portfolio-item" data-category="infrastructure">
                     <div class="portfolio-image">
                         <img src="image/qback.jpg" alt="Urban Road Project">
+                        <div class="portfolio-category">Infrastructure</div>
                     </div>
-                    <div class="portfolio-overlay">
+                    <div class="portfolio-content">
                         <h3>Urban Road Project</h3>
                         <p>City road improvements with pedestrian pathways</p>
-                        <span class="project-date">Completed: 2019</span>
+                        <div class="portfolio-meta">
+                            <span><i class="fas fa-calendar"></i> 2019</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Juba City</span>
+                        </div>
+                        <a href="#" class="portfolio-link">View Project Details <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
 
                 <div class="portfolio-item" data-category="infrastructure">
                     <div class="portfolio-image">
                         <img src="image/qbackk.jpg" alt="Rural Access Roads">
+                        <div class="portfolio-category">Infrastructure</div>
                     </div>
-                    <div class="portfolio-overlay">
+                    <div class="portfolio-content">
                         <h3>Rural Access Roads</h3>
                         <p>50km of rural access roads connecting remote communities</p>
-                        <span class="project-date">Completed: 2018</span>
+                        <div class="portfolio-meta">
+                            <span><i class="fas fa-calendar"></i> 2018</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Central Equatoria</span>
+                        </div>
+                        <a href="#" class="portfolio-link">View Project Details <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
 
-                <div class="portfolio-item" data-category="infrastructure">
-                    <div class="portfolio-image">
-                        <img src="image/nath.jpg" alt="Bridge Construction">
-                    </div>
-                    <div class="portfolio-overlay">
-                        <h3>Bridge Construction</h3>
-                        <p>Modern bridge with pedestrian walkways and lighting</p>
-                        <span class="project-date">Completed: 2016</span>
-                    </div>
-                </div>
-
-                <div class="portfolio-item" data-category="infrastructure">
-                    <div class="portfolio-image">
-                        <img src="image/qaz.jpg" alt="Drainage System">
-                    </div>
-                    <div class="portfolio-overlay">
-                        <h3>Drainage System</h3>
-                        <p>Urban drainage system to prevent flooding in Juba</p>
-                        <span class="project-date">Completed: 2015</span>
-                    </div>
-                </div>
-
-                <div class="portfolio-item" data-category="infrastructure">
-                    <div class="portfolio-image">
-                        <img src="image/qaws.jpg" alt="Road Rehabilitation">
-                    </div>
-                    <div class="portfolio-overlay">
-                        <h3>Road Rehabilitation</h3>
-                        <p>Rehabilitation of 25km of existing road infrastructure</p>
-                        <span class="project-date">Completed: 2014</span>
-                    </div>
-                </div>
-
-                <div class="portfolio-item" data-category="infrastructure">
-                    <div class="portfolio-image">
-                        <img src="image/qaqq.jpg" alt="Highway Bridge">
-                    </div>
-                    <div class="portfolio-overlay">
-                        <h3>Highway Bridge</h3>
-                        <p>Major bridge construction on national highway</p>
-                        <span class="project-date">Completed: 2013</span>
-                    </div>
-                </div>
-
-                <div class="portfolio-item" data-category="infrastructure">
-                    <div class="portfolio-image">
-                        <img src="image/fon.jpg" alt="Urban Infrastructure">
-                    </div>
-                    <div class="portfolio-overlay">
-                        <h3>Urban Infrastructure</h3>
-                        <p>Comprehensive urban infrastructure development project</p>
-                        <span class="project-date">Completed: 2012</span>
-                    </div>
-                </div>
-
-                <!-- Institutional Projects (5) -->
+                <!-- Institutional Projects -->
                 <div class="portfolio-item" data-category="institutional">
                     <div class="portfolio-image">
                         <img src="image/viz.jpg" alt="Juba General Hospital">
+                        <div class="portfolio-category">Institutional</div>
                     </div>
-                    <div class="portfolio-overlay">
+                    <div class="portfolio-content">
                         <h3>Juba General Hospital</h3>
                         <p>200-bed healthcare facility with modern medical equipment</p>
-                        <span class="project-date">Completed: 2020</span>
+                        <div class="portfolio-meta">
+                            <span><i class="fas fa-calendar"></i> 2020</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Juba, South Sudan</span>
+                        </div>
+                        <a href="#" class="portfolio-link">View Project Details <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
 
                 <div class="portfolio-item" data-category="institutional">
                     <div class="portfolio-image">
                         <img src="image/wio.jpg" alt="University of Juba Library">
+                        <div class="portfolio-category">Institutional</div>
                     </div>
-                    <div class="portfolio-overlay">
+                    <div class="portfolio-content">
                         <h3>University of Juba Library</h3>
                         <p>Modern educational facility with capacity for 500 students</p>
-                        <span class="project-date">Completed: 2016</span>
+                        <div class="portfolio-meta">
+                            <span><i class="fas fa-calendar"></i> 2016</span>
+                            <span><i class="fas fa-map-marker-alt"></i> University of Juba</span>
+                        </div>
+                        <a href="#" class="portfolio-link">View Project Details <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
 
                 <div class="portfolio-item" data-category="institutional">
                     <div class="portfolio-image">
                         <img src="image/kry.jpg" alt="Government Complex">
+                        <div class="portfolio-category">Institutional</div>
                     </div>
-                    <div class="portfolio-overlay">
+                    <div class="portfolio-content">
                         <h3>Government Complex</h3>
                         <p>Administrative building for government ministries</p>
-                        <span class="project-date">Completed: 2018</span>
+                        <div class="portfolio-meta">
+                            <span><i class="fas fa-calendar"></i> 2018</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Juba, South Sudan</span>
+                        </div>
+                        <a href="#" class="portfolio-link">View Project Details <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
 
                 <div class="portfolio-item" data-category="institutional">
                     <div class="portfolio-image">
                         <img src="image/jason.jpg" alt="School Construction">
+                        <div class="portfolio-category">Institutional</div>
                     </div>
-                    <div class="portfolio-overlay">
+                    <div class="portfolio-content">
                         <h3>School Construction</h3>
                         <p>Primary school with 15 classrooms and sports facilities</p>
-                        <span class="project-date">Completed: 2017</span>
-                    </div>
-                </div>
-
-                <div class="portfolio-item" data-category="institutional">
-                    <div class="portfolio-image">
-                        <img src="image/steve.jpg" alt="Community Center">
-                    </div>
-                    <div class="portfolio-overlay">
-                        <h3>Community Center</h3>
-                        <p>Multi-purpose community facility for public events</p>
-                        <span class="project-date">Completed: 2015</span>
+                        <div class="portfolio-meta">
+                            <span><i class="fas fa-calendar"></i> 2017</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Yei, South Sudan</span>
+                        </div>
+                        <a href="#" class="portfolio-link">View Project Details <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
 
-            <div style="text-align: center; margin-top: 3rem;">
-                <a href="contact.html" class="btn">Start Your Project</a>
+            <!-- Load More Button -->
+            <div class="text-center mt-4">
+                <button class="btn btn-load-more">
+                    <i class="fas fa-plus"></i>
+                    Load More Projects
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta-section portfolio-cta">
+        <div class="container">
+            <div class="cta-content">
+                <div class="cta-icon">
+                    <i class="fas fa-hard-hat"></i>
+                </div>
+                <div class="cta-text">
+                    <h2>Inspired By Our Work?</h2>
+                    <p>Let's discuss your next construction project. Our team is ready to bring your vision to life with the same quality and expertise.</p>
+                </div>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="btn btn-primary btn-large">
+                        <i class="fas fa-play-circle"></i>
+                        Start Your Project
+                    </a>
+                    <a href="tel:+211917119426" class="btn btn-secondary btn-large">
+                        <i class="fas fa-phone-alt"></i>
+                        Call Now: +211 917 119 426
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -460,36 +407,83 @@
         <div class="container">
             <div class="footer-container">
                 <div class="footer-about">
-                    <div class="footer-logo">Dhab<span>Construction</span></div>
+                    <div class="footer-logo">
+                        <img src="images/logod.jpg" alt="Dhab Construction Logo" class="footer-logo-img">
+                        <span>Dhab<span>Construction</span></span>
+                    </div>
                     <p>Your trusted partner in infrastructural development across South Sudan and Eastern Africa. We build lasting structures that empower communities and drive progress.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
                 <div class="footer-links">
                     <h3 class="footer-heading">Quick Links</h3>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="portfolio.html">Portfolio</a></li>
-                        <li><a href="blog.html">Blog</a></li>
-                        <li><a href="invest.html">Invest</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                        <li><a href="services.html"><i class="fas fa-chevron-right"></i> Services</a></li>
+                        <li><a href="portfolio.html"><i class="fas fa-chevron-right"></i> Portfolio</a></li>
+                        <li><a href="blog.html"><i class="fas fa-chevron-right"></i> Blog</a></li>
+                        <li><a href="invest.html"><i class="fas fa-chevron-right"></i> Invest</a></li>
+                        <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-services">
+                    <h3 class="footer-heading">Our Services</h3>
+                    <ul>
+                        <li><a href="services.html#residential"><i class="fas fa-chevron-right"></i> Residential Construction</a></li>
+                        <li><a href="services.html#commercial"><i class="fas fa-chevron-right"></i> Commercial Construction</a></li>
+                        <li><a href="services.html#infrastructure"><i class="fas fa-chevron-right"></i> Infrastructure Development</a></li>
+                        <li><a href="services.html#community"><i class="fas fa-chevron-right"></i> Community Institutions</a></li>
+                        <li><a href="services.html#materials"><i class="fas fa-chevron-right"></i> Building Materials Supply</a></li>
+                        <li><a href="services.html#management"><i class="fas fa-chevron-right"></i> Construction Management</a></li>
                     </ul>
                 </div>
                 <div class="footer-contact">
                     <h3 class="footer-heading">Contact Info</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> Dynasty House, 1st Floor, Bilpam Road, Juba, South Sudan</p>
-                    <p><i class="fas fa-phone"></i> +211 917 119 426</p>
-                    <p><i class="fas fa-envelope"></i> info@dhabconstruction.com</p>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <strong>Address</strong>
+                            <p>Dynasty House, 1st Floor, Bilpam Road, Juba, South Sudan</p>
+                        </div>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <strong>Phone</strong>
+                            <p><a href="tel:+211917119426">+211 917 119 426</a></p>
+                        </div>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <strong>Email</strong>
+                            <p><a href="mailto:info@dhabconstruction.com">info@dhabconstruction.com</a></p>
+                        </div>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <strong>Working Hours</strong>
+                            <p>Mon - Fri: 8:00 AM - 6:00 PM</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="copyright">
-                <p>&copy; 2025 Dhab Construction. All Rights Reserved.</p>
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p>&copy; 2026 Dhab Construction. All Rights Reserved.</p>
+                </div>
+                <div class="footer-links-bottom">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Sitemap</a>
+                </div>
             </div>
         </div>
     </footer>
