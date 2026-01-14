@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog - Dhab Construction | Your Partner in Infrastructural Development</title>
+    <title>Blog & Insights - Dhab Construction | Your Partner in Infrastructural Development</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
@@ -12,7 +12,10 @@
     <!-- Header -->
     <header>
         <div class="container header-container">
-            <a href="index.html" class="logo">Dhab<span>Construction</span></a>
+            <!-- Logo as an image -->
+            <a href="index.html" class="logo">
+                <img src="images/logod.jpg" alt="Dhab Construction Logo" class="logo-img">
+            </a>
             <button class="mobile-menu-btn">
                 <i class="fas fa-bars"></i>
             </button>
@@ -20,7 +23,17 @@
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About Us</a></li>
-                    <li><a href="services.html">Services</a></li>
+                    <li class="dropdown">
+                        <a href="services.html" class="dropdown-toggle">Services <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="services.html#residential">Residential Construction</a>
+                            <a href="services.html#commercial">Commercial Construction</a>
+                            <a href="services.html#infrastructure">Infrastructure Development</a>
+                            <a href="services.html#community">Community Institutions</a>
+                            <a href="services.html#materials">Building Materials Supply</a>
+                            <a href="services.html#management">Construction Management & Supervision</a>
+                        </div>
+                    </li>
                     <li><a href="portfolio.html">Portfolio</a></li>
                     <li><a href="blog.html" class="active">Blog</a></li>
                     <li><a href="invest.html">Invest</a></li>
@@ -33,136 +46,272 @@
     <!-- Page Hero -->
     <section class="page-hero">
         <div class="container">
-            <h1>Blog & Insights</h1>
-            <div class="breadcrumb">
-                <a href="index.html">Home</a>
-                <span>/</span>
-                <span>Blog</span>
+            <div class="page-hero-content">
+                <div class="hero-logo">
+                    <img src="images/logod.jpg" alt="Dhab Construction Logo">
+                </div>
+                <h1>Blog & Insights</h1>
+                <p class="hero-subtitle">Stay Updated on Construction Trends, Projects, and Industry Developments</p>
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <span>/</span>
+                    <span>Blog</span>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Blog Content -->
-    <section class="blog">
+    <section class="blog-page">
         <div class="container">
-            <div class="section-title">
-                <h2>Latest Insights</h2>
-                <p>Stay updated on the latest trends and developments in South Sudan's construction industry</p>
-            </div>
-
-            <div class="blog-grid">
-                <div class="blog-card">
-                    <div class="blog-image">
-                        <img src="image/qmajuoy.jpg" alt="Meet the CEO">
+            <div class="blog-container">
+                <div class="blog-main">
+                    <div class="section-title">
+                        <h2>Latest Insights</h2>
+                        <p>Stay updated on the latest trends and developments in South Sudan's construction industry</p>
                     </div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span class="blog-date">March 21, 2025</span>
-                            <span class="blog-author">By Admin</span>
-                        </div>
-                        <h3>Meet the CEO</h3>
-                        <p>Meet Majuoy Tuak Dhab Bithuok: The Visionary Leader Behind Dhab Construction. At Dhab Construction, we believe that building is more than just erecting structures—it's about creating opportunities...</p>
-                        <button class="read-more">Read More <i class="fas fa-chevron-down"></i></button>
-                        <div class="blog-full-content">
-                            <p>At Dhab Construction, we believe that building is more than just erecting structures—it's about creating opportunities, shaping communities, and leaving a lasting legacy. At the helm of our mission is our CEO, Majuoy Tuak Dhab Bithuok, a passionate and accomplished leader whose journey reflects dedication to excellence and innovation in the construction industry.</p>
-                            <p>Under his leadership, Dhab Construction has grown from a small local contractor to a leading construction company in South Sudan, undertaking prestigious projects that are transforming the nation's infrastructure. His vision for sustainable development and community empowerment drives our company's commitment to quality and innovation.</p>
-                            <p>Majuoy's background in civil engineering and his deep understanding of the local construction landscape have been instrumental in navigating the unique challenges and opportunities in South Sudan's developing economy.</p>
-                        </div>
+
+                    <div class="blog-grid">
+                        <!-- Blog Post 1 -->
+                        <article class="blog-card featured">
+                            <div class="blog-image">
+                                <img src="image/qmajuoy.jpg" alt="Meet the CEO">
+                                <div class="blog-category">Leadership</div>
+                            </div>
+                            <div class="blog-content">
+                                <div class="blog-meta">
+                                    <span class="blog-date"><i class="fas fa-calendar"></i> March 21, 2025</span>
+                                    <span class="blog-author"><i class="fas fa-user"></i> By Admin</span>
+                                    <span class="blog-comments"><i class="fas fa-comment"></i> 5 Comments</span>
+                                </div>
+                                <h3>Meet the CEO</h3>
+                                <p class="blog-excerpt">Meet Majuoy Tuak Dhab Bithuok: The Visionary Leader Behind Dhab Construction. At Dhab Construction, we believe that building is more than just erecting structures—it's about creating opportunities...</p>
+                                <div class="blog-full-content">
+                                    <p>At Dhab Construction, we believe that building is more than just erecting structures—it's about creating opportunities, shaping communities, and leaving a lasting legacy. At the helm of our mission is our CEO, Majuoy Tuak Dhab Bithuok, a passionate and accomplished leader whose journey reflects dedication to excellence and innovation in the construction industry.</p>
+                                    <p>Under his leadership, Dhab Construction has grown from a small local contractor to a leading construction company in South Sudan, undertaking prestigious projects that are transforming the nation's infrastructure. His vision for sustainable development and community empowerment drives our company's commitment to quality and innovation.</p>
+                                    <p>Majuoy's background in civil engineering and his deep understanding of the local construction landscape have been instrumental in navigating the unique challenges and opportunities in South Sudan's developing economy.</p>
+                                </div>
+                                <div class="blog-footer">
+                                    <a href="#" class="read-more">Read Full Article <i class="fas fa-arrow-right"></i></a>
+                                    <div class="blog-tags">
+                                        <span class="tag">Leadership</span>
+                                        <span class="tag">Construction</span>
+                                        <span class="tag">South Sudan</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Blog Post 2 -->
+                        <article class="blog-card">
+                            <div class="blog-image">
+                                <img src="image/abi.jpg" alt="Urban Development">
+                                <div class="blog-category">Urban Planning</div>
+                            </div>
+                            <div class="blog-content">
+                                <div class="blog-meta">
+                                    <span class="blog-date"><i class="fas fa-calendar"></i> November 25, 2024</span>
+                                    <span class="blog-author"><i class="fas fa-user"></i> By Admin</span>
+                                    <span class="blog-comments"><i class="fas fa-comment"></i> 8 Comments</span>
+                                </div>
+                                <h3>Learning from Addis Ababa: A Vision for South Sudan's Urban Development</h3>
+                                <p class="blog-excerpt">The transformation of Addis Ababa through strategic infrastructure development has captured the attention of leaders across Africa, including South Sudan's Minister of Land, Housing, and Urban Development...</p>
+                                <div class="blog-full-content">
+                                    <p>The transformation of Addis Ababa through strategic infrastructure development has captured the attention of leaders across Africa, including South Sudan's Minister of Land, Housing, and Urban Development, Michael Chanjiek. Speaking during the inaugural Africa Urban Forum held in Addis Ababa from September 4-6, 2024, Minister Chanjiek emphasized the importance of learning from Ethiopia's capital to inform South Sudan's own urban development strategies.</p>
+                                    <p>Addis Ababa's rapid transformation offers valuable lessons in urban planning, infrastructure development, and sustainable growth that can be adapted to South Sudan's unique context as the nation works to rebuild and develop its cities.</p>
+                                    <p>Key takeaways include the importance of integrated transport systems, green building practices, and public-private partnerships in driving urban development that benefits all citizens.</p>
+                                </div>
+                                <div class="blog-footer">
+                                    <a href="#" class="read-more">Read Full Article <i class="fas fa-arrow-right"></i></a>
+                                    <div class="blog-tags">
+                                        <span class="tag">Urban Planning</span>
+                                        <span class="tag">Ethiopia</span>
+                                        <span class="tag">Development</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Blog Post 3 -->
+                        <article class="blog-card">
+                            <div class="blog-image">
+                                <img src="image/evv.jpg" alt="Cross-Border Construction">
+                                <div class="blog-category">Infrastructure</div>
+                            </div>
+                            <div class="blog-content">
+                                <div class="blog-meta">
+                                    <span class="blog-date"><i class="fas fa-calendar"></i> November 20, 2024</span>
+                                    <span class="blog-author"><i class="fas fa-user"></i> By Admin</span>
+                                    <span class="blog-comments"><i class="fas fa-comment"></i> 3 Comments</span>
+                                </div>
+                                <h3>The Impact of Cross-Border Construction on South Sudan</h3>
+                                <p class="blog-excerpt">The recent agreement between South Sudan and Ethiopia to collaborate on a $778 million road project marks a monumental step toward transforming the infrastructure and economic landscape of the region...</p>
+                                <div class="blog-full-content">
+                                    <p>The recent agreement between South Sudan and Ethiopia to collaborate on a $778 million road project marks a monumental step toward transforming the infrastructure and economic landscape of the region. This initiative, which links the Upper Nile State in South Sudan to Ethiopia via Gambella-Pagak, Maiwut, Malakal-Maluth, is expected to enhance trade, improve connectivity, and foster regional integration.</p>
+                                    <p>Such cross-border infrastructure projects represent significant opportunities for construction companies in South Sudan to participate in large-scale development initiatives that have far-reaching economic and social impacts.</p>
+                                    <p>The project is part of a broader trend of regional cooperation in infrastructure development that is reshaping East Africa's economic geography and creating new opportunities for growth and development.</p>
+                                </div>
+                                <div class="blog-footer">
+                                    <a href="#" class="read-more">Read Full Article <i class="fas fa-arrow-right"></i></a>
+                                    <div class="blog-tags">
+                                        <span class="tag">Infrastructure</span>
+                                        <span class="tag">Cross-Border</span>
+                                        <span class="tag">Road Projects</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Blog Post 4 -->
+                        <article class="blog-card">
+                            <div class="blog-image">
+                                <img src="image/evan.jpg" alt="Construction Industry">
+                                <div class="blog-category">Industry Analysis</div>
+                            </div>
+                            <div class="blog-content">
+                                <div class="blog-meta">
+                                    <span class="blog-date"><i class="fas fa-calendar"></i> September 25, 2024</span>
+                                    <span class="blog-author"><i class="fas fa-user"></i> By Admin</span>
+                                    <span class="blog-comments"><i class="fas fa-comment"></i> 6 Comments</span>
+                                </div>
+                                <h3>Building a Nation: The Future of the Construction Industry in South Sudan</h3>
+                                <p class="blog-excerpt">South Sudan's construction industry stands at a pivotal juncture, with both significant challenges and promising opportunities shaping its future...</p>
+                                <div class="blog-full-content">
+                                    <p>South Sudan's construction industry stands at a pivotal juncture, with both significant challenges and promising opportunities shaping its future. As the nation strives to rebuild and develop its infrastructure, understanding the current landscape and potential growth areas is crucial for stakeholders and investors.</p>
+                                    <p>The construction sector in South Sudan is poised for significant growth, driven by urbanization, population growth, and increasing investment in infrastructure. However, challenges such as limited access to financing, skills shortages, and logistical constraints must be addressed to unlock the sector's full potential.</p>
+                                    <p>Opportunities abound in residential construction, road infrastructure, energy projects, and commercial real estate development. With the right policies and investments, the construction industry can become a key driver of economic growth and job creation in South Sudan.</p>
+                                </div>
+                                <div class="blog-footer">
+                                    <a href="#" class="read-more">Read Full Article <i class="fas fa-arrow-right"></i></a>
+                                    <div class="blog-tags">
+                                        <span class="tag">Industry</span>
+                                        <span class="tag">Future</span>
+                                        <span class="tag">Growth</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="pagination">
+                        <a href="#" class="page-btn active">1</a>
+                        <a href="#" class="page-btn">2</a>
+                        <a href="#" class="page-btn">3</a>
+                        <a href="#" class="page-btn next">Next <i class="fas fa-chevron-right"></i></a>
                     </div>
                 </div>
 
-                <div class="blog-card">
-                    <div class="blog-image">
-                        <img src="image/abi.jpg" alt="Urban Development">
+                <!-- Sidebar -->
+                <aside class="blog-sidebar">
+                    <!-- Search Widget -->
+                    <div class="sidebar-widget">
+                        <h3 class="widget-title">Search Articles</h3>
+                        <form class="search-box">
+                            <input type="text" placeholder="Search articles...">
+                            <button type="submit"><i class="fas fa-search"></i></button>
+                        </form>
                     </div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span class="blog-date">November 25, 2024</span>
-                            <span class="blog-author">By Admin</span>
-                        </div>
-                        <h3>Learning from Addis Ababa: A Vision for South Sudan's Urban Development</h3>
-                        <p>The transformation of Addis Ababa through strategic infrastructure development has captured the attention of leaders across Africa, including South Sudan's Minister of Land, Housing, and Urban Development...</p>
-                        <button class="read-more">Read More <i class="fas fa-chevron-down"></i></button>
-                        <div class="blog-full-content">
-                            <p>The transformation of Addis Ababa through strategic infrastructure development has captured the attention of leaders across Africa, including South Sudan's Minister of Land, Housing, and Urban Development, Michael Chanjiek. Speaking during the inaugural Africa Urban Forum held in Addis Ababa from September 4-6, 2024, Minister Chanjiek emphasized the importance of learning from Ethiopia's capital to inform South Sudan's own urban development strategies.</p>
-                            <p>Addis Ababa's rapid transformation offers valuable lessons in urban planning, infrastructure development, and sustainable growth that can be adapted to South Sudan's unique context as the nation works to rebuild and develop its cities.</p>
-                            <p>Key takeaways include the importance of integrated transport systems, green building practices, and public-private partnerships in driving urban development that benefits all citizens.</p>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="blog-card">
-                    <div class="blog-image">
-                        <img src="image/evv.jpg" alt="Cross-Border Construction">
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span class="blog-date">November 20, 2024</span>
-                            <span class="blog-author">By Admin</span>
-                        </div>
-                        <h3>The Impact of Cross-Border Construction on South Sudan</h3>
-                        <p>The recent agreement between South Sudan and Ethiopia to collaborate on a $778 million road project marks a monumental step toward transforming the infrastructure and economic landscape of the region...</p>
-                        <button class="read-more">Read More <i class="fas fa-chevron-down"></i></button>
-                        <div class="blog-full-content">
-                            <p>The recent agreement between South Sudan and Ethiopia to collaborate on a $778 million road project marks a monumental step toward transforming the infrastructure and economic landscape of the region. This initiative, which links the Upper Nile State in South Sudan to Ethiopia via Gambella-Pagak, Maiwut, Malakal-Maluth, is expected to enhance trade, improve connectivity, and foster regional integration.</p>
-                            <p>Such cross-border infrastructure projects represent significant opportunities for construction companies in South Sudan to participate in large-scale development initiatives that have far-reaching economic and social impacts.</p>
-                            <p>The project is part of a broader trend of regional cooperation in infrastructure development that is reshaping East Africa's economic geography and creating new opportunities for growth and development.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="blog-card">
-                    <div class="blog-image">
-                        <img src="image/evan.jpg" alt="Construction Industry">
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span class="blog-date">September 25, 2024</span>
-                            <span class="blog-author">By Admin</span>
-                        </div>
-                        <h3>Building a Nation: The Future of the Construction Industry in South Sudan</h3>
-                        <p>South Sudan's construction industry stands at a pivotal juncture, with both significant challenges and promising opportunities shaping its future...</p>
-                        <button class="read-more">Read More <i class="fas fa-chevron-down"></i></button>
-                        <div class="blog-full-content">
-                            <p>South Sudan's construction industry stands at a pivotal juncture, with both significant challenges and promising opportunities shaping its future. As the nation strives to rebuild and develop its infrastructure, understanding the current landscape and potential growth areas is crucial for stakeholders and investors.</p>
-                            <p>The construction sector in South Sudan is poised for significant growth, driven by urbanization, population growth, and increasing investment in infrastructure. However, challenges such as limited access to financing, skills shortages, and logistical constraints must be addressed to unlock the sector's full potential.</p>
-                            <p>Opportunities abound in residential construction, road infrastructure, energy projects, and commercial real estate development. With the right policies and investments, the construction industry can become a key driver of economic growth and job creation in South Sudan.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="blog-sidebar">
-                <div class="sidebar-widget">
-                    <h3>Search</h3>
-                    <form class="search-box">
-                        <input type="text" placeholder="Search articles...">
-                        <button type="submit"><i class="fas fa-search"></i></button>
-                    </form>
-                </div>
-
-                <div class="sidebar-widget">
-                    <h3>Recent Posts</h3>
-                    <div class="recent-posts">
-                        <ul>
-                            <li><a href="#">Meet the CEO</a></li>
-                            <li><a href="#">Learning from Addis Ababa: A Vision for South Sudan's Urban Development</a></li>
-                            <li><a href="#">The Impact of Cross-Border Construction on South Sudan</a></li>
-                            <li><a href="#">Building a Nation: The Future of the Construction Industry in South Sudan</a></li>
+                    <!-- Categories Widget -->
+                    <div class="sidebar-widget">
+                        <h3 class="widget-title">Categories</h3>
+                        <ul class="categories-list">
+                            <li><a href="#">Construction News <span>(12)</span></a></li>
+                            <li><a href="#">Industry Insights <span>(8)</span></a></li>
+                            <li><a href="#">Project Updates <span>(15)</span></a></li>
+                            <li><a href="#">Leadership <span>(5)</span></a></li>
+                            <li><a href="#">Urban Planning <span>(7)</span></a></li>
+                            <li><a href="#">Infrastructure <span>(10)</span></a></li>
                         </ul>
                     </div>
-                </div>
 
-                <div class="sidebar-widget">
-                    <h3>Tags</h3>
-                    <div class="tags">
-                        <a href="#" class="tag">Construction</a>
-                        <a href="#" class="tag">Ethiopia</a>
-                        <a href="#" class="tag">Innovation</a>
-                        <a href="#" class="tag">Insights</a>
-                        <a href="#" class="tag">Upper Nile State</a>
-                        <a href="#" class="tag">Infrastructure</a>
+                    <!-- Recent Posts Widget -->
+                    <div class="sidebar-widget">
+                        <h3 class="widget-title">Recent Posts</h3>
+                        <div class="recent-posts">
+                            <div class="recent-post">
+                                <div class="recent-post-image">
+                                    <img src="image/qmajuoy.jpg" alt="Meet the CEO">
+                                </div>
+                                <div class="recent-post-content">
+                                    <h4><a href="#">Meet the CEO</a></h4>
+                                    <span class="post-date">March 21, 2025</span>
+                                </div>
+                            </div>
+                            <div class="recent-post">
+                                <div class="recent-post-image">
+                                    <img src="image/abi.jpg" alt="Urban Development">
+                                </div>
+                                <div class="recent-post-content">
+                                    <h4><a href="#">Learning from Addis Ababa</a></h4>
+                                    <span class="post-date">November 25, 2024</span>
+                                </div>
+                            </div>
+                            <div class="recent-post">
+                                <div class="recent-post-image">
+                                    <img src="image/evv.jpg" alt="Cross-Border Construction">
+                                </div>
+                                <div class="recent-post-content">
+                                    <h4><a href="#">Cross-Border Construction Impact</a></h4>
+                                    <span class="post-date">November 20, 2024</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
+                    <!-- Tags Widget -->
+                    <div class="sidebar-widget">
+                        <h3 class="widget-title">Popular Tags</h3>
+                        <div class="tags">
+                            <a href="#" class="tag">Construction</a>
+                            <a href="#" class="tag">Ethiopia</a>
+                            <a href="#" class="tag">Innovation</a>
+                            <a href="#" class="tag">Insights</a>
+                            <a href="#" class="tag">Upper Nile State</a>
+                            <a href="#" class="tag">Infrastructure</a>
+                            <a href="#" class="tag">Urban Planning</a>
+                            <a href="#" class="tag">Road Projects</a>
+                            <a href="#" class="tag">South Sudan</a>
+                            <a href="#" class="tag">Development</a>
+                        </div>
+                    </div>
+
+                    <!-- CTA Widget -->
+                    <div class="sidebar-widget cta-widget">
+                        <div class="cta-content">
+                            <h3>Need Construction Services?</h3>
+                            <p>Get a free quote for your next project</p>
+                            <a href="contact.html" class="btn btn-cta">
+                                <i class="fas fa-file-alt"></i>
+                                Request Quote
+                            </a>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta-section blog-cta">
+        <div class="container">
+            <div class="cta-content">
+                <div class="cta-icon">
+                    <i class="fas fa-newspaper"></i>
+                </div>
+                <div class="cta-text">
+                    <h2>Stay Updated With Our Latest Insights</h2>
+                    <p>Subscribe to our newsletter for construction news, project updates, and industry analysis delivered to your inbox.</p>
+                </div>
+                <div class="cta-form">
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Enter your email address" required>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                            Subscribe
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -173,36 +322,83 @@
         <div class="container">
             <div class="footer-container">
                 <div class="footer-about">
-                    <div class="footer-logo">Dhab<span>Construction</span></div>
+                    <div class="footer-logo">
+                        <img src="images/logod.jpg" alt="Dhab Construction Logo" class="footer-logo-img">
+                        <span>Dhab<span>Construction</span></span>
+                    </div>
                     <p>Your trusted partner in infrastructural development across South Sudan and Eastern Africa. We build lasting structures that empower communities and drive progress.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
                 <div class="footer-links">
                     <h3 class="footer-heading">Quick Links</h3>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="portfolio.html">Portfolio</a></li>
-                        <li><a href="blog.html">Blog</a></li>
-                        <li><a href="invest.html">Invest</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                        <li><a href="services.html"><i class="fas fa-chevron-right"></i> Services</a></li>
+                        <li><a href="portfolio.html"><i class="fas fa-chevron-right"></i> Portfolio</a></li>
+                        <li><a href="blog.html"><i class="fas fa-chevron-right"></i> Blog</a></li>
+                        <li><a href="invest.html"><i class="fas fa-chevron-right"></i> Invest</a></li>
+                        <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-services">
+                    <h3 class="footer-heading">Our Services</h3>
+                    <ul>
+                        <li><a href="services.html#residential"><i class="fas fa-chevron-right"></i> Residential Construction</a></li>
+                        <li><a href="services.html#commercial"><i class="fas fa-chevron-right"></i> Commercial Construction</a></li>
+                        <li><a href="services.html#infrastructure"><i class="fas fa-chevron-right"></i> Infrastructure Development</a></li>
+                        <li><a href="services.html#community"><i class="fas fa-chevron-right"></i> Community Institutions</a></li>
+                        <li><a href="services.html#materials"><i class="fas fa-chevron-right"></i> Building Materials Supply</a></li>
+                        <li><a href="services.html#management"><i class="fas fa-chevron-right"></i> Construction Management</a></li>
                     </ul>
                 </div>
                 <div class="footer-contact">
                     <h3 class="footer-heading">Contact Info</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> Dynasty House, 1st Floor, Bilpam Road, Juba, South Sudan</p>
-                    <p><i class="fas fa-phone"></i> +211 917 119 426</p>
-                    <p><i class="fas fa-envelope"></i> info@dhabconstruction.com</p>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <strong>Address</strong>
+                            <p>Dynasty House, 1st Floor, Bilpam Road, Juba, South Sudan</p>
+                        </div>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <strong>Phone</strong>
+                            <p><a href="tel:+211917119426">+211 917 119 426</a></p>
+                        </div>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <strong>Email</strong>
+                            <p><a href="mailto:info@dhabconstruction.com">info@dhabconstruction.com</a></p>
+                        </div>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <strong>Working Hours</strong>
+                            <p>Mon - Fri: 8:00 AM - 6:00 PM</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="copyright">
-                <p>&copy; 2025 Dhab Construction. All Rights Reserved.</p>
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p>&copy; 2026 Dhab Construction. All Rights Reserved.</p>
+                </div>
+                <div class="footer-links-bottom">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Sitemap</a>
+                </div>
             </div>
         </div>
     </footer>
