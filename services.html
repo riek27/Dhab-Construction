@@ -12,7 +12,10 @@
     <!-- Header -->
     <header>
         <div class="container header-container">
-            <a href="index.html" class="logo">Dhab<span>Construction</span></a>
+            <!-- Logo as an image -->
+            <a href="index.html" class="logo">
+                <img src="images/logod.jpg" alt="Dhab Construction Logo" class="logo-img">
+            </a>
             <button class="mobile-menu-btn">
                 <i class="fas fa-bars"></i>
             </button>
@@ -20,7 +23,17 @@
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About Us</a></li>
-                    <li><a href="services.html" class="active">Services</a></li>
+                    <li class="dropdown">
+                        <a href="services.html" class="dropdown-toggle active">Services <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="#residential">Residential Construction</a>
+                            <a href="#commercial">Commercial Construction</a>
+                            <a href="#infrastructure">Infrastructure Development</a>
+                            <a href="#community">Community Institutions</a>
+                            <a href="#materials">Building Materials Supply</a>
+                            <a href="#management">Construction Management & Supervision</a>
+                        </div>
+                    </li>
                     <li><a href="portfolio.html">Portfolio</a></li>
                     <li><a href="blog.html">Blog</a></li>
                     <li><a href="invest.html">Invest</a></li>
@@ -33,135 +46,355 @@
     <!-- Page Hero -->
     <section class="page-hero">
         <div class="container">
-            <h1>Our Services</h1>
-            <div class="breadcrumb">
-                <a href="index.html">Home</a>
-                <span>/</span>
-                <span>Services</span>
+            <div class="page-hero-content">
+                <div class="hero-logo">
+                    <img src="images/logod.jpg" alt="Dhab Construction Logo">
+                </div>
+                <h1>Our Construction Services</h1>
+                <p class="hero-subtitle">Comprehensive Solutions for All Your Construction Needs</p>
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <span>/</span>
+                    <span>Services</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Navigation -->
+    <section class="services-nav">
+        <div class="container">
+            <div class="services-quick-nav">
+                <h3>Quick Jump to Services:</h3>
+                <div class="nav-links">
+                    <a href="#residential" class="nav-link">
+                        <i class="fas fa-home"></i>
+                        <span>Residential</span>
+                    </a>
+                    <a href="#commercial" class="nav-link">
+                        <i class="fas fa-building"></i>
+                        <span>Commercial</span>
+                    </a>
+                    <a href="#infrastructure" class="nav-link">
+                        <i class="fas fa-road"></i>
+                        <span>Infrastructure</span>
+                    </a>
+                    <a href="#community" class="nav-link">
+                        <i class="fas fa-hospital"></i>
+                        <span>Community</span>
+                    </a>
+                    <a href="#materials" class="nav-link">
+                        <i class="fas fa-truck-loading"></i>
+                        <span>Materials</span>
+                    </a>
+                    <a href="#management" class="nav-link">
+                        <i class="fas fa-clipboard-check"></i>
+                        <span>Management</span>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Services Content -->
-    <section class="services">
+    <section class="services-page">
         <div class="container">
             <div class="section-title">
                 <h2>Comprehensive Construction Solutions</h2>
                 <p>We offer a wide range of construction and development services to meet all your project needs</p>
             </div>
 
-            <div class="services-grid">
+            <div class="services-grid" id="services-container">
                 <!-- Residential Construction -->
-                <div class="service-card">
+                <div class="service-card" id="residential">
                     <div class="service-image">
                         <img src="image/vaa.jpg" alt="Residential Construction">
+                        <div class="service-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
                     </div>
                     <div class="service-content">
-                        <h3>Residential Construction</h3>
+                        <div class="service-header">
+                            <h3>Residential Construction</h3>
+                            <span class="service-badge">Most Popular</span>
+                        </div>
                         <p>We specialize in building modern, comfortable, and durable residential properties that meet the highest standards of quality and safety. Our residential construction services include single-family homes, apartments, gated communities, and luxury villas.</p>
-                        <ul>
-                            <li>Single-family homes and apartments</li>
-                            <li>Gated communities and housing estates</li>
-                            <li>Luxury villas and custom homes</li>
-                            <li>Renovations and extensions</li>
-                            <li>Affordable housing projects</li>
-                        </ul>
-                        <a href="contact.html" class="btn">Request a Quote</a>
+                        <div class="service-details">
+                            <h4>What We Offer:</h4>
+                            <ul>
+                                <li><i class="fas fa-check-circle"></i> Single-family homes and apartments</li>
+                                <li><i class="fas fa-check-circle"></i> Gated communities and housing estates</li>
+                                <li><i class="fas fa-check-circle"></i> Luxury villas and custom homes</li>
+                                <li><i class="fas fa-check-circle"></i> Renovations and extensions</li>
+                                <li><i class="fas fa-check-circle"></i> Affordable housing projects</li>
+                            </ul>
+                        </div>
+                        <div class="service-footer">
+                            <div class="service-features">
+                                <span><i class="fas fa-clock"></i> 3-12 Months</span>
+                                <span><i class="fas fa-dollar-sign"></i> Competitive Pricing</span>
+                                <span><i class="fas fa-shield-alt"></i> Quality Guaranteed</span>
+                            </div>
+                            <a href="contact.html?service=residential" class="btn btn-service">
+                                <i class="fas fa-paper-plane"></i>
+                                Request Quote
+                            </a>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Commercial Construction -->
-                <div class="service-card">
+                <div class="service-card" id="commercial">
                     <div class="service-image">
                         <img src="image/qcon.jpg" alt="Commercial Construction">
+                        <div class="service-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
                     </div>
                     <div class="service-content">
-                        <h3>Commercial Construction</h3>
+                        <div class="service-header">
+                            <h3>Commercial Construction</h3>
+                            <span class="service-badge">Business Focus</span>
+                        </div>
                         <p>We deliver state-of-the-art commercial facilities designed to enhance business operations and customer experiences. Our commercial construction expertise covers office buildings, retail centers, and industrial facilities.</p>
-                        <ul>
-                            <li>Office buildings and corporate headquarters</li>
-                            <li>Shopping malls and retail centers</li>
-                            <li>Hotels and hospitality facilities</li>
-                            <li>Restaurants and entertainment venues</li>
-                            <li>Warehouses and industrial facilities</li>
-                        </ul>
-                        <a href="contact.html" class="btn">Request a Quote</a>
+                        <div class="service-details">
+                            <h4>What We Offer:</h4>
+                            <ul>
+                                <li><i class="fas fa-check-circle"></i> Office buildings and corporate headquarters</li>
+                                <li><i class="fas fa-check-circle"></i> Shopping malls and retail centers</li>
+                                <li><i class="fas fa-check-circle"></i> Hotels and hospitality facilities</li>
+                                <li><i class="fas fa-check-circle"></i> Restaurants and entertainment venues</li>
+                                <li><i class="fas fa-check-circle"></i> Warehouses and industrial facilities</li>
+                            </ul>
+                        </div>
+                        <div class="service-footer">
+                            <div class="service-features">
+                                <span><i class="fas fa-clock"></i> 6-24 Months</span>
+                                <span><i class="fas fa-dollar-sign"></i> Value for Money</span>
+                                <span><i class="fas fa-shield-alt"></i> Professional Standards</span>
+                            </div>
+                            <a href="contact.html?service=commercial" class="btn btn-service">
+                                <i class="fas fa-paper-plane"></i>
+                                Request Quote
+                            </a>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Infrastructure Development -->
-                <div class="service-card">
+                <div class="service-card" id="infrastructure">
                     <div class="service-image">
                         <img src="image/qqq.jpg" alt="Infrastructure Development">
+                        <div class="service-icon">
+                            <i class="fas fa-road"></i>
+                        </div>
                     </div>
                     <div class="service-content">
-                        <h3>Infrastructure Development</h3>
+                        <div class="service-header">
+                            <h3>Infrastructure Development</h3>
+                            <span class="service-badge">Government Projects</span>
+                        </div>
                         <p>We build the essential infrastructure that connects communities and drives economic growth. With expertise in large-scale civil engineering projects, we contribute to South Sudan's infrastructure network.</p>
-                        <ul>
-                            <li>Roads and highway construction</li>
-                            <li>Bridges and overpasses</li>
-                            <li>Water and drainage systems</li>
-                            <li>Dams and water reservoirs</li>
-                            <li>Public works and utilities</li>
-                        </ul>
-                        <a href="contact.html" class="btn">Request a Quote</a>
+                        <div class="service-details">
+                            <h4>What We Offer:</h4>
+                            <ul>
+                                <li><i class="fas fa-check-circle"></i> Roads and highway construction</li>
+                                <li><i class="fas fa-check-circle"></i> Bridges and overpasses</li>
+                                <li><i class="fas fa-check-circle"></i> Water and drainage systems</li>
+                                <li><i class="fas fa-check-circle"></i> Dams and water reservoirs</li>
+                                <li><i class="fas fa-check-circle"></i> Public works and utilities</li>
+                            </ul>
+                        </div>
+                        <div class="service-footer">
+                            <div class="service-features">
+                                <span><i class="fas fa-clock"></i> 12-36 Months</span>
+                                <span><i class="fas fa-dollar-sign"></i> Large Scale</span>
+                                <span><i class="fas fa-shield-alt"></i> Engineering Excellence</span>
+                            </div>
+                            <a href="contact.html?service=infrastructure" class="btn btn-service">
+                                <i class="fas fa-paper-plane"></i>
+                                Request Quote
+                            </a>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Community Institutions -->
-                <div class="service-card">
+                <div class="service-card" id="community">
                     <div class="service-image">
                         <img src="image/nation.jpg" alt="Community Institutions">
+                        <div class="service-icon">
+                            <i class="fas fa-hospital"></i>
+                        </div>
                     </div>
                     <div class="service-content">
-                        <h3>Community Institutions</h3>
+                        <div class="service-header">
+                            <h3>Community Institutions</h3>
+                            <span class="service-badge">Social Impact</span>
+                        </div>
                         <p>We construct facilities that serve communities and enhance quality of life. Our institutional construction services include educational facilities, healthcare centers, and government buildings.</p>
-                        <ul>
-                            <li>Schools and educational facilities</li>
-                            <li>Hospitals and healthcare centers</li>
-                            <li>Government buildings</li>
-                            <li>Religious and cultural centers</li>
-                            <li>Sports facilities and stadiums</li>
-                        </ul>
-                        <a href="contact.html" class="btn">Request a Quote</a>
+                        <div class="service-details">
+                            <h4>What We Offer:</h4>
+                            <ul>
+                                <li><i class="fas fa-check-circle"></i> Schools and educational facilities</li>
+                                <li><i class="fas fa-check-circle"></i> Hospitals and healthcare centers</li>
+                                <li><i class="fas fa-check-circle"></i> Government buildings</li>
+                                <li><i class="fas fa-check-circle"></i> Religious and cultural centers</li>
+                                <li><i class="fas fa-check-circle"></i> Sports facilities and stadiums</li>
+                            </ul>
+                        </div>
+                        <div class="service-footer">
+                            <div class="service-features">
+                                <span><i class="fas fa-clock"></i> 6-18 Months</span>
+                                <span><i class="fas fa-dollar-sign"></i> Community Focused</span>
+                                <span><i class="fas fa-shield-alt"></i> Durable Construction</span>
+                            </div>
+                            <a href="contact.html?service=community" class="btn btn-service">
+                                <i class="fas fa-paper-plane"></i>
+                                Request Quote
+                            </a>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Building Materials Supply -->
-                <div class="service-card">
+                <div class="service-card" id="materials">
                     <div class="service-image">
                         <img src="image/qwd.jpg" alt="Building Materials Supply">
+                        <div class="service-icon">
+                            <i class="fas fa-truck-loading"></i>
+                        </div>
                     </div>
                     <div class="service-content">
-                        <h3>Building Materials Supply</h3>
+                        <div class="service-header">
+                            <h3>Building Materials Supply</h3>
+                            <span class="service-badge">Supply Chain</span>
+                        </div>
                         <p>We supply high-quality construction materials to ensure the success of your projects. We guarantee the quality of our materials and provide timely delivery to keep your projects on schedule.</p>
-                        <ul>
-                            <li>Cement, aggregates, and concrete</li>
-                            <li>Steel and reinforcement bars</li>
-                            <li>Finishing materials and fixtures</li>
-                            <li>Construction equipment and tools</li>
-                            <li>Logistics and delivery services</li>
-                        </ul>
-                        <a href="contact.html" class="btn">Request a Quote</a>
+                        <div class="service-details">
+                            <h4>What We Offer:</h4>
+                            <ul>
+                                <li><i class="fas fa-check-circle"></i> Cement, aggregates, and concrete</li>
+                                <li><i class="fas fa-check-circle"></i> Steel and reinforcement bars</li>
+                                <li><i class="fas fa-check-circle"></i> Finishing materials and fixtures</li>
+                                <li><i class="fas fa-check-circle"></i> Construction equipment and tools</li>
+                                <li><i class="fas fa-check-circle"></i> Logistics and delivery services</li>
+                            </ul>
+                        </div>
+                        <div class="service-footer">
+                            <div class="service-features">
+                                <span><i class="fas fa-clock"></i> Same Day Delivery</span>
+                                <span><i class="fas fa-dollar-sign"></i> Bulk Discounts</span>
+                                <span><i class="fas fa-shield-alt"></i> Quality Assured</span>
+                            </div>
+                            <a href="contact.html?service=materials" class="btn btn-service">
+                                <i class="fas fa-paper-plane"></i>
+                                Request Quote
+                            </a>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Construction Management & Supervision -->
-                <div class="service-card">
+                <div class="service-card" id="management">
                     <div class="service-image">
                         <img src="image/qlo.jpg" alt="Construction Management">
+                        <div class="service-icon">
+                            <i class="fas fa-clipboard-check"></i>
+                        </div>
                     </div>
                     <div class="service-content">
-                        <h3>Construction Management & Supervision</h3>
+                        <div class="service-header">
+                            <h3>Construction Management & Supervision</h3>
+                            <span class="service-badge">Professional Service</span>
+                        </div>
                         <p>We provide comprehensive project management services to ensure your construction project is completed on time and within budget. Our experienced project managers handle every aspect professionally.</p>
-                        <ul>
-                            <li>Project planning and scheduling</li>
-                            <li>Cost estimation and control</li>
-                            <li>Quality assurance and compliance</li>
-                            <li>On-site supervision and coordination</li>
-                            <li>Risk management and mitigation</li>
-                        </ul>
-                        <a href="contact.html" class="btn">Request a Quote</a>
+                        <div class="service-details">
+                            <h4>What We Offer:</h4>
+                            <ul>
+                                <li><i class="fas fa-check-circle"></i> Project planning and scheduling</li>
+                                <li><i class="fas fa-check-circle"></i> Cost estimation and control</li>
+                                <li><i class="fas fa-check-circle"></i> Quality assurance and compliance</li>
+                                <li><i class="fas fa-check-circle"></i> On-site supervision and coordination</li>
+                                <li><i class="fas fa-check-circle"></i> Risk management and mitigation</li>
+                            </ul>
+                        </div>
+                        <div class="service-footer">
+                            <div class="service-features">
+                                <span><i class="fas fa-clock"></i> Flexible Terms</span>
+                                <span><i class="fas fa-dollar-sign"></i> Cost Effective</span>
+                                <span><i class="fas fa-shield-alt"></i> Expert Oversight</span>
+                            </div>
+                            <a href="contact.html?service=management" class="btn btn-service">
+                                <i class="fas fa-paper-plane"></i>
+                                Request Quote
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta-section services-cta">
+        <div class="container">
+            <div class="cta-content">
+                <div class="cta-icon">
+                    <i class="fas fa-hard-hat"></i>
+                </div>
+                <div class="cta-text">
+                    <h2>Ready to Start Your Project?</h2>
+                    <p>Let's build something amazing together. Contact our team today for a free consultation and project estimate.</p>
+                </div>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="btn btn-primary btn-large">
+                        <i class="fas fa-play-circle"></i>
+                        Start Your Project
+                    </a>
+                    <a href="tel:+211917119426" class="btn btn-secondary btn-large">
+                        <i class="fas fa-phone-alt"></i>
+                        Call Now: +211 917 119 426
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Service Process</h2>
+                <p>How We Work With Our Clients</p>
+            </div>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Consultation</h3>
+                        <p>We discuss your project requirements and goals</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Planning</h3>
+                        <p>We create detailed plans and estimates</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Execution</h3>
+                        <p>Our team implements the project with precision</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Delivery</h3>
+                        <p>We hand over the completed project on time</p>
                     </div>
                 </div>
             </div>
@@ -173,36 +406,83 @@
         <div class="container">
             <div class="footer-container">
                 <div class="footer-about">
-                    <div class="footer-logo">Dhab<span>Construction</span></div>
+                    <div class="footer-logo">
+                        <img src="images/logod.jpg" alt="Dhab Construction Logo" class="footer-logo-img">
+                        <span>Dhab<span>Construction</span></span>
+                    </div>
                     <p>Your trusted partner in infrastructural development across South Sudan and Eastern Africa. We build lasting structures that empower communities and drive progress.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
                 <div class="footer-links">
                     <h3 class="footer-heading">Quick Links</h3>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="portfolio.html">Portfolio</a></li>
-                        <li><a href="blog.html">Blog</a></li>
-                        <li><a href="invest.html">Invest</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                        <li><a href="services.html"><i class="fas fa-chevron-right"></i> Services</a></li>
+                        <li><a href="portfolio.html"><i class="fas fa-chevron-right"></i> Portfolio</a></li>
+                        <li><a href="blog.html"><i class="fas fa-chevron-right"></i> Blog</a></li>
+                        <li><a href="invest.html"><i class="fas fa-chevron-right"></i> Invest</a></li>
+                        <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-services">
+                    <h3 class="footer-heading">Our Services</h3>
+                    <ul>
+                        <li><a href="services.html#residential"><i class="fas fa-chevron-right"></i> Residential Construction</a></li>
+                        <li><a href="services.html#commercial"><i class="fas fa-chevron-right"></i> Commercial Construction</a></li>
+                        <li><a href="services.html#infrastructure"><i class="fas fa-chevron-right"></i> Infrastructure Development</a></li>
+                        <li><a href="services.html#community"><i class="fas fa-chevron-right"></i> Community Institutions</a></li>
+                        <li><a href="services.html#materials"><i class="fas fa-chevron-right"></i> Building Materials Supply</a></li>
+                        <li><a href="services.html#management"><i class="fas fa-chevron-right"></i> Construction Management</a></li>
                     </ul>
                 </div>
                 <div class="footer-contact">
                     <h3 class="footer-heading">Contact Info</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> Dynasty House, 1st Floor, Bilpam Road, Juba, South Sudan</p>
-                    <p><i class="fas fa-phone"></i> +211 917 119 426</p>
-                    <p><i class="fas fa-envelope"></i> info@dhabconstruction.com</p>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <strong>Address</strong>
+                            <p>Dynasty House, 1st Floor, Bilpam Road, Juba, South Sudan</p>
+                        </div>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <strong>Phone</strong>
+                            <p><a href="tel:+211917119426">+211 917 119 426</a></p>
+                        </div>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <strong>Email</strong>
+                            <p><a href="mailto:info@dhabconstruction.com">info@dhabconstruction.com</a></p>
+                        </div>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <strong>Working Hours</strong>
+                            <p>Mon - Fri: 8:00 AM - 6:00 PM</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="copyright">
-                <p>&copy; 2025 Dhab Construction. All Rights Reserved.</p>
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p>&copy; 2026 Dhab Construction. All Rights Reserved.</p>
+                </div>
+                <div class="footer-links-bottom">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Sitemap</a>
+                </div>
             </div>
         </div>
     </footer>
