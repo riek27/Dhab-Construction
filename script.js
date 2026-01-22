@@ -2,6 +2,8 @@
 // DOM CONTENT LOADED
 // ============================================
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM fully loaded and parsed');
+    
     // Initialize all functions
     initMobileMenu();
     initHeaderScroll();
@@ -13,7 +15,18 @@ document.addEventListener('DOMContentLoaded', function() {
     initAnimations();
     initSmoothScroll();
     initDropdownMobile();
+    updateCurrentYear();
+    initLoadMore();
+    
+    // Initialize any other components that need it
+    console.log('All JavaScript functions initialized');
 });
+
+// ============================================
+// GLOBAL VARIABLES
+// ============================================
+let lastScroll = 0;
+let typingInterval = null;
 
 // ============================================
 // MOBILE MENU TOGGLE WITH FIXED HEADER COMPENSATION
@@ -25,64 +38,58 @@ function initMobileMenu() {
     const body = document.body;
     const header = document.querySelector('header');
     
-    if (mobileMenuBtn) {
-        mobileMenuBtn.addEventListener('click', function(e) {
-            e.stopPropagation(); // Prevent event bubbling
-            
-            // Toggle mobile menu
-            nav.classList.toggle('active');
-            this.classList.toggle('active');
-            
-            // Update icon
-            const icon = this.querySelector('i');
-            if (nav.classList.contains('active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-                
-                // Add class to body to prevent scrolling
-                body.classList.add('menu-open');
-                
-                // Ensure header stays in place
-                if (!header.classList.contains('scrolled')) {
-                    body.classList.add('header-scrolled');
-                }
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-                
-                // Remove class from body
-                body.classList.remove('menu-open');
-                
-                // Remove header-scrolled class if header is not scrolled
-                if (!header.classList.contains('scrolled')) {
-                    body.classList.remove('header-scrolled');
-                }
-                
-                // Close all dropdowns when closing mobile menu
-                document.querySelectorAll('.dropdown-menu').forEach(dropdown => {
-                    dropdown.classList.remove('active');
-                });
-                document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
-                    toggle.classList.remove('active');
-                });
-            }
-        });
+    if (!mobileMenuBtn || !nav) {
+        console.warn('Mobile menu elements not found');
+        return;
     }
     
-    // Close mobile menu when clicking on a link (excluding dropdown toggles)
+    mobileMenuBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        
+        // Toggle mobile menu
+        nav.classList.toggle('active');
+        this.classList.toggle('active');
+        
+        // Update icon
+        const icon = this.querySelector('i');
+        if (nav.classList.contains('active')) {
+            icon.classList.remove('fa-bars');
+            icon.classList.add('fa-times');
+            
+            // Add class to body to prevent scrolling
+            body.classList.add('menu-open');
+            
+            // Ensure header stays in place
+            if (!header.classList.contains('scrolled')) {
+                body.classList.add('header-scrolled');
+            }
+        } else {
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+            
+            // Remove class from body
+            body.classList.remove('menu-open');
+            
+            // Remove header-scrolled class if header is not scrolled
+            if (!header.classList.contains('scrolled')) {
+                body.classList.remove('header-scrolled');
+            }
+            
+            // Close all dropdowns when closing mobile menu
+            document.querySelectorAll('.dropdown-menu').forEach(dropdown => {
+                dropdown.classList.remove('active');
+            });
+            document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+                toggle.classList.remove('active');
+            });
+        }
+    });
+    
+    // Close mobile menu when clicking on a link
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             if (window.innerWidth <= 992) {
-                nav.classList.remove('active');
-                mobileMenuBtn.classList.remove('active');
-                const icon = mobileMenuBtn.querySelector('i');
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-                body.classList.remove('menu-open');
-                
-                if (!header.classList.contains('scrolled')) {
-                    body.classList.remove('header-scrolled');
-                }
+                closeMobileMenu(nav, mobileMenuBtn, header, body);
             }
         });
     });
@@ -91,18 +98,7 @@ function initMobileMenu() {
     document.addEventListener('click', (e) => {
         if (window.innerWidth <= 992) {
             if (!e.target.closest('nav') && !e.target.closest('.mobile-menu-btn')) {
-                nav.classList.remove('active');
-                if (mobileMenuBtn) {
-                    mobileMenuBtn.classList.remove('active');
-                    const icon = mobileMenuBtn.querySelector('i');
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
-                }
-                body.classList.remove('menu-open');
-                
-                if (!header.classList.contains('scrolled')) {
-                    body.classList.remove('header-scrolled');
-                }
+                closeMobileMenu(nav, mobileMenuBtn, header, body);
             }
         }
     });
@@ -110,18 +106,26 @@ function initMobileMenu() {
     // Handle window resize
     window.addEventListener('resize', () => {
         if (window.innerWidth > 992) {
-            // Reset mobile menu state on desktop
-            nav.classList.remove('active');
-            if (mobileMenuBtn) {
-                mobileMenuBtn.classList.remove('active');
-                const icon = mobileMenuBtn.querySelector('i');
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
-            body.classList.remove('menu-open');
-            body.classList.remove('header-scrolled');
+            closeMobileMenu(nav, mobileMenuBtn, header, body);
         }
     });
+}
+
+function closeMobileMenu(nav, mobileMenuBtn, header, body) {
+    nav.classList.remove('active');
+    if (mobileMenuBtn) {
+        mobileMenuBtn.classList.remove('active');
+        const icon = mobileMenuBtn.querySelector('i');
+        if (icon) {
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        }
+    }
+    body.classList.remove('menu-open');
+    
+    if (!header.classList.contains('scrolled')) {
+        body.classList.remove('header-scrolled');
+    }
 }
 
 // ============================================
@@ -130,6 +134,8 @@ function initMobileMenu() {
 function initDropdownMobile() {
     const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
     
+    if (dropdownToggles.length === 0) return;
+    
     dropdownToggles.forEach(toggle => {
         toggle.addEventListener('click', function(e) {
             if (window.innerWidth <= 992) {
@@ -137,7 +143,7 @@ function initDropdownMobile() {
                 e.stopPropagation();
                 
                 const dropdownMenu = this.nextElementSibling;
-                const isActive = dropdownMenu.classList.contains('active');
+                if (!dropdownMenu) return;
                 
                 // Close all other dropdowns
                 document.querySelectorAll('.dropdown-menu').forEach(menu => {
@@ -177,7 +183,9 @@ function initDropdownMobile() {
                 document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
                     toggle.classList.remove('active');
                     const icon = toggle.querySelector('i');
-                    icon.style.transform = 'rotate(0deg)';
+                    if (icon) {
+                        icon.style.transform = 'rotate(0deg)';
+                    }
                 });
             }
         }
@@ -190,16 +198,20 @@ function initDropdownMobile() {
         dropdowns.forEach(dropdown => {
             dropdown.addEventListener('mouseenter', () => {
                 const dropdownMenu = dropdown.querySelector('.dropdown-menu');
-                dropdownMenu.style.opacity = '1';
-                dropdownMenu.style.visibility = 'visible';
-                dropdownMenu.style.transform = 'translateY(0)';
+                if (dropdownMenu) {
+                    dropdownMenu.style.opacity = '1';
+                    dropdownMenu.style.visibility = 'visible';
+                    dropdownMenu.style.transform = 'translateY(0)';
+                }
             });
             
             dropdown.addEventListener('mouseleave', () => {
                 const dropdownMenu = dropdown.querySelector('.dropdown-menu');
-                dropdownMenu.style.opacity = '0';
-                dropdownMenu.style.visibility = 'hidden';
-                dropdownMenu.style.transform = 'translateY(20px)';
+                if (dropdownMenu) {
+                    dropdownMenu.style.opacity = '0';
+                    dropdownMenu.style.visibility = 'hidden';
+                    dropdownMenu.style.transform = 'translateY(20px)';
+                }
             });
         });
     }
@@ -212,8 +224,10 @@ function initHeaderScroll() {
     const header = document.querySelector('header');
     const body = document.body;
     
+    if (!header) return;
+    
     window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset;
+        const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
         
         if (currentScroll > 100) {
             header.classList.add('scrolled');
@@ -221,12 +235,14 @@ function initHeaderScroll() {
             
             if (currentScroll > lastScroll && currentScroll > 200) {
                 header.style.transform = 'translateY(-100%)';
+                header.style.transition = 'transform 0.3s ease-in-out';
             } else {
                 header.style.transform = 'translateY(0)';
+                header.style.transition = 'transform 0.3s ease-in-out';
             }
         } else {
             header.classList.remove('scrolled');
-            if (!document.querySelector('nav').classList.contains('active')) {
+            if (!document.querySelector('nav')?.classList.contains('active')) {
                 body.classList.remove('header-scrolled');
             }
         }
@@ -236,13 +252,18 @@ function initHeaderScroll() {
 }
 
 // ============================================
-// TYPING TEXT EFFECT (Index Page)
+// TYPING TEXT EFFECT (Index Page) - FIXED VERSION
 // ============================================
 function initTypingText() {
     const typingElement = document.querySelector('.typed-text');
     const cursorElement = document.querySelector('.cursor');
     
-    if (!typingElement || !cursorElement) return;
+    console.log('Typing text elements:', { typingElement, cursorElement });
+    
+    if (!typingElement || !cursorElement) {
+        console.warn('Typing text or cursor element not found');
+        return;
+    }
     
     const texts = [
         "Building the Future of South Sudan",
@@ -289,12 +310,19 @@ function initTypingText() {
         }
     }
     
+    // Clear any existing interval
+    if (typingInterval) {
+        clearInterval(typingInterval);
+    }
+    
     // Start typing effect
     setTimeout(type, 1000);
     
     // Add cursor blink animation
-    setInterval(() => {
-        cursorElement.style.opacity = cursorElement.style.opacity === '0' ? '1' : '0';
+    typingInterval = setInterval(() => {
+        if (cursorElement) {
+            cursorElement.style.opacity = cursorElement.style.opacity === '0' ? '1' : '0';
+        }
     }, 500);
 }
 
@@ -341,12 +369,18 @@ function initPortfolioFilter() {
 function initBlogReadMore() {
     const readMoreButtons = document.querySelectorAll('.read-more');
     
+    if (readMoreButtons.length === 0) return;
+    
     readMoreButtons.forEach(button => {
         button.addEventListener('click', function(e) {
             e.preventDefault();
             const blogCard = this.closest('.blog-card');
+            if (!blogCard) return;
+            
             const fullContent = blogCard.querySelector('.blog-full-content');
             const excerpt = blogCard.querySelector('.blog-excerpt');
+            
+            if (!fullContent || !excerpt) return;
             
             if (fullContent.style.display === 'block') {
                 fullContent.style.display = 'none';
@@ -471,6 +505,8 @@ function initFormValidation() {
 function initAnimations() {
     const animatedElements = document.querySelectorAll('.fade-in, .value-card, .service-card, .portfolio-item, .team-member');
     
+    if (animatedElements.length === 0) return;
+    
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -496,12 +532,13 @@ function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
+            if (targetId === '#' || targetId === '#!') return;
             
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
                 e.preventDefault();
-                const headerHeight = document.querySelector('header').offsetHeight;
+                const header = document.querySelector('header');
+                const headerHeight = header ? header.offsetHeight : 0;
                 const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
                 
                 window.scrollTo({
@@ -514,17 +551,25 @@ function initSmoothScroll() {
 }
 
 // ============================================
-// LOAD MORE PORTFOLIO ITEMS (Simulated)
+// LOAD MORE PORTFOLIO ITEMS
 // ============================================
 function initLoadMore() {
     const loadMoreBtn = document.querySelector('.btn-load-more');
     if (!loadMoreBtn) return;
     
     let currentItems = 12;
-    const totalItems = document.querySelectorAll('.portfolio-item').length;
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+    const totalItems = portfolioItems.length;
+    
+    // Initially hide items beyond 12
+    Array.from(portfolioItems).slice(currentItems).forEach(item => {
+        item.style.display = 'none';
+        item.style.opacity = '0';
+        item.style.transform = 'scale(0.8)';
+    });
     
     loadMoreBtn.addEventListener('click', function() {
-        const hiddenItems = Array.from(document.querySelectorAll('.portfolio-item')).slice(currentItems, currentItems + 6);
+        const hiddenItems = Array.from(portfolioItems).slice(currentItems, currentItems + 6);
         
         hiddenItems.forEach(item => {
             item.style.display = 'block';
@@ -537,7 +582,7 @@ function initLoadMore() {
         currentItems += 6;
         
         if (currentItems >= totalItems) {
-            loadMoreBtn.style.display = 'none';
+            this.style.display = 'none';
         }
     });
 }
@@ -546,21 +591,18 @@ function initLoadMore() {
 // CURRENT YEAR IN FOOTER
 // ============================================
 function updateCurrentYear() {
-    const yearElement = document.querySelector('.copyright');
-    if (yearElement) {
-        const currentYear = new Date().getFullYear();
-        yearElement.innerHTML = yearElement.innerHTML.replace('2025', currentYear);
-    }
+    const yearElements = document.querySelectorAll('.copyright p');
+    if (yearElements.length === 0) return;
+    
+    const currentYear = new Date().getFullYear();
+    yearElements.forEach(element => {
+        element.innerHTML = element.innerHTML.replace('2026', currentYear);
+    });
 }
 
-// Initialize on load
-updateCurrentYear();
-initLoadMore();
-
-// Global variable for header scroll
-let lastScroll = 0;
-
-// Prevent body scroll when mobile menu is open
+// ============================================
+// PREVENT BODY SCROLL WHEN MOBILE MENU IS OPEN
+// ============================================
 document.addEventListener('DOMContentLoaded', function() {
     const body = document.body;
     const originalOverflow = body.style.overflow;
@@ -580,3 +622,45 @@ document.addEventListener('DOMContentLoaded', function() {
     
     observer.observe(body, { attributes: true });
 });
+
+// ============================================
+// ADDITIONAL UTILITY FUNCTIONS
+// ============================================
+
+// Debounce function for resize events
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+// Throttle function for scroll events
+function throttle(func, limit) {
+    let inThrottle;
+    return function() {
+        const args = arguments;
+        const context = this;
+        if (!inThrottle) {
+            func.apply(context, args);
+            inThrottle = true;
+            setTimeout(() => inThrottle = false, limit);
+        }
+    };
+}
+
+// ============================================
+// FIX FOR TYPING TEXT HTML STRUCTURE
+// ============================================
+// If you don't have the typing text HTML structure yet, here's what you need:
+/*
+<div class="hero-content">
+    <h1>Welcome to Dhab Construction</h1>
+    <h2>We are <span class="typed-text"></span><span class="cursor">|</span></h2>
+</div>
+*/
