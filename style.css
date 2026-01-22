@@ -4064,3 +4064,61 @@ header.scrolled {
 header:not(.scrolled) {
     animation: headerExpand 0.3s ease forwards;
 }
+
+/* Alternative: More prominent footer bottom */
+.footer-bottom {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 1.5rem 0;
+    margin-top: 3rem;
+    position: relative;
+}
+
+.footer-bottom::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    max-width: 400px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #4CAF50, transparent);
+}
+
+.copyright {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+@media (min-width: 768px) {
+    .copyright {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+.copyright p {
+    color: #ccc;
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+.copyright .designer {
+    color: #aaa;
+    font-size: 0.9rem;
+}
+
+.copyright .designer a {
+    color: #4CAF50;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.copyright .designer a:hover {
+    color: #66BB6A;
+    text-decoration: underline;
+}
