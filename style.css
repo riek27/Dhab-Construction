@@ -4320,3 +4320,30 @@ header:not(.scrolled) {
     color: #66BB6A;
     text-decoration: underline;
 }
+
+.typing-container {
+    display: inline-block;
+    position: relative;
+    min-height: 2.5em;
+}
+
+.typed-text {
+    color: var(--gold);
+    font-weight: 700;
+    display: inline-block;
+}
+
+.cursor {
+    display: inline-block;
+    width: 3px;
+    background-color: var(--gold);
+    margin-left: 2px;
+    animation: blink 1s infinite;
+    height: 1.2em;
+    vertical-align: middle;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
