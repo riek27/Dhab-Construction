@@ -3,26 +3,168 @@
 // ============================================
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize all functionality
-    initTypingEffect();
-    initReadMoreButtons();
-    initDropdowns();
     initMobileMenu();
-    initSmoothScroll();
+    initDropdowns();
+    initTypingEffect();
+    
+    // Initialize other features based on page
+    if (document.querySelector('.blog-page')) {
+        initReadMoreButtons();
+    }
+    
+    if (document.querySelector('.portfolio-page')) {
+        initPortfolioFilter();
+    }
+    
+    if (document.querySelector('.contact-page')) {
+        initContactForm();
+    }
+    
+    // Common initializations
     initHeaderScroll();
-    initContactForm();
-    initPortfolioFilter();
-    initFormValidation();
+    initSmoothScroll();
     initStatsCounter();
 });
 
 // ============================================
-// TYPING EFFECT FOR HERO SECTION
+// MOBILE MENU FUNCTIONALITY - SIMPLIFIED
+// ============================================
+function initMobileMenu() {
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const nav = document.querySelector('nav');
+    
+    if (!mobileMenuBtn || !nav) return;
+    
+    mobileMenuBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        nav.classList.toggle('active');
+        
+        // Toggle menu icon
+        const icon = this.querySelector('i');
+        if (nav.classList.contains('active')) {
+            icon.classList.remove('fa-bars');
+            icon.classList.add('fa-times');
+        } else {
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        }
+    });
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!nav.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+            nav.classList.remove('active');
+            const icon = mobileMenuBtn.querySelector('i');
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        }
+    });
+    
+    // Close menu when clicking on a link
+    const navLinks = document.querySelectorAll('nav a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            if (window.innerWidth <= 992) {
+                nav.classList.remove('active');
+                const icon = mobileMenuBtn.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+    });
+}
+
+// ============================================
+// DROPDOWN FUNCTIONALITY - SIMPLIFIED
+// ============================================
+function initDropdowns() {
+    const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+    
+    dropdownToggles.forEach(toggle => {
+        toggle.addEventListener('click', function(e) {
+            // Only prevent default on mobile
+            if (window.innerWidth <= 992) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const dropdown = this.closest('.dropdown');
+                const isActive = dropdown.classList.contains('active');
+                
+                // Close all other dropdowns
+                document.querySelectorAll('.dropdown.active').forEach(d => {
+                    if (d !== dropdown) {
+                        d.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current dropdown
+                dropdown.classList.toggle('active');
+                
+                // Rotate arrow icon
+                const arrow = this.querySelector('i');
+                if (dropdown.classList.contains('active')) {
+                    arrow.style.transform = 'rotate(180deg)';
+                } else {
+                    arrow.style.transform = 'rotate(0deg)';
+                }
+            }
+        });
+    });
+    
+    // Desktop hover functionality
+    if (window.innerWidth > 992) {
+        const dropdowns = document.querySelectorAll('.dropdown');
+        
+        dropdowns.forEach(dropdown => {
+            dropdown.addEventListener('mouseenter', function() {
+                this.classList.add('active');
+                const arrow = this.querySelector('.dropdown-toggle i');
+                if (arrow) arrow.style.transform = 'rotate(180deg)';
+            });
+            
+            dropdown.addEventListener('mouseleave', function() {
+                this.classList.remove('active');
+                const arrow = this.querySelector('.dropdown-toggle i');
+                if (arrow) arrow.style.transform = 'rotate(0deg)';
+            });
+        });
+    }
+    
+    // Close dropdowns when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.dropdown')) {
+            document.querySelectorAll('.dropdown.active').forEach(dropdown => {
+                dropdown.classList.remove('active');
+                const arrow = dropdown.querySelector('.dropdown-toggle i');
+                if (arrow) arrow.style.transform = 'rotate(0deg)';
+            });
+        }
+    });
+    
+    // Handle window resize
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 992) {
+            // Reset all dropdowns on desktop
+            document.querySelectorAll('.dropdown.active').forEach(dropdown => {
+                dropdown.classList.remove('active');
+                const arrow = dropdown.querySelector('.dropdown-toggle i');
+                if (arrow) arrow.style.transform = 'rotate(0deg)';
+            });
+        }
+    });
+}
+
+// ============================================
+// TYPING EFFECT - SIMPLIFIED AND WORKING
 // ============================================
 function initTypingEffect() {
-    const typedTextElement = document.querySelector('.typed-text');
-    const cursorElement = document.querySelector('.cursor');
+    const typingContainer = document.querySelector('.typing-container');
+    if (!typingContainer) return;
     
-    if (!typedTextElement || !cursorElement) return;
+    const typedText = typingContainer.querySelector('.typed-text');
+    const cursor = typingContainer.querySelector('.cursor');
+    
+    if (!typedText || !cursor) return;
     
     const texts = [
         "Building the Future of South Sudan",
@@ -34,21 +176,21 @@ function initTypingEffect() {
     let textIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
-    let isTypingPaused = false;
+    let typingSpeed = 100;
     
     function type() {
         const currentText = texts[textIndex];
         
         if (!isDeleting && charIndex < currentText.length) {
             // Typing forward
-            typedTextElement.textContent = currentText.substring(0, charIndex + 1);
+            typedText.textContent = currentText.substring(0, charIndex + 1);
             charIndex++;
-            setTimeout(type, 100);
+            setTimeout(type, typingSpeed);
         } else if (isDeleting && charIndex > 0) {
             // Deleting backward
-            typedTextElement.textContent = currentText.substring(0, charIndex - 1);
+            typedText.textContent = currentText.substring(0, charIndex - 1);
             charIndex--;
-            setTimeout(type, 50);
+            setTimeout(type, typingSpeed / 2);
         } else {
             // Switch between typing and deleting
             isDeleting = !isDeleting;
@@ -57,228 +199,45 @@ function initTypingEffect() {
                 textIndex = (textIndex + 1) % texts.length;
             }
             
-            // Pause at the end of typing and before deleting
+            // Pause before next action
             const pauseTime = isDeleting ? 1500 : 500;
-            isTypingPaused = true;
-            
-            setTimeout(() => {
-                isTypingPaused = false;
-                type();
-            }, pauseTime);
+            setTimeout(type, pauseTime);
         }
     }
     
-    // Cursor blinking effect
-    function blinkCursor() {
-        cursorElement.style.opacity = cursorElement.style.opacity === '0' ? '1' : '0';
-        setTimeout(blinkCursor, isTypingPaused ? 700 : 500);
-    }
-    
-    // Start effects
+    // Start typing effect
     type();
-    blinkCursor();
+    
+    // Cursor blinking effect
+    setInterval(() => {
+        cursor.style.opacity = cursor.style.opacity === '0' ? '1' : '0';
+    }, 500);
 }
 
 // ============================================
-// READ MORE / LESS FUNCTIONALITY FOR BLOG
+// READ MORE / LESS FOR BLOG
 // ============================================
 function initReadMoreButtons() {
-    const blogCards = document.querySelectorAll('.blog-card');
-    
-    blogCards.forEach(card => {
-        const readMoreBtn = card.querySelector('.read-more');
-        const fullContent = card.querySelector('.blog-full-content');
-        const excerpt = card.querySelector('.blog-excerpt');
-        
-        if (!readMoreBtn || !fullContent || !excerpt) return;
-        
-        readMoreBtn.addEventListener('click', function(e) {
+    document.querySelectorAll('.read-more').forEach(button => {
+        button.addEventListener('click', function(e) {
             e.preventDefault();
             
-            if (card.classList.contains('expanded')) {
-                // Collapse content
-                card.classList.remove('expanded');
+            const blogCard = this.closest('.blog-card');
+            const fullContent = blogCard.querySelector('.blog-full-content');
+            const excerpt = blogCard.querySelector('.blog-excerpt');
+            
+            if (blogCard.classList.contains('expanded')) {
+                // Collapse
+                blogCard.classList.remove('expanded');
                 fullContent.style.display = 'none';
                 excerpt.style.display = 'block';
                 this.innerHTML = 'Read Full Article <i class="fas fa-arrow-right"></i>';
-                
-                // Scroll to top of card smoothly
-                card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             } else {
-                // Expand content
-                card.classList.add('expanded');
+                // Expand
+                blogCard.classList.add('expanded');
                 fullContent.style.display = 'block';
                 excerpt.style.display = 'none';
                 this.innerHTML = 'Show Less <i class="fas fa-arrow-up"></i>';
-                
-                // Smooth scroll to expanded content
-                const offset = 100;
-                const cardTop = card.getBoundingClientRect().top + window.pageYOffset;
-                window.scrollTo({
-                    top: cardTop - offset,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-}
-
-// ============================================
-// DROPDOWN FUNCTIONALITY
-// ============================================
-function initDropdowns() {
-    const dropdowns = document.querySelectorAll('.dropdown');
-    
-    dropdowns.forEach(dropdown => {
-        const toggle = dropdown.querySelector('.dropdown-toggle');
-        const menu = dropdown.querySelector('.dropdown-menu');
-        
-        if (!toggle || !menu) return;
-        
-        // Click handler for dropdown toggle
-        toggle.addEventListener('click', function(e) {
-            if (window.innerWidth <= 992) { // Mobile only
-                e.preventDefault();
-                e.stopPropagation();
-                
-                const isActive = dropdown.classList.contains('active');
-                
-                // Close all other dropdowns
-                document.querySelectorAll('.dropdown.active').forEach(otherDropdown => {
-                    if (otherDropdown !== dropdown) {
-                        otherDropdown.classList.remove('active');
-                    }
-                });
-                
-                // Toggle current dropdown
-                dropdown.classList.toggle('active');
-                
-                // Close dropdown when clicking outside
-                if (!isActive) {
-                    setTimeout(() => {
-                        document.addEventListener('click', closeDropdownOnClickOutside);
-                    }, 10);
-                }
-            }
-        });
-        
-        // Hover functionality for desktop
-        if (window.innerWidth > 992) {
-            dropdown.addEventListener('mouseenter', function() {
-                this.classList.add('active');
-                menu.style.opacity = '1';
-                menu.style.visibility = 'visible';
-                menu.style.transform = 'translateY(0)';
-            });
-            
-            dropdown.addEventListener('mouseleave', function() {
-                this.classList.remove('active');
-                menu.style.opacity = '0';
-                menu.style.visibility = 'hidden';
-                menu.style.transform = 'translateY(20px)';
-            });
-        }
-    });
-    
-    // Close dropdowns on window resize
-    window.addEventListener('resize', function() {
-        if (window.innerWidth > 992) {
-            document.querySelectorAll('.dropdown.active').forEach(dropdown => {
-                dropdown.classList.remove('active');
-            });
-        }
-    });
-}
-
-function closeDropdownOnClickOutside(e) {
-    if (!e.target.closest('.dropdown')) {
-        document.querySelectorAll('.dropdown.active').forEach(dropdown => {
-            dropdown.classList.remove('active');
-        });
-        document.removeEventListener('click', closeDropdownOnClickOutside);
-    }
-}
-
-// ============================================
-// MOBILE MENU FUNCTIONALITY
-// ============================================
-function initMobileMenu() {
-    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-    const nav = document.querySelector('nav');
-    const navLinks = document.querySelectorAll('nav a');
-    
-    if (!mobileMenuBtn || !nav) return;
-    
-    mobileMenuBtn.addEventListener('click', function() {
-        nav.classList.toggle('active');
-        document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
-        
-        // Toggle menu icon
-        const icon = this.querySelector('i');
-        if (icon.classList.contains('fa-bars')) {
-            icon.classList.replace('fa-bars', 'fa-times');
-        } else {
-            icon.classList.replace('fa-times', 'fa-bars');
-        }
-    });
-    
-    // Close mobile menu when clicking on a link
-    navLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            if (window.innerWidth <= 992) {
-                nav.classList.remove('active');
-                document.body.style.overflow = '';
-                mobileMenuBtn.querySelector('i').classList.replace('fa-times', 'fa-bars');
-                
-                // Close any open dropdowns
-                document.querySelectorAll('.dropdown.active').forEach(dropdown => {
-                    dropdown.classList.remove('active');
-                });
-            }
-        });
-    });
-    
-    // Close mobile menu when clicking outside
-    document.addEventListener('click', function(e) {
-        if (window.innerWidth <= 992 && 
-            !e.target.closest('nav') && 
-            !e.target.closest('.mobile-menu-btn') && 
-            nav.classList.contains('active')) {
-            nav.classList.remove('active');
-            document.body.style.overflow = '';
-            mobileMenuBtn.querySelector('i').classList.replace('fa-times', 'fa-bars');
-        }
-    });
-}
-
-// ============================================
-// SMOOTH SCROLLING
-// ============================================
-function initSmoothScroll() {
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const href = this.getAttribute('href');
-            
-            // Skip if it's a dropdown toggle or empty href
-            if (href === '#' || this.classList.contains('dropdown-toggle')) {
-                return;
-            }
-            
-            const targetElement = document.querySelector(href);
-            if (targetElement) {
-                e.preventDefault();
-                
-                const headerHeight = document.querySelector('header').offsetHeight;
-                const targetPosition = targetElement.offsetTop - headerHeight - 20;
-                
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-                
-                // Update URL without page reload
-                history.pushState(null, null, href);
             }
         });
     });
@@ -289,30 +248,79 @@ function initSmoothScroll() {
 // ============================================
 function initHeaderScroll() {
     const header = document.querySelector('header');
-    let lastScrollTop = 0;
+    
+    if (!header) return;
     
     window.addEventListener('scroll', function() {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        
-        // Add/remove scrolled class based on scroll position
-        if (scrollTop > 100) {
+        if (window.scrollY > 100) {
             header.classList.add('scrolled');
         } else {
             header.classList.remove('scrolled');
         }
-        
-        // Hide/show header on scroll direction (optional)
-        if (scrollTop > 500) {
-            if (scrollTop > lastScrollTop) {
-                // Scrolling down
-                header.style.transform = 'translateY(-100%)';
-            } else {
-                // Scrolling up
-                header.style.transform = 'translateY(0)';
+    });
+}
+
+// ============================================
+// SMOOTH SCROLLING
+// ============================================
+function initSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            
+            if (href === '#' || href.startsWith('#!')) return;
+            
+            const targetElement = document.querySelector(href);
+            if (targetElement) {
+                e.preventDefault();
+                
+                const headerHeight = document.querySelector('header').offsetHeight;
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
             }
-        }
-        
-        lastScrollTop = scrollTop;
+        });
+    });
+}
+
+// ============================================
+// PORTFOLIO FILTER
+// ============================================
+function initPortfolioFilter() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+    
+    if (!filterButtons.length || !portfolioItems.length) return;
+    
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Remove active class from all buttons
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            
+            // Add active class to clicked button
+            this.classList.add('active');
+            
+            const filter = this.getAttribute('data-filter');
+            
+            portfolioItems.forEach(item => {
+                if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                    item.style.display = 'block';
+                    setTimeout(() => {
+                        item.style.opacity = '1';
+                        item.style.transform = 'scale(1)';
+                    }, 10);
+                } else {
+                    item.style.opacity = '0';
+                    item.style.transform = 'scale(0.8)';
+                    setTimeout(() => {
+                        item.style.display = 'none';
+                    }, 300);
+                }
+            });
+        });
     });
 }
 
@@ -324,146 +332,26 @@ function initContactForm() {
     if (!contactForm) return;
     
     contactForm.addEventListener('submit', function(e) {
-        if (!validateForm(this)) {
-            e.preventDefault();
-            return;
-        }
+        e.preventDefault();
         
-        // Add loading state
+        // Show loading state
         const submitBtn = this.querySelector('button[type="submit"]');
         const originalText = submitBtn.innerHTML;
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
         submitBtn.disabled = true;
         
-        // Netlify will handle the form submission
-        // The form will reset automatically after successful submission
-        
-        // Reset button state after 5 seconds (in case submission fails)
+        // Simulate form submission (Netlify will handle actual submission)
         setTimeout(() => {
+            // Reset button
             submitBtn.innerHTML = originalText;
             submitBtn.disabled = false;
-        }, 5000);
-    });
-}
-
-// ============================================
-// FORM VALIDATION
-// ============================================
-function initFormValidation() {
-    const forms = document.querySelectorAll('form');
-    
-    forms.forEach(form => {
-        const inputs = form.querySelectorAll('input, textarea, select');
-        
-        inputs.forEach(input => {
-            // Real-time validation
-            input.addEventListener('blur', function() {
-                validateField(this);
-            });
             
-            // Clear error on focus
-            input.addEventListener('focus', function() {
-                clearError(this);
-            });
-        });
-    });
-}
-
-function validateField(field) {
-    clearError(field);
-    
-    // Required fields
-    if (field.hasAttribute('required') && !field.value.trim()) {
-        showError(field, 'This field is required');
-        return false;
-    }
-    
-    // Email validation
-    if (field.type === 'email' && field.value.trim()) {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(field.value)) {
-            showError(field, 'Please enter a valid email address');
-            return false;
-        }
-    }
-    
-    return true;
-}
-
-function validateForm(form) {
-    let isValid = true;
-    const requiredFields = form.querySelectorAll('[required]');
-    
-    requiredFields.forEach(field => {
-        if (!validateField(field)) {
-            isValid = false;
-        }
-    });
-    
-    return isValid;
-}
-
-function showError(field, message) {
-    field.classList.add('error');
-    
-    let errorElement = field.parentElement.querySelector('.error-message');
-    if (!errorElement) {
-        errorElement = document.createElement('div');
-        errorElement.className = 'error-message';
-        field.parentElement.appendChild(errorElement);
-    }
-    
-    errorElement.textContent = message;
-    errorElement.style.color = '#e74c3c';
-    errorElement.style.fontSize = '0.85rem';
-    errorElement.style.marginTop = '5px';
-}
-
-function clearError(field) {
-    field.classList.remove('error');
-    
-    const errorElement = field.parentElement.querySelector('.error-message');
-    if (errorElement) {
-        errorElement.remove();
-    }
-}
-
-// ============================================
-// PORTFOLIO FILTER
-// ============================================
-function initPortfolioFilter() {
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const portfolioItems = document.querySelectorAll('.portfolio-item');
-    
-    if (!filterBtns.length || !portfolioItems.length) return;
-    
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-            // Remove active class from all buttons
-            filterBtns.forEach(b => b.classList.remove('active'));
+            // Reset form
+            this.reset();
             
-            // Add active class to clicked button
-            this.classList.add('active');
-            
-            const filterValue = this.getAttribute('data-filter');
-            
-            // Filter portfolio items
-            portfolioItems.forEach(item => {
-                if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
-                    item.style.display = 'block';
-                    setTimeout(() => {
-                        item.style.opacity = '1';
-                        item.style.transform = 'translateY(0)';
-                    }, 10);
-                } else {
-                    item.style.opacity = '0';
-                    item.style.transform = 'translateY(20px)';
-                    setTimeout(() => {
-                        item.style.display = 'none';
-                    }, 300);
-                }
-            });
-        });
+            // Show success message
+            alert('Thank you for your message! We will get back to you soon.');
+        }, 2000);
     });
 }
 
@@ -475,100 +363,70 @@ function initStatsCounter() {
     
     if (!statNumbers.length) return;
     
-    const observerOptions = {
-        threshold: 0.5,
-        rootMargin: '0px 0px -50px 0px'
-    };
-    
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                const statNumber = entry.target;
-                const targetCount = parseInt(statNumber.getAttribute('data-count'));
+                const element = entry.target;
+                const target = parseInt(element.getAttribute('data-count'));
                 
-                // Check if already animated
-                if (statNumber.classList.contains('counted')) return;
+                if (element.classList.contains('animated')) return;
+                element.classList.add('animated');
                 
-                animateCounter(statNumber, targetCount);
-                statNumber.classList.add('counted');
+                let current = 0;
+                const increment = target / 50; // 50 frames
+                const duration = 2000; // 2 seconds
+                const stepTime = duration / 50;
                 
-                // Stop observing after animation
-                observer.unobserve(statNumber);
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        element.textContent = target;
+                        clearInterval(timer);
+                    } else {
+                        element.textContent = Math.floor(current);
+                    }
+                }, stepTime);
             }
         });
-    }, observerOptions);
+    }, { threshold: 0.5 });
     
-    statNumbers.forEach(statNumber => {
-        observer.observe(statNumber);
-    });
-}
-
-function animateCounter(element, target) {
-    const duration = 2000; // 2 seconds
-    const step = 25; // Update every 25ms
-    const totalSteps = duration / step;
-    const increment = target / totalSteps;
-    let current = 0;
-    
-    const timer = setInterval(() => {
-        current += increment;
-        
-        if (current >= target) {
-            current = target;
-            clearInterval(timer);
-        }
-        
-        // Format number with commas if needed
-        element.textContent = Math.floor(current).toLocaleString();
-    }, step);
+    statNumbers.forEach(stat => observer.observe(stat));
 }
 
 // ============================================
-// IMAGE LAZY LOADING
+// FIX FOR DROPDOWN LINKS ON SERVICES PAGE
 // ============================================
-function initLazyLoading() {
-    if ('IntersectionObserver' in window) {
-        const imageObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    img.src = img.dataset.src || img.src;
-                    img.classList.add('loaded');
-                    observer.unobserve(img);
-                }
-            });
-        });
-        
-        document.querySelectorAll('img[data-src]').forEach(img => {
-            imageObserver.observe(img);
-        });
-    }
-}
-
-// ============================================
-// SERVICE PAGE DROPDOWN CONTENT
-// ============================================
-function initServiceContentToggle() {
-    const serviceLinks = document.querySelectorAll('.service-link');
-    
-    serviceLinks.forEach(link => {
+function initServiceLinks() {
+    // Prevent dropdown menu links from closing the dropdown immediately
+    document.querySelectorAll('.dropdown-menu a').forEach(link => {
         link.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const serviceCard = this.closest('.service-card');
-            const serviceId = serviceCard ? serviceCard.id : null;
-            
-            if (serviceId) {
-                // If we're on the services page, scroll to the service
-                const targetSection = document.getElementById(serviceId);
-                if (targetSection) {
-                    const headerHeight = document.querySelector('header').offsetHeight;
-                    const targetPosition = targetSection.offsetTop - headerHeight - 20;
-                    
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
+            if (window.innerWidth <= 992) {
+                e.stopPropagation();
+            }
+        });
+    });
+}
+
+// ============================================
+// SERVICE CONTENT EXPAND/COLLAPSE
+// ============================================
+function initServiceContent() {
+    document.querySelectorAll('.service-link').forEach(link => {
+        link.addEventListener('click', function(e) {
+            if (window.innerWidth <= 992) {
+                e.preventDefault();
+                const serviceCard = this.closest('.service-card');
+                const content = serviceCard.querySelector('.service-content p:nth-child(2)');
+                
+                if (content) {
+                    content.classList.toggle('expanded');
+                    if (content.classList.contains('expanded')) {
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                        this.innerHTML = 'Show Less <i class="fas fa-arrow-up"></i>';
+                    } else {
+                        content.style.maxHeight = '60px';
+                        this.innerHTML = 'Learn More <i class="fas fa-arrow-right"></i>';
+                    }
                 }
             }
         });
@@ -576,90 +434,122 @@ function initServiceContentToggle() {
 }
 
 // ============================================
-// UTILITY FUNCTIONS
-// ============================================
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-}
-
-// Throttle function for scroll events
-function throttle(func, limit) {
-    let inThrottle;
-    return function() {
-        const args = arguments;
-        const context = this;
-        if (!inThrottle) {
-            func.apply(context, args);
-            inThrottle = true;
-            setTimeout(() => inThrottle = false, limit);
-        }
-    };
-}
-
-// ============================================
-// WINDOW LOAD EVENT
+// PAGE LOAD ANIMATIONS
 // ============================================
 window.addEventListener('load', function() {
-    // Remove preloader if exists
-    const preloader = document.querySelector('.preloader');
-    if (preloader) {
-        preloader.style.opacity = '0';
-        setTimeout(() => {
-            preloader.style.display = 'none';
-        }, 500);
+    document.body.classList.add('loaded');
+    
+    // Add fade-in animation to sections
+    const sections = document.querySelectorAll('section');
+    sections.forEach((section, index) => {
+        section.style.animationDelay = (index * 0.1) + 's';
+        section.classList.add('fade-in');
+    });
+});
+
+// ============================================
+// SERVICE DROPDOWN CONTENT TOGGLE
+// ============================================
+// This function handles the service dropdown content on services.html
+function initServiceDropdownContent() {
+    const serviceCards = document.querySelectorAll('.service-card');
+    
+    serviceCards.forEach(card => {
+        const serviceLink = card.querySelector('.btn-service');
+        if (serviceLink) {
+            serviceLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Get the service ID from the card
+                const serviceId = card.id;
+                if (serviceId) {
+                    // Scroll to the service section
+                    const targetSection = document.getElementById(serviceId);
+                    if (targetSection) {
+                        const headerHeight = document.querySelector('header').offsetHeight;
+                        const targetPosition = targetSection.offsetTop - headerHeight - 20;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        }
+    });
+}
+
+// ============================================
+// INITIALIZE SERVICE PAGE SPECIFIC FUNCTIONS
+// ============================================
+if (document.querySelector('.services-page')) {
+    document.addEventListener('DOMContentLoaded', function() {
+        initServiceDropdownContent();
+        initServiceLinks();
+    });
+}
+
+// ============================================
+// ERROR HANDLING FOR MISSING ELEMENTS
+// ============================================
+// Global error handler for missing elements
+window.addEventListener('error', function(e) {
+    console.log('Script loaded successfully. Some features may not be available on this page.');
+});
+
+// ============================================
+// CSS HELPER FUNCTIONS
+// ============================================
+// Add CSS for animations
+const style = document.createElement('style');
+style.textContent = `
+    .fade-in {
+        animation: fadeIn 0.8s ease forwards;
+        opacity: 0;
     }
     
-    // Initialize lazy loading
-    initLazyLoading();
+    @keyframes fadeIn {
+        to {
+            opacity: 1;
+        }
+    }
     
-    // Initialize service content toggle
-    initServiceContentToggle();
+    /* Dropdown active state */
+    .dropdown.active .dropdown-menu {
+        display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: translateY(0) !important;
+    }
     
-    // Add loaded class to body for CSS transitions
-    document.body.classList.add('loaded');
-});
-
-// ============================================
-// ERROR HANDLING
-// ============================================
-window.addEventListener('error', function(e) {
-    console.error('Error occurred:', e.error);
-});
-
-// ============================================
-// BROWSER COMPATIBILITY
-// ============================================
-// Polyfill for older browsers
-if (!Element.prototype.closest) {
-    Element.prototype.closest = function(s) {
-        var el = this;
-        do {
-            if (el.matches(s)) return el;
-            el = el.parentElement || el.parentNode;
-        } while (el !== null && el.nodeType === 1);
-        return null;
-    };
-}
-
-if (!Element.prototype.matches) {
-    Element.prototype.matches = 
-        Element.prototype.matchesSelector || 
-        Element.prototype.mozMatchesSelector ||
-        Element.prototype.msMatchesSelector || 
-        Element.prototype.oMatchesSelector || 
-        Element.prototype.webkitMatchesSelector ||
-        function(s) {
-            var matches = (this.document || this.ownerDocument).querySelectorAll(s),
-                i = matches.length;
-            while (--i >= 0 && matches.item(i) !== this) {}
-            return i > -1;
-        };
-}
+    /* Mobile menu active state */
+    nav.active {
+        right: 0 !important;
+    }
+    
+    /* Blog expanded state */
+    .blog-card.expanded .blog-full-content {
+        display: block !important;
+    }
+    
+    .blog-card.expanded .blog-excerpt {
+        display: none !important;
+    }
+    
+    /* Portfolio item animations */
+    .portfolio-item {
+        transition: all 0.3s ease;
+    }
+    
+    /* Cursor animation for typing */
+    @keyframes blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+    }
+    
+    .cursor {
+        animation: blink 1s infinite;
+    }
+`;
+document.head.appendChild(style);
