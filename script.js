@@ -1,170 +1,146 @@
 // ============================================
-// DOM READY & INITIALIZATION
+// DEBUG: Log when script loads
 // ============================================
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize all functionality
-    initMobileMenu();
-    initDropdowns();
-    initTypingEffect();
+console.log('script.js loaded successfully');
+
+// ============================================
+// WAIT FOR FULL PAGE LOAD
+// ============================================
+window.addEventListener('load', function() {
+    console.log('Page fully loaded, initializing...');
     
-    // Initialize other features based on page
+    // Initialize everything after page loads
+    initAll();
+    
+    // Add loaded class to body
+    document.body.classList.add('loaded');
+});
+
+// ============================================
+// MAIN INITIALIZATION FUNCTION
+// ============================================
+function initAll() {
+    console.log('Initializing all features...');
+    
+    // Check what elements exist
+    console.log('Mobile menu button exists:', !!document.querySelector('.mobile-menu-btn'));
+    console.log('Typing container exists:', !!document.querySelector('.typing-container'));
+    console.log('Dropdowns exist:', document.querySelectorAll('.dropdown').length);
+    
+    // Initialize features
+    initMobileMenu();
+    initTypingEffect();
+    initDropdowns();
+    initHeaderScroll();
+    initSmoothScroll();
+    
+    // Page-specific features
     if (document.querySelector('.blog-page')) {
+        console.log('Blog page detected');
         initReadMoreButtons();
     }
     
     if (document.querySelector('.portfolio-page')) {
+        console.log('Portfolio page detected');
         initPortfolioFilter();
     }
     
-    if (document.querySelector('.contact-page')) {
+    if (document.getElementById('contactForm')) {
+        console.log('Contact form detected');
         initContactForm();
     }
     
-    // Common initializations
-    initHeaderScroll();
-    initSmoothScroll();
-    initStatsCounter();
-});
+    if (document.querySelector('.stat-number[data-count]')) {
+        console.log('Stats counter detected');
+        initStatsCounter();
+    }
+    
+    console.log('Initialization complete');
+}
 
 // ============================================
-// MOBILE MENU FUNCTIONALITY - SIMPLIFIED
+// 1. MOBILE MENU - SIMPLE AND WORKING
 // ============================================
 function initMobileMenu() {
-    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    console.log('Initializing mobile menu...');
+    
+    const menuBtn = document.querySelector('.mobile-menu-btn');
     const nav = document.querySelector('nav');
     
-    if (!mobileMenuBtn || !nav) return;
+    if (!menuBtn || !nav) {
+        console.log('Mobile menu elements not found');
+        return;
+    }
     
-    mobileMenuBtn.addEventListener('click', function(e) {
-        e.stopPropagation();
+    console.log('Mobile menu button found, adding click event...');
+    
+    // Toggle menu when button is clicked
+    menuBtn.addEventListener('click', function(e) {
+        console.log('Menu button clicked');
+        e.stopPropagation(); // Prevent event from bubbling up
+        
+        // Toggle active class on nav
         nav.classList.toggle('active');
         
-        // Toggle menu icon
+        // Toggle icon
         const icon = this.querySelector('i');
         if (nav.classList.contains('active')) {
             icon.classList.remove('fa-bars');
             icon.classList.add('fa-times');
+            console.log('Menu opened');
         } else {
             icon.classList.remove('fa-times');
             icon.classList.add('fa-bars');
+            console.log('Menu closed');
         }
     });
     
     // Close menu when clicking outside
     document.addEventListener('click', function(e) {
-        if (!nav.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+        if (!nav.contains(e.target) && !menuBtn.contains(e.target)) {
             nav.classList.remove('active');
-            const icon = mobileMenuBtn.querySelector('i');
+            const icon = menuBtn.querySelector('i');
             icon.classList.remove('fa-times');
             icon.classList.add('fa-bars');
         }
     });
     
-    // Close menu when clicking on a link
-    const navLinks = document.querySelectorAll('nav a');
-    navLinks.forEach(link => {
+    // Close menu when clicking on a link (for mobile)
+    document.querySelectorAll('nav a').forEach(link => {
         link.addEventListener('click', function() {
             if (window.innerWidth <= 992) {
                 nav.classList.remove('active');
-                const icon = mobileMenuBtn.querySelector('i');
+                const icon = menuBtn.querySelector('i');
                 icon.classList.remove('fa-times');
                 icon.classList.add('fa-bars');
             }
         });
     });
+    
+    console.log('Mobile menu initialized');
 }
 
 // ============================================
-// DROPDOWN FUNCTIONALITY - SIMPLIFIED
-// ============================================
-function initDropdowns() {
-    const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
-    
-    dropdownToggles.forEach(toggle => {
-        toggle.addEventListener('click', function(e) {
-            // Only prevent default on mobile
-            if (window.innerWidth <= 992) {
-                e.preventDefault();
-                e.stopPropagation();
-                
-                const dropdown = this.closest('.dropdown');
-                const isActive = dropdown.classList.contains('active');
-                
-                // Close all other dropdowns
-                document.querySelectorAll('.dropdown.active').forEach(d => {
-                    if (d !== dropdown) {
-                        d.classList.remove('active');
-                    }
-                });
-                
-                // Toggle current dropdown
-                dropdown.classList.toggle('active');
-                
-                // Rotate arrow icon
-                const arrow = this.querySelector('i');
-                if (dropdown.classList.contains('active')) {
-                    arrow.style.transform = 'rotate(180deg)';
-                } else {
-                    arrow.style.transform = 'rotate(0deg)';
-                }
-            }
-        });
-    });
-    
-    // Desktop hover functionality
-    if (window.innerWidth > 992) {
-        const dropdowns = document.querySelectorAll('.dropdown');
-        
-        dropdowns.forEach(dropdown => {
-            dropdown.addEventListener('mouseenter', function() {
-                this.classList.add('active');
-                const arrow = this.querySelector('.dropdown-toggle i');
-                if (arrow) arrow.style.transform = 'rotate(180deg)';
-            });
-            
-            dropdown.addEventListener('mouseleave', function() {
-                this.classList.remove('active');
-                const arrow = this.querySelector('.dropdown-toggle i');
-                if (arrow) arrow.style.transform = 'rotate(0deg)';
-            });
-        });
-    }
-    
-    // Close dropdowns when clicking outside
-    document.addEventListener('click', function(e) {
-        if (!e.target.closest('.dropdown')) {
-            document.querySelectorAll('.dropdown.active').forEach(dropdown => {
-                dropdown.classList.remove('active');
-                const arrow = dropdown.querySelector('.dropdown-toggle i');
-                if (arrow) arrow.style.transform = 'rotate(0deg)';
-            });
-        }
-    });
-    
-    // Handle window resize
-    window.addEventListener('resize', function() {
-        if (window.innerWidth > 992) {
-            // Reset all dropdowns on desktop
-            document.querySelectorAll('.dropdown.active').forEach(dropdown => {
-                dropdown.classList.remove('active');
-                const arrow = dropdown.querySelector('.dropdown-toggle i');
-                if (arrow) arrow.style.transform = 'rotate(0deg)';
-            });
-        }
-    });
-}
-
-// ============================================
-// TYPING EFFECT - SIMPLIFIED AND WORKING
+// 2. TYPING EFFECT - SIMPLE AND WORKING
 // ============================================
 function initTypingEffect() {
+    console.log('Initializing typing effect...');
+    
     const typingContainer = document.querySelector('.typing-container');
-    if (!typingContainer) return;
+    if (!typingContainer) {
+        console.log('Typing container not found');
+        return;
+    }
     
     const typedText = typingContainer.querySelector('.typed-text');
     const cursor = typingContainer.querySelector('.cursor');
     
-    if (!typedText || !cursor) return;
+    if (!typedText || !cursor) {
+        console.log('Typing text or cursor not found');
+        return;
+    }
+    
+    console.log('Typing effect elements found, starting...');
     
     const texts = [
         "Building the Future of South Sudan",
@@ -181,14 +157,14 @@ function initTypingEffect() {
     function type() {
         const currentText = texts[textIndex];
         
-        if (!isDeleting && charIndex < currentText.length) {
+        if (!isDeleting && charIndex <= currentText.length) {
             // Typing forward
-            typedText.textContent = currentText.substring(0, charIndex + 1);
+            typedText.textContent = currentText.substring(0, charIndex);
             charIndex++;
             setTimeout(type, typingSpeed);
-        } else if (isDeleting && charIndex > 0) {
+        } else if (isDeleting && charIndex >= 0) {
             // Deleting backward
-            typedText.textContent = currentText.substring(0, charIndex - 1);
+            typedText.textContent = currentText.substring(0, charIndex);
             charIndex--;
             setTimeout(type, typingSpeed / 2);
         } else {
@@ -200,59 +176,123 @@ function initTypingEffect() {
             }
             
             // Pause before next action
-            const pauseTime = isDeleting ? 1500 : 500;
-            setTimeout(type, pauseTime);
+            setTimeout(type, isDeleting ? 1500 : 500);
         }
     }
     
-    // Start typing effect
+    // Start typing
     type();
     
-    // Cursor blinking effect
+    // Blinking cursor
     setInterval(() => {
-        cursor.style.opacity = cursor.style.opacity === '0' ? '1' : '0';
+        cursor.style.visibility = cursor.style.visibility === 'hidden' ? 'visible' : 'hidden';
     }, 500);
+    
+    console.log('Typing effect initialized');
 }
 
 // ============================================
-// READ MORE / LESS FOR BLOG
+// 3. DROPDOWNS - SIMPLE AND WORKING
 // ============================================
-function initReadMoreButtons() {
-    document.querySelectorAll('.read-more').forEach(button => {
-        button.addEventListener('click', function(e) {
-            e.preventDefault();
+function initDropdowns() {
+    console.log('Initializing dropdowns...');
+    
+    const dropdowns = document.querySelectorAll('.dropdown');
+    console.log('Found dropdowns:', dropdowns.length);
+    
+    if (dropdowns.length === 0) return;
+    
+    // For mobile: click to toggle
+    if (window.innerWidth <= 992) {
+        console.log('Mobile mode: dropdowns will toggle on click');
+        
+        dropdowns.forEach(dropdown => {
+            const toggle = dropdown.querySelector('.dropdown-toggle');
+            const arrow = toggle ? toggle.querySelector('i') : null;
             
-            const blogCard = this.closest('.blog-card');
-            const fullContent = blogCard.querySelector('.blog-full-content');
-            const excerpt = blogCard.querySelector('.blog-excerpt');
-            
-            if (blogCard.classList.contains('expanded')) {
-                // Collapse
-                blogCard.classList.remove('expanded');
-                fullContent.style.display = 'none';
-                excerpt.style.display = 'block';
-                this.innerHTML = 'Read Full Article <i class="fas fa-arrow-right"></i>';
-            } else {
-                // Expand
-                blogCard.classList.add('expanded');
-                fullContent.style.display = 'block';
-                excerpt.style.display = 'none';
-                this.innerHTML = 'Show Less <i class="fas fa-arrow-up"></i>';
+            if (toggle) {
+                toggle.addEventListener('click', function(e) {
+                    console.log('Dropdown clicked');
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    // Close other dropdowns
+                    dropdowns.forEach(other => {
+                        if (other !== dropdown) {
+                            other.classList.remove('active');
+                            const otherArrow = other.querySelector('.dropdown-toggle i');
+                            if (otherArrow) otherArrow.style.transform = 'rotate(0deg)';
+                        }
+                    });
+                    
+                    // Toggle current dropdown
+                    const isActive = dropdown.classList.contains('active');
+                    dropdown.classList.toggle('active');
+                    
+                    // Rotate arrow
+                    if (arrow) {
+                        arrow.style.transform = dropdown.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
+                    }
+                    
+                    console.log('Dropdown active:', dropdown.classList.contains('active'));
+                });
             }
         });
+        
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.dropdown')) {
+                dropdowns.forEach(dropdown => {
+                    dropdown.classList.remove('active');
+                    const arrow = dropdown.querySelector('.dropdown-toggle i');
+                    if (arrow) arrow.style.transform = 'rotate(0deg)';
+                });
+            }
+        });
+    } else {
+        // For desktop: hover to open
+        console.log('Desktop mode: dropdowns will open on hover');
+        
+        dropdowns.forEach(dropdown => {
+            dropdown.addEventListener('mouseenter', function() {
+                this.classList.add('active');
+                const arrow = this.querySelector('.dropdown-toggle i');
+                if (arrow) arrow.style.transform = 'rotate(180deg)';
+            });
+            
+            dropdown.addEventListener('mouseleave', function() {
+                this.classList.remove('active');
+                const arrow = this.querySelector('.dropdown-toggle i');
+                if (arrow) arrow.style.transform = 'rotate(0deg)';
+            });
+        });
+    }
+    
+    // Handle window resize
+    window.addEventListener('resize', function() {
+        // Remove all active states on resize (simplest solution)
+        dropdowns.forEach(dropdown => {
+            dropdown.classList.remove('active');
+            const arrow = dropdown.querySelector('.dropdown-toggle i');
+            if (arrow) arrow.style.transform = 'rotate(0deg)';
+        });
+        
+        // Re-initialize with new mode
+        setTimeout(initDropdowns, 100);
     });
+    
+    console.log('Dropdowns initialized');
 }
 
 // ============================================
-// HEADER SCROLL EFFECT
+// 4. HEADER SCROLL EFFECT
 // ============================================
 function initHeaderScroll() {
     const header = document.querySelector('header');
-    
     if (!header) return;
     
     window.addEventListener('scroll', function() {
-        if (window.scrollY > 100) {
+        if (window.scrollY > 50) {
             header.classList.add('scrolled');
         } else {
             header.classList.remove('scrolled');
@@ -261,50 +301,92 @@ function initHeaderScroll() {
 }
 
 // ============================================
-// SMOOTH SCROLLING
+// 5. SMOOTH SCROLL
 // ============================================
 function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
             
-            if (href === '#' || href.startsWith('#!')) return;
+            // Skip if it's just "#" or empty
+            if (href === '#' || href === '#!') return;
             
-            const targetElement = document.querySelector(href);
-            if (targetElement) {
+            // Skip if it's a dropdown toggle
+            if (this.classList.contains('dropdown-toggle')) return;
+            
+            const target = document.querySelector(href);
+            if (target) {
                 e.preventDefault();
                 
-                const headerHeight = document.querySelector('header').offsetHeight;
-                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                const header = document.querySelector('header');
+                const headerHeight = header ? header.offsetHeight : 0;
+                const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
                 
                 window.scrollTo({
                     top: targetPosition,
                     behavior: 'smooth'
                 });
+                
+                // Update URL
+                history.pushState(null, null, href);
             }
         });
     });
 }
 
 // ============================================
-// PORTFOLIO FILTER
+// 6. BLOG READ MORE/LESS
+// ============================================
+function initReadMoreButtons() {
+    console.log('Initializing read more buttons...');
+    
+    document.querySelectorAll('.read-more').forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const blogCard = this.closest('.blog-card');
+            if (!blogCard) return;
+            
+            const fullContent = blogCard.querySelector('.blog-full-content');
+            const excerpt = blogCard.querySelector('.blog-excerpt');
+            
+            if (blogCard.classList.contains('expanded')) {
+                // Collapse
+                blogCard.classList.remove('expanded');
+                if (fullContent) fullContent.style.display = 'none';
+                if (excerpt) excerpt.style.display = 'block';
+                this.innerHTML = 'Read Full Article <i class="fas fa-arrow-right"></i>';
+            } else {
+                // Expand
+                blogCard.classList.add('expanded');
+                if (fullContent) fullContent.style.display = 'block';
+                if (excerpt) excerpt.style.display = 'none';
+                this.innerHTML = 'Show Less <i class="fas fa-arrow-up"></i>';
+            }
+        });
+    });
+    
+    console.log('Read more buttons initialized');
+}
+
+// ============================================
+// 7. PORTFOLIO FILTER
 // ============================================
 function initPortfolioFilter() {
-    const filterButtons = document.querySelectorAll('.filter-btn');
+    const filterBtns = document.querySelectorAll('.filter-btn');
     const portfolioItems = document.querySelectorAll('.portfolio-item');
     
-    if (!filterButtons.length || !portfolioItems.length) return;
+    if (!filterBtns.length || !portfolioItems.length) return;
     
-    filterButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            // Remove active class from all buttons
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            
-            // Add active class to clicked button
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            // Update active button
+            filterBtns.forEach(b => b.classList.remove('active'));
             this.classList.add('active');
             
             const filter = this.getAttribute('data-filter');
             
+            // Filter items
             portfolioItems.forEach(item => {
                 if (filter === 'all' || item.getAttribute('data-category') === filter) {
                     item.style.display = 'block';
@@ -314,7 +396,7 @@ function initPortfolioFilter() {
                     }, 10);
                 } else {
                     item.style.opacity = '0';
-                    item.style.transform = 'scale(0.8)';
+                    item.style.transform = 'scale(0.9)';
                     setTimeout(() => {
                         item.style.display = 'none';
                     }, 300);
@@ -325,22 +407,23 @@ function initPortfolioFilter() {
 }
 
 // ============================================
-// CONTACT FORM HANDLING
+// 8. CONTACT FORM
 // ============================================
 function initContactForm() {
-    const contactForm = document.getElementById('contactForm');
-    if (!contactForm) return;
+    const form = document.getElementById('contactForm');
+    if (!form) return;
     
-    contactForm.addEventListener('submit', function(e) {
+    form.addEventListener('submit', function(e) {
         e.preventDefault();
         
-        // Show loading state
         const submitBtn = this.querySelector('button[type="submit"]');
         const originalText = submitBtn.innerHTML;
+        
+        // Show loading
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
         submitBtn.disabled = true;
         
-        // Simulate form submission (Netlify will handle actual submission)
+        // Simulate sending (Netlify will handle actual submission)
         setTimeout(() => {
             // Reset button
             submitBtn.innerHTML = originalText;
@@ -349,19 +432,18 @@ function initContactForm() {
             // Reset form
             this.reset();
             
-            // Show success message
-            alert('Thank you for your message! We will get back to you soon.');
+            // Optional: Show success message
+            console.log('Form submitted successfully');
         }, 2000);
     });
 }
 
 // ============================================
-// STATS COUNTER ANIMATION
+// 9. STATS COUNTER
 // ============================================
 function initStatsCounter() {
-    const statNumbers = document.querySelectorAll('.stat-number[data-count]');
-    
-    if (!statNumbers.length) return;
+    const stats = document.querySelectorAll('.stat-number[data-count]');
+    if (!stats.length) return;
     
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -372,184 +454,92 @@ function initStatsCounter() {
                 if (element.classList.contains('animated')) return;
                 element.classList.add('animated');
                 
-                let current = 0;
-                const increment = target / 50; // 50 frames
-                const duration = 2000; // 2 seconds
-                const stepTime = duration / 50;
+                let count = 0;
+                const increment = target / 100;
+                const duration = 2000;
+                const stepTime = duration / 100;
                 
                 const timer = setInterval(() => {
-                    current += increment;
-                    if (current >= target) {
+                    count += increment;
+                    if (count >= target) {
                         element.textContent = target;
                         clearInterval(timer);
                     } else {
-                        element.textContent = Math.floor(current);
+                        element.textContent = Math.floor(count);
                     }
                 }, stepTime);
             }
         });
     }, { threshold: 0.5 });
     
-    statNumbers.forEach(stat => observer.observe(stat));
+    stats.forEach(stat => observer.observe(stat));
 }
 
 // ============================================
-// FIX FOR DROPDOWN LINKS ON SERVICES PAGE
+// ADD CRITICAL CSS FOR FUNCTIONALITY
 // ============================================
-function initServiceLinks() {
-    // Prevent dropdown menu links from closing the dropdown immediately
-    document.querySelectorAll('.dropdown-menu a').forEach(link => {
-        link.addEventListener('click', function(e) {
-            if (window.innerWidth <= 992) {
-                e.stopPropagation();
-            }
-        });
-    });
-}
-
-// ============================================
-// SERVICE CONTENT EXPAND/COLLAPSE
-// ============================================
-function initServiceContent() {
-    document.querySelectorAll('.service-link').forEach(link => {
-        link.addEventListener('click', function(e) {
-            if (window.innerWidth <= 992) {
-                e.preventDefault();
-                const serviceCard = this.closest('.service-card');
-                const content = serviceCard.querySelector('.service-content p:nth-child(2)');
-                
-                if (content) {
-                    content.classList.toggle('expanded');
-                    if (content.classList.contains('expanded')) {
-                        content.style.maxHeight = content.scrollHeight + 'px';
-                        this.innerHTML = 'Show Less <i class="fas fa-arrow-up"></i>';
-                    } else {
-                        content.style.maxHeight = '60px';
-                        this.innerHTML = 'Learn More <i class="fas fa-arrow-right"></i>';
-                    }
-                }
-            }
-        });
-    });
-}
-
-// ============================================
-// PAGE LOAD ANIMATIONS
-// ============================================
-window.addEventListener('load', function() {
-    document.body.classList.add('loaded');
-    
-    // Add fade-in animation to sections
-    const sections = document.querySelectorAll('section');
-    sections.forEach((section, index) => {
-        section.style.animationDelay = (index * 0.1) + 's';
-        section.classList.add('fade-in');
-    });
-});
-
-// ============================================
-// SERVICE DROPDOWN CONTENT TOGGLE
-// ============================================
-// This function handles the service dropdown content on services.html
-function initServiceDropdownContent() {
-    const serviceCards = document.querySelectorAll('.service-card');
-    
-    serviceCards.forEach(card => {
-        const serviceLink = card.querySelector('.btn-service');
-        if (serviceLink) {
-            serviceLink.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                // Get the service ID from the card
-                const serviceId = card.id;
-                if (serviceId) {
-                    // Scroll to the service section
-                    const targetSection = document.getElementById(serviceId);
-                    if (targetSection) {
-                        const headerHeight = document.querySelector('header').offsetHeight;
-                        const targetPosition = targetSection.offsetTop - headerHeight - 20;
-                        
-                        window.scrollTo({
-                            top: targetPosition,
-                            behavior: 'smooth'
-                        });
-                    }
-                }
-            });
+function addCriticalCSS() {
+    const css = `
+        /* Mobile menu active state */
+        nav.active {
+            right: 0 !important;
         }
-    });
-}
-
-// ============================================
-// INITIALIZE SERVICE PAGE SPECIFIC FUNCTIONS
-// ============================================
-if (document.querySelector('.services-page')) {
-    document.addEventListener('DOMContentLoaded', function() {
-        initServiceDropdownContent();
-        initServiceLinks();
-    });
-}
-
-// ============================================
-// ERROR HANDLING FOR MISSING ELEMENTS
-// ============================================
-// Global error handler for missing elements
-window.addEventListener('error', function(e) {
-    console.log('Script loaded successfully. Some features may not be available on this page.');
-});
-
-// ============================================
-// CSS HELPER FUNCTIONS
-// ============================================
-// Add CSS for animations
-const style = document.createElement('style');
-style.textContent = `
-    .fade-in {
-        animation: fadeIn 0.8s ease forwards;
-        opacity: 0;
-    }
-    
-    @keyframes fadeIn {
-        to {
-            opacity: 1;
+        
+        /* Dropdown active state */
+        .dropdown.active .dropdown-menu {
+            display: block !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+            transform: translateY(0) !important;
         }
-    }
+        
+        /* Cursor blink animation */
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        
+        .cursor {
+            animation: blink 1s infinite;
+        }
+        
+        /* Portfolio filter animation */
+        .portfolio-item {
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        
+        /* Blog expanded content */
+        .blog-full-content {
+            display: none;
+        }
+        
+        .blog-card.expanded .blog-full-content {
+            display: block !important;
+        }
+        
+        /* Header scroll effect */
+        header.scrolled {
+            padding: 10px 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+        
+        /* Mobile menu button transition */
+        .mobile-menu-btn i {
+            transition: transform 0.3s ease;
+        }
+        
+        /* Dropdown arrow rotation */
+        .dropdown-toggle i {
+            transition: transform 0.3s ease;
+        }
+    `;
     
-    /* Dropdown active state */
-    .dropdown.active .dropdown-menu {
-        display: block !important;
-        opacity: 1 !important;
-        visibility: visible !important;
-        transform: translateY(0) !important;
-    }
-    
-    /* Mobile menu active state */
-    nav.active {
-        right: 0 !important;
-    }
-    
-    /* Blog expanded state */
-    .blog-card.expanded .blog-full-content {
-        display: block !important;
-    }
-    
-    .blog-card.expanded .blog-excerpt {
-        display: none !important;
-    }
-    
-    /* Portfolio item animations */
-    .portfolio-item {
-        transition: all 0.3s ease;
-    }
-    
-    /* Cursor animation for typing */
-    @keyframes blink {
-        0%, 100% { opacity: 1; }
-        50% { opacity: 0; }
-    }
-    
-    .cursor {
-        animation: blink 1s infinite;
-    }
-`;
-document.head.appendChild(style);
+    const style = document.createElement('style');
+    style.textContent = css;
+    document.head.appendChild(style);
+}
+
+// ============================================
+// ADD CRITICAL CSS IMMEDIATELY
+// ============================================
+addCriticalCSS();
