@@ -316,3 +316,40 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    const servicesForm = document.getElementById("servicesContactForm");
+    const servicesSuccessMessage = document.getElementById("servicesFormSuccess");
+
+    if (!servicesForm) return;
+
+    servicesForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        if (servicesForm.classList.contains("submitting")) return;
+        servicesForm.classList.add("submitting");
+
+        const formData = new FormData(servicesForm);
+
+        fetch("/", {
+            method: "POST",
+            body: formData
+        })
+        .then(() => {
+            servicesSuccessMessage.classList.add("show");
+            servicesForm.reset();
+
+            setTimeout(() => {
+                servicesSuccessMessage.classList.remove("show");
+                servicesForm.classList.remove("submitting");
+            }, 5000);
+        })
+        .catch(() => {
+            servicesForm.classList.remove("submitting");
+            alert("Something went wrong. Please try again.");
+        });
+    });
+});
+
+
+
