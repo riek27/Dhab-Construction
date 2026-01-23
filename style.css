@@ -4484,65 +4484,36 @@ header.scrolled {
         display: block !important;
     }
 }
-/* FORM SUCCESS MESSAGE */
+
+/* TOAST SUCCESS MESSAGE */
 .form-success-message {
     display: none;
-    margin-bottom: 20px;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    max-width: 300px;
     padding: 15px 20px;
-    border-radius: 6px;
-    background-color: #e6f9ee;
-    color: #0f5132;
-    border: 1px solid #b6e4c7;
+    border-radius: 8px;
+    background-color: #28a745; /* Green */
+    color: #fff;
     font-weight: 600;
     text-align: center;
-    animation: fadeIn 0.3s ease-in-out;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    z-index: 9999;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .form-success-message.show {
     display: block;
+    opacity: 1;
+    transform: translateY(0);
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-5px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-/* FORM SUCCESS MESSAGE */
-.form-success-message {
-    display: none;
-    margin-bottom: 20px;
-    padding: 15px 20px;
-    border-radius: 6px;
-    background-color: #e6f9ee;
-    color: #0f5132;
-    border: 1px solid #b6e4c7;
-    font-weight: 600;
-    text-align: center;
-    animation: fadeIn 0.3s ease-in-out;
-}
-
-.form-success-message.show {
-    display: block;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-5px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Disable submit button while submitting */
+/* DISABLE SUBMIT BUTTON WHILE SENDING */
 form.submitting button[type="submit"] {
     opacity: 0.6;
     pointer-events: none;
 }
+
