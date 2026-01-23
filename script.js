@@ -289,67 +289,47 @@ document.addEventListener('DOMContentLoaded', function() {
 console.log('Dhab Construction - All JavaScript functionality loaded successfully!');
 
 document.addEventListener("DOMContentLoaded", function () {
-    const form = document.getElementById("contactForm");
-    const successMessage = document.getElementById("formSuccess");
 
-    if (!form) return;
+    // Function to handle AJAX submission and toast
+    function setupNetlifyForm(formId, successMessageId) {
+        const form = document.getElementById(formId);
+        const successMessage = document.getElementById(successMessageId);
 
-    form.addEventListener("submit", function (e) {
-        e.preventDefault();
+        if (!form || !successMessage) return;
 
-        const formData = new FormData(form);
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
 
-        fetch("/", {
-            method: "POST",
-            body: formData
-        })
-        .then(() => {
-            successMessage.classList.add("show");
-            form.reset();
+            if (form.classList.contains("submitting")) return;
+            form.classList.add("submitting");
 
-            setTimeout(() => {
-                successMessage.classList.remove("show");
-            }, 5000);
-        })
-        .catch(() => {
-            alert("Something went wrong. Please try again.");
+            const formData = new FormData(form);
+
+            fetch("/", {
+                method: "POST",
+                body: formData
+            })
+            .then(() => {
+                // Show green toast
+                successMessage.classList.add("show");
+
+                // Reset the form
+                form.reset();
+
+                // Hide toast after 5 seconds
+                setTimeout(() => {
+                    successMessage.classList.remove("show");
+                    form.classList.remove("submitting");
+                }, 5000);
+            })
+            .catch(() => {
+                form.classList.remove("submitting");
+                alert("Something went wrong. Please try again.");
+            });
         });
-    });
+    }
+
+    // Initialize both forms
+    setupNetlifyForm("contactForm", "formSuccess");
+    setupNetlifyForm("servicesContactForm", "servicesFormSuccess");
 });
-
-document.addEventListener("DOMContentLoaded", function () {
-    const servicesForm = document.getElementById("servicesContactForm");
-    const servicesSuccessMessage = document.getElementById("servicesFormSuccess");
-
-    if (!servicesForm) return;
-
-    servicesForm.addEventListener("submit", function (e) {
-        e.preventDefault();
-
-        if (servicesForm.classList.contains("submitting")) return;
-        servicesForm.classList.add("submitting");
-
-        const formData = new FormData(servicesForm);
-
-        fetch("/", {
-            method: "POST",
-            body: formData
-        })
-        .then(() => {
-            servicesSuccessMessage.classList.add("show");
-            servicesForm.reset();
-
-            setTimeout(() => {
-                servicesSuccessMessage.classList.remove("show");
-                servicesForm.classList.remove("submitting");
-            }, 5000);
-        })
-        .catch(() => {
-            servicesForm.classList.remove("submitting");
-            alert("Something went wrong. Please try again.");
-        });
-    });
-});
-
-
-
