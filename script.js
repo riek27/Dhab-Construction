@@ -287,3 +287,32 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 console.log('Dhab Construction - All JavaScript functionality loaded successfully!');
+
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("contactForm");
+    const successMessage = document.getElementById("formSuccess");
+
+    if (!form) return;
+
+    form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const formData = new FormData(form);
+
+        fetch("/", {
+            method: "POST",
+            body: formData
+        })
+        .then(() => {
+            successMessage.classList.add("show");
+            form.reset();
+
+            setTimeout(() => {
+                successMessage.classList.remove("show");
+            }, 5000);
+        })
+        .catch(() => {
+            alert("Something went wrong. Please try again.");
+        });
+    });
+});
