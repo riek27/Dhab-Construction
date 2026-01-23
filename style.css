@@ -4512,3 +4512,37 @@ header.scrolled {
         transform: translateY(0);
     }
 }
+/* FORM SUCCESS MESSAGE */
+.form-success-message {
+    display: none;
+    margin-bottom: 20px;
+    padding: 15px 20px;
+    border-radius: 6px;
+    background-color: #e6f9ee;
+    color: #0f5132;
+    border: 1px solid #b6e4c7;
+    font-weight: 600;
+    text-align: center;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.form-success-message.show {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Disable submit button while submitting */
+form.submitting button[type="submit"] {
+    opacity: 0.6;
+    pointer-events: none;
+}
