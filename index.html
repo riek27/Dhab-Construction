@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Website Unavailable</title>
+  <title>Website Suspended · Account Reconciliation</title>
   <style>
     * {
       margin: 0;
@@ -12,167 +12,183 @@
     }
 
     body {
-      background: linear-gradient(135deg, #1a2f3f 0%, #0f1e28 100%);
+      background: linear-gradient(145deg, #1f2e3b 0%, #13212b 100%);
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
       padding: 1.5rem;
     }
 
-    .card {
-      max-width: 520px;
+    .notice-card {
+      max-width: 600px;
       width: 100%;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
-      border-radius: 2rem;
-      padding: 2.5rem 2rem;
-      box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.45), 0 2px 10px rgba(0,0,0,0.1);
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-radius: 2.5rem;
+      padding: 2.8rem 2.2rem;
+      box-shadow: 0 30px 45px -12px rgba(0, 0, 0, 0.4), 0 2px 10px rgba(0,0,0,0.1);
       text-align: center;
-      border: 1px solid rgba(255,255,255,0.2);
-      transition: all 0.2s ease;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      transition: all 0.2s;
     }
 
-    .icon {
-      font-size: 3.2rem;
-      margin-bottom: 1rem;
-      color: #2c5a73;
-      opacity: 0.9;
-    }
-
-    h1 {
-      font-size: 2.2rem;
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      color: #0e2a38;
-      margin-bottom: 0.5rem;
-      line-height: 1.2;
-    }
-
-    .badge {
-      display: inline-block;
-      background: #f0e7de;
-      color: #7b4e2d;
-      font-weight: 500;
-      font-size: 0.9rem;
-      padding: 0.25rem 1.2rem;
-      border-radius: 40px;
-      margin-bottom: 2rem;
-      border: 1px solid #e2cfbf;
-      text-transform: uppercase;
-      letter-spacing: 0.3px;
-    }
-
-    .message-box {
-      background: #f6faff;
-      padding: 1.8rem 1.2rem;
-      border-radius: 24px;
-      margin: 1.2rem 0 1.5rem;
-      border: 1px solid #d4e0ec;
-      box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
-    }
-
-    .main-text {
-      font-size: 1.3rem;
-      font-weight: 480;
-      color: #173e54;
-      line-height: 1.5;
-      margin-bottom: 0.75rem;
-    }
-
-    .sub-text {
-      font-size: 1rem;
-      color: #3d6279;
-      font-weight: 400;
-      border-top: 1px dashed #b7ccdd;
-      padding-top: 1.2rem;
-      margin-top: 0.5rem;
-    }
-
-    .footer-note {
-      margin-top: 2rem;
-      font-size: 0.8rem;
-      color: #6b8da3;
+    .icon-circle {
+      background: #e9f0f5;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
-      border-top: 1px solid #cbdae6;
-      padding-top: 1.5rem;
+      margin: 0 auto 1.5rem;
+      color: #2b5f7a;
+      font-size: 2.6rem;
+      box-shadow: inset 0 0 0 2px rgba(255,255,255,0.8), 0 8px 16px -6px rgba(0,30,40,0.2);
     }
 
-    .footer-note i {
-      font-size: 0.7rem;
+    h1 {
+      font-size: 2.1rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: #1a3c4e;
+      margin-bottom: 0.4rem;
+    }
+
+    .suspended-badge {
+      display: inline-block;
+      background: #f5e1d3;
+      color: #9b4e1d;
+      font-weight: 600;
+      font-size: 0.85rem;
+      padding: 0.3rem 1.4rem;
+      border-radius: 40px;
+      margin-bottom: 1.8rem;
+      border: 1px solid #eccfbe;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .message-panel {
+      background: #f6fcff;
+      padding: 1.8rem 1.2rem;
+      border-radius: 28px;
+      margin: 0.5rem 0 1.8rem;
+      border: 1px solid #cbdbe9;
+      box-shadow: inset 0 2px 5px rgba(0,0,0,0.02);
+    }
+
+    .primary-message {
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: #143e54;
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+
+    .inquiry-message {
+      font-size: 1rem;
+      color: #2d5d77;
+      margin-top: 0.5rem;
+      font-weight: 430;
+      padding: 0 0.2rem;
+    }
+
+    .provider-note {
+      margin-top: 1.8rem;
+      font-size: 0.9rem;
+      color: #6b8da3;
+      border-top: 1px dashed #b7ccdd;
+      padding-top: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .provider-note i {
+      opacity: 0.7;
+    }
+
+    .footer-meta {
+      margin-top: 0.8rem;
+      font-size: 0.75rem;
+      color: #7a9cb2;
     }
 
     /* responsive */
     @media (max-width: 480px) {
-      .card {
+      .notice-card {
         padding: 2rem 1.2rem;
+        border-radius: 2rem;
       }
       h1 {
-        font-size: 1.9rem;
+        font-size: 1.8rem;
       }
-      .main-text {
-        font-size: 1.15rem;
+      .primary-message {
+        font-size: 1.1rem;
       }
     }
   </style>
-  <!-- optional icon library (minimal) -->
+  <!-- simple icon library for clean visuals -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-  <div class="card">
-    <div class="icon">
-      <i class="fas fa-screwdriver-wrench"></i>
+  <div class="notice-card">
+    <div class="icon-circle">
+      <i class="fas fa-file-invoice"></i>
     </div>
 
-    <h1>Website unavailable</h1>
-    <div class="badge">
-      <i class="fas fa-circle-exclamation" style="margin-right: 6px;"></i> 
-      temporarily offline
+    <h1>Website suspended</h1>
+    <div class="suspended-badge">
+      <i class="fas fa-ban" style="margin-right: 6px;"></i> 
+      pending account reconciliation
     </div>
 
-    <div class="message-box">
-      <div class="main-text">
-        Website is currently unavailable.
+    <div class="message-panel">
+      <div class="primary-message">
+        This website is temporarily suspended<br> pending account reconciliation.
       </div>
-      <div class="sub-text">
-        For inquiries, please contact the company directly.
+      <div class="inquiry-message">
+        For all project inquiries, please call the company directly via phone<br> or visit their office.
       </div>
     </div>
 
-    <!-- minimal footer with year (JS touch) -->
-    <div class="footer-note">
-      <i class="far fa-clock"></i>
-      <span>We'll be back shortly</span>
-      <span>·</span>
-      <span>© <span id="currentYear"></span></span>
+    <!-- automated message from provider (no contact details) -->
+    <div class="provider-note">
+      <i class="fas fa-robot"></i>
+      <span>This is an automated message from the web services provider.</span>
+    </div>
+
+    <!-- subtle footer with dynamic year (JS usage) -->
+    <div class="footer-meta">
+      <i class="far fa-calendar-alt" style="margin-right: 4px;"></i>
+      <span>Notice ID · WS-<span id="yearDisplay"></span></span>
     </div>
   </div>
 
-  <!-- minimal javascript – just set dynamic year and satisfy "js used" -->
+  <!-- minimal JavaScript – sets year and confirms active -->
   <script>
     (function() {
-      // set current year in footer
-      const yearSpan = document.getElementById('currentYear');
+      // Set the current year in the footer (dynamic, JS usage)
+      const yearSpan = document.getElementById('yearDisplay');
       if (yearSpan) {
         yearSpan.textContent = new Date().getFullYear();
       }
-
-      // subtle console message – JS is active
-      console.log('📴 Website unavailable — contact company directly.');
-
-      // optional: you can add a tiny interaction that doesn't show contact details
-      // but we keep it minimal.
+      
+      // Optional console message (shows JS is running)
+      console.log('⚙️ Automated suspension notice — account reconciliation pending.');
     })();
   </script>
 
-  <!-- fallback if JS disabled (year won't show, but that's fine) -->
+  <!-- fallback for no-JS -->
   <noscript>
-    <style>.footer-note span:last-child { display: none; }</style>
+    <div style="margin-top:1rem; color:#b33; background:#ffe6e6; padding:8px; border-radius:20px;">
+      ⚠️ JavaScript disabled — notice remains valid.
+    </div>
   </noscript>
 </body>
 </html>
